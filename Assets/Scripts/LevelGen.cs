@@ -75,7 +75,7 @@ public class LevelGen : MonoBehaviour
 
     private void V_Move()
     {
-        if (I_roomcounter >= I_maxRoom)
+        if (I_roomcounter > I_maxRoom)
         {
             stopGeneration = true;
             renderMap.SetActive(true);
@@ -91,6 +91,7 @@ public class LevelGen : MonoBehaviour
 
                 //Room choosing
                 int randroom = Random.Range(0, G_C_A_rooms.Length);
+                I_seed += randroom;
                 Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
                 
                 //direction
@@ -103,7 +104,6 @@ public class LevelGen : MonoBehaviour
                 {
                     I_direction = 5;
                 }
-                I_seed += randroom;
                 downcounter = 0;
                 I_roomcounter++;
             }
@@ -191,6 +191,7 @@ public class LevelGen : MonoBehaviour
           
                 
         }
+        if(I_roomcounter <= I_maxRoom)
         I_seed += I_direction;
 
     }
