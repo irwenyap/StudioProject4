@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Public
+    // Client Variables
+    public uint id;
+    public string playerName;
+    public bool useWeapon = false;
+
+
+
+
     public float moveSpeed = 5f;
 
     // Private
@@ -12,6 +19,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveAxis;
     Vector3 mousePos;
     float health = 100f;
+    bool isPlayer = false;
 
     int weaponType;
 
@@ -19,19 +27,28 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
+    public void Initialise(bool _isPlayer) {
+        isPlayer = _isPlayer;
+    }
+
     private void Update() {
+        if (isPlayer) {
+            // Movement Input
+            moveAxis.x = Input.GetAxisRaw("Horizontal");
+            moveAxis.y = Input.GetAxisRaw("Vertical");
 
-        // Movement Input
-        moveAxis.x = Input.GetAxisRaw("Horizontal");
-        moveAxis.y = Input.GetAxisRaw("Vertical");
+            // Look at Cursor
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        // Cursor Follow
-        //mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.z, Camera.main.transform.position.z - transform.position.z));
-        //transform.LookAt(mousePos);
+            if (Input.GetMouseButtonDown(0)) {
+                useWeapon = true;
+            } else if (Input.GetMouseButtonUp(0)) {
+                useWeapon = false;
+            }
 
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void FixedUpdate() {

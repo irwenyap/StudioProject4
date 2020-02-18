@@ -340,22 +340,16 @@ public class Client_Demo : MonoBehaviour {
                         //}
                     }
                     break;
-                case (byte)Packets_ID.ID_LASERBEAM: {
-                        Vector2 beamPos = m_NetworkReader.ReadVector2();
-                        Vector2 beamVel = m_NetworkReader.ReadVector2();
-                        Quaternion beamRot = m_NetworkReader.ReadQuaternion();
+                //case (byte)Packets_ID.ID_LASERBEAM: {
+                //        Vector2 beamPos = m_NetworkReader.ReadVector2();
+                //        Vector2 beamVel = m_NetworkReader.ReadVector2();
+                //        Quaternion beamRot = m_NetworkReader.ReadQuaternion();
 
 
-                        Rigidbody2D beam = Instantiate(playerBeam, beamPos, beamRot);
-                        beam.velocity = beamVel;
-                    }
-                    break;
-                case (byte)Packets_ID.ID_POWERUP: {
-                        Vector3 puPos = m_NetworkReader.ReadVector3();
-
-                        _ = Instantiate(powerUp, puPos, new Quaternion(0, 0, 1, 0));
-                    }
-                    break;
+                //        Rigidbody2D beam = Instantiate(playerBeam, beamPos, beamRot);
+                //        beam.velocity = beamVel;
+                //    }
+                //    break;  
                 case (byte)Packets_ID.NET_CHAT: {
                         string rcvText = m_NetworkReader.ReadString();
                         AddText(rcvText);
@@ -381,7 +375,6 @@ public class Client_Demo : MonoBehaviour {
     private void OnConnected(string address) {
         Debug.Log("[Client] Connected to " + address);
 
-        //формируем/готовим информацию клиента
         m_ClientNetInfo.name = "Player_" + Environment.MachineName;
         m_ClientNetInfo.local_id = peer.incomingGUID;
         m_ClientNetInfo.client_hwid = SystemInfo.deviceUniqueIdentifier;

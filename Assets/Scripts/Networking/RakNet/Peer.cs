@@ -743,7 +743,7 @@ public class Peer
 
     public void SendPacket(Connection conn, Packets_ID id, NetworkWriter write)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             write.Send(conn.guid, Priority.Immediate, Reliability.Reliable, 0);
@@ -752,7 +752,7 @@ public class Peer
 
     public void SendPacket(Connection conn, Packets_ID id, Reliability reliability, NetworkWriter write)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             write.Send(conn.guid, Priority.Immediate, reliability, 0);
@@ -761,7 +761,7 @@ public class Peer
 
     public void SendPacket(Connection conn, Packets_ID id, NetworkWriter write, object value)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             if (value.GetType() == typeof(ulong)) { write.Write((ulong)value); }
@@ -790,7 +790,7 @@ public class Peer
 
     public void SendPacket(ulong guid, Packets_ID id, NetworkWriter write)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             write.Send(guid, Priority.Immediate, Reliability.Reliable, 0);
@@ -799,7 +799,7 @@ public class Peer
 
     public void SendPacket(ulong guid, Packets_ID id, Reliability reliability, NetworkWriter write)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             write.Send(guid, Priority.Immediate, reliability, 0);
@@ -808,7 +808,7 @@ public class Peer
 
     public void SendPacket(ulong guid, Packets_ID id, NetworkWriter write, object value)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             if (value.GetType() == typeof(ulong)) { write.Write((ulong)value); }
@@ -837,7 +837,7 @@ public class Peer
 
     public void SendPacket(ulong guid, Packets_ID id, Reliability realibility, NetworkWriter write, object value)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             if (value.GetType() == typeof(ulong)) { write.Write((ulong)value); }
@@ -869,7 +869,7 @@ public class Peer
     }
     public void SendPacket(ulong guid, Packets_ID id, Reliability realibility,sbyte channel, NetworkWriter write, object value)
     {
-        if (write.StartWritting())
+        if (write.StartWriting())
         {
             write.Write((byte)id);
             if (value.GetType() == typeof(ulong)) { write.Write((ulong)value); }

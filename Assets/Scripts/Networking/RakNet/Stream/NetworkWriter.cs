@@ -25,7 +25,7 @@ public class NetworkWriter
         Position = 0;
         SetLength(0L);
     }
-    public bool StartWritting()
+    public bool StartWriting()
     {
         if (peer == null)
         {

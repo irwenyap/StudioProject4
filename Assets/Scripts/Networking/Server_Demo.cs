@@ -281,7 +281,7 @@ public class Server_Demo : MonoBehaviour {
 
         string chatString = m_NetworkReader.ReadString();
 
-        if (m_NetworkWriter.StartWritting()) {
+        if (m_NetworkWriter.StartWriting()) {
             m_NetworkWriter.WritePacketID((byte)Packets_ID.NET_CHAT);
             m_NetworkWriter.Write(chatString);
             SendToAll(m_NetworkWriter);

@@ -12,14 +12,14 @@ public enum Packets_ID : byte
     NET_CHAT,
 
     ID_MOVEMENT,
+    ID_NEWCLIENT,
     ID_NEWSHIP,
     ID_WELCOME,
     ID_INITIALSTATS,
     ID_AISHIPS,
     ID_AISHIPSMOVEMENT,
-    ID_LASERBEAM,
+    ID_WEAPONDATA,
     ID_POWERUP
-
 
     /* unused in demo
     NET_SERVER_INFO,
