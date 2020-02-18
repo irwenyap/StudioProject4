@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsButton;
     public GameObject quitButton;
 
+    public GameObject nameWindow;
+
+    public GameObject mainMenuScene;
+    public GameObject onlineLobbyScene;
+
     public CanvasGroup canvGroup;
     private float duration = 1.0f;
 
@@ -47,11 +52,32 @@ public class MainMenu : MonoBehaviour
         {
             LeanTween.rotateX(quitButton, 0, 1.0f);
         }
+
+        // If main menu screen faded, start main menu screen
+        if (canvGroup.alpha == 0.0f)
+        {
+            mainMenuScene.SetActive(false);
+            onlineLobbyScene.SetActive(true);
+        }
+    }
+
+    public void PlayGame()
+    {
+        nameWindow.SetActive(true);
+    }
+
+    public void NameAccept()
+    {
+        StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 0.0f));
+    }
+
+    public void NameBack()
+    {
+        nameWindow.SetActive(false);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quit Game");
         Application.Quit();
     }
 

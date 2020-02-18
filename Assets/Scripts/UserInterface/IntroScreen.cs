@@ -44,6 +44,7 @@ public class IntroScreen : MonoBehaviour
             }
         }
 
+        // If intro screen faded, start main menu screen
         if (canvGroup.alpha == 0.0f)
         {
             mainMenuScene.SetActive(true);
