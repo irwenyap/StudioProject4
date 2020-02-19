@@ -32,6 +32,7 @@ public class GameLobbyMenu : MonoBehaviour
 
     private void Update()
     {
+        //Scene swapper
         switch (buttonHit)
         {
             case BUTTON_HIT.NONE:
