@@ -17,11 +17,21 @@ public class ButtonAnimation : MonoBehaviour
 
     public void OnClick()
     {
-        GetComponent<Image>().color = new Color(255, 255, 255);
+        GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.4f);
     }
 
     public void OffClick()
     {
-        GetComponent<Image>().color = new Color(0, 0, 0);
+        GetComponent<Image>().color = new Color(0, 0, 0, 0.4f);
+    }
+
+    public void StartOnClick()
+    {
+        GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.75f);
+    }
+
+    public void StartOffClick()
+    {
+        GetComponent<Image>().color = new Color(0, 0, 0, 0.75f);
     }
 }
