@@ -20,6 +20,10 @@ public class MainMenu : MonoBehaviour
 
     private float timer;
 
+    private bool doOnce01;
+    private bool doOnce02;
+    private bool doOnce03;
+
     private void Awake()
     {
         canvGroup.alpha = 0.0f;
@@ -40,17 +44,20 @@ public class MainMenu : MonoBehaviour
         if(title.GetComponent<Text>().canvasRenderer.GetAlpha() == 1.0f)
             timer += Time.deltaTime;
 
-        if (timer >= 0.1f)
+        if (timer >= 0.1f && !doOnce01)
         {
             LeanTween.rotateX(playButton, 0, 1.0f);
+            doOnce01 = true;
         }
-        if (timer >= 0.2f)
+        if (timer >= 0.2f && !doOnce02)
         {
             LeanTween.rotateX(optionsButton, 0, 1.0f);
+            doOnce02 = true;
         }
-        if (timer >= 0.3f)
+        if (timer >= 0.3f && !doOnce03)
         {
             LeanTween.rotateX(quitButton, 0, 1.0f);
+            doOnce03 = true;
         }
 
         // If main menu screen faded, start main menu screen

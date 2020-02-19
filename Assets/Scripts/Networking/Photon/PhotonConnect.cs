@@ -3,12 +3,17 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhotonConnect : MonoBehaviourPunCallbacks
 {
-    private void Start() {
+    [SerializeField]
+    private Text nameText;
+
+    public void Connect() {
         Debug.Log("[Connecting to Server]");
-        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.NickName = nameText.text;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
     }
