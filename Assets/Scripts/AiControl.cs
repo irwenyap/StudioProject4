@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class AiControsl : MonoBehaviour
+public class AiControl : MonoBehaviour
 {
     // Public
     public float moveSpeed = 0.01f;
@@ -26,9 +26,9 @@ public class AiControsl : MonoBehaviour
     private void Update()
     {
         shootBT += Time.deltaTime;
-        float DistanceAiNPlayer =  Vector2.Distance(player.position, this.transform.position);
+        float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
 
-        if (DistanceAiNPlayer < 7 )
+        if (DistanceAiNPlayer < 7)
         {
             Vector2 direction = player.position - this.transform.position;
 
@@ -43,11 +43,11 @@ public class AiControsl : MonoBehaviour
         if (DistanceAiNPlayer < 7 && DistanceAiNPlayer > 4)
         {
             this.transform.Translate(moveSpeed, 0, 0);
-            
+
         }
-        else if (DistanceAiNPlayer <4)
+        else if (DistanceAiNPlayer < 4)
         {
-             
+
         }
 
         // Cursor Follow
