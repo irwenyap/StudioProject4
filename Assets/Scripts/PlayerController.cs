@@ -8,20 +8,25 @@ public class PlayerController : MonoBehaviour
     public uint id;
     public string playerName;
     public bool useWeapon = false;
+	
+    public float moveSpeed = 5f;    
+	public int maxHealth = 100;
+    public int currentHealth;
 
-    public float moveSpeed = 5f;
+	public HealthBar healthBar;
 
     // Private
     Rigidbody2D myRigidbody;
     Vector2 moveAxis;
     Vector3 mousePos;
-    float health = 100f;
     bool isPlayer = false;
 
     int weaponType;
-
+	
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
+		currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void Initialise(bool _isPlayer) {
@@ -44,11 +49,21 @@ public class PlayerController : MonoBehaviour
             } else if (Input.GetMouseButtonUp(0)) {
                 useWeapon = false;
             }
+			
+			// For healthbar testing
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				TakeDamage(5);
+			}
 
        //}
     }
 
     private void FixedUpdate() {
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
+    }
+	
+	private void TakeDamage(int damage) {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
