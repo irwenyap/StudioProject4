@@ -219,3 +219,7 @@ MonoBehaviour:
   playerName: 
   useWeapon: 0
   moveSpeed: 5
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 4613485778752303213, guid: a73f3546236eda14eafbc743ead818ec,
+    type: 3}
