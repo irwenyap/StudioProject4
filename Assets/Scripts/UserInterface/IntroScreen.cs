@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class IntroScreen : MonoBehaviour
 {
+    enum BUTTON_HIT
+    {
+        NONE,
+        CONTINUE,
+        ACCEPT,
+        BACK
+    };
+
     public GameObject title;
     public GameObject anyKey;
 
@@ -15,6 +23,8 @@ public class IntroScreen : MonoBehaviour
 
     public CanvasGroup canvGroup;
     private float duration = 1.0f;
+
+    private BUTTON_HIT buttonHit = BUTTON_HIT.NONE;
 
     private void Awake()
     {
@@ -30,40 +40,71 @@ public class IntroScreen : MonoBehaviour
 
     private void Update()
     {
-        if (canvGroup.alpha == 1.0f && title.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f)
-            title.GetComponent<Text>().CrossFadeAlpha(1.0f, 3.0f, false);
-
-        if (title.GetComponent<Text>().canvasRenderer.GetAlpha() == 1.0f)
+        // Scene swapper
+        switch (buttonHit)
         {
-            if (anyKey.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f)
-                anyKey.GetComponent<Text>().CrossFadeAlpha(1.0f, 1.0f, false);
-            if (anyKey.GetComponent<Text>().canvasRenderer.GetAlpha() == 1.0f)
-                anyKey.GetComponent<Text>().CrossFadeAlpha(0.0f, 1.0f, false);
+            case BUTTON_HIT.NONE:
+                {
+                    if (canvGroup.alpha == 0.0f)
+                    {
+                        StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 1.0f));
+                    }
 
-            if (Input.anyKeyDown)
-            {
-                Continue();
-            }
-        }
+                    if (canvGroup.alpha == 1.0f && title.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f)
+                        title.GetComponent<Text>().CrossFadeAlpha(1.0f, 3.0f, false);
 
-        // If intro screen faded, start main menu screen
-        if (canvGroup.alpha == 0.0f)
-        {
-            mainMenuScene.SetActive(true);
-            introScene.SetActive(false);
+                    if (title.GetComponent<Text>().canvasRenderer.GetAlpha() == 1.0f)
+                    {
+                        if (anyKey.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f)
+                            anyKey.GetComponent<Text>().CrossFadeAlpha(1.0f, 1.0f, false);
+                        if (anyKey.GetComponent<Text>().canvasRenderer.GetAlpha() == 1.0f)
+                            anyKey.GetComponent<Text>().CrossFadeAlpha(0.0f, 1.0f, false);
+
+                        if (Input.anyKeyDown)
+                        {
+                            AudioManager.instance.Play("ContinueSound");
+                            Continue();
+                        }
+                    }
+                }
+                break;
+            case BUTTON_HIT.CONTINUE:
+                {
+                    if (title.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f && anyKey.GetComponent<Text>().canvasRenderer.GetAlpha() == 0.0f)
+                    {
+                        title.SetActive(false);
+                        anyKey.SetActive(false);
+                        nameWindow.SetActive(true);
+                    }
+                }
+                break;
+            case BUTTON_HIT.ACCEPT:
+                {
+                    // If intro screen faded, start main menu screen
+                    if (canvGroup.alpha == 0.0f)
+                    {
+                        mainMenuScene.SetActive(true);
+                        introScene.SetActive(false);
+                    }
+                }
+                break;
+            case BUTTON_HIT.BACK:
+                break;
         }
     }
 
+
     public void Continue()
     {
-        nameWindow.SetActive(true);
-        title.SetActive(false);
-        anyKey.SetActive(false);
+        title.GetComponent<Text>().CrossFadeAlpha(0.0f, 1.0f, false);
+        anyKey.GetComponent<Text>().CrossFadeAlpha(0.0f, 1.0f, false);
+        buttonHit = BUTTON_HIT.CONTINUE;
     }
 
     public void NameAccept()
     {
         StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 0.0f));
+        buttonHit = BUTTON_HIT.ACCEPT;
     }
 
     public void NameBack()
@@ -71,6 +112,7 @@ public class IntroScreen : MonoBehaviour
         nameWindow.SetActive(false);
         title.SetActive(true);
         anyKey.SetActive(true);
+        buttonHit = BUTTON_HIT.NONE;
     }
 
     public IEnumerator DoFade(CanvasGroup canvGroup, float start, float end)

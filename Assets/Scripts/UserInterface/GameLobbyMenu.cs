@@ -8,7 +8,7 @@ public class GameLobbyMenu : MonoBehaviour
     enum BUTTON_HIT
     {
         NONE,
-        START,
+        READY,
         LEAVE,
     };
 
@@ -32,6 +32,7 @@ public class GameLobbyMenu : MonoBehaviour
 
     private void Update()
     {
+        //Scene swapper
         switch (buttonHit)
         {
             case BUTTON_HIT.NONE:
@@ -42,7 +43,7 @@ public class GameLobbyMenu : MonoBehaviour
                     }
                 }
                 break;
-            case BUTTON_HIT.START:
+            case BUTTON_HIT.READY:
                 break;
             case BUTTON_HIT.LEAVE:
                 if (canvGroup.alpha == 0.0f)
@@ -55,7 +56,7 @@ public class GameLobbyMenu : MonoBehaviour
         }
     }
 
-    public void StartButton()
+    public void ReadyButton()
     {
 
     }
