@@ -7,17 +7,17 @@ using UnityEngine.UI;
 
 public class PlayerListMenu : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    private Transform _content;
-    [SerializeField]
-    private PlayerListing _playerListing;
+    //[SerializeField]
+    //private Transform _content;
+    //[SerializeField]
+    //private PlayerListing _playerListing;
 
     public Text player01;
     public Text player02;
     public Text player03;
     public Text player04;
 
-    private List<PlayerListing> _listings = new List<PlayerListing>();
+    //private List<PlayerListing> _listings = new List<PlayerListing>();
 
     public override void OnPlayerEnteredRoom(Player newPlayer) {
         if (player01.text == "") {

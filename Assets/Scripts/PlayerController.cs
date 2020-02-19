@@ -9,9 +9,6 @@ public class PlayerController : MonoBehaviour
     public string playerName;
     public bool useWeapon = false;
 
-
-
-
     public float moveSpeed = 5f;
 
     // Private
@@ -32,7 +29,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
-        if (isPlayer) {
+        //if (isPlayer) {
             // Movement Input
             moveAxis.x = Input.GetAxisRaw("Horizontal");
             moveAxis.y = Input.GetAxisRaw("Vertical");
@@ -48,7 +45,7 @@ public class PlayerController : MonoBehaviour
                 useWeapon = false;
             }
 
-        }
+       //}
     }
 
     private void FixedUpdate() {

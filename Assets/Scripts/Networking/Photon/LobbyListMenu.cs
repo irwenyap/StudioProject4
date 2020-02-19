@@ -8,14 +8,14 @@ public class LobbyListMenu : MonoBehaviourPunCallbacks {
     [SerializeField]
     private Transform _content;
     [SerializeField]
-    private RoomList _lobbyListing;
+    private LobbyListing _lobbyListing;
 
-    private List<RoomList> _listings = new List<RoomList>();
+    private List<LobbyListing> _listings = new List<LobbyListing>();
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList) {
         foreach (RoomInfo info in roomList) {
             if (info.RemovedFromList) {
-                int index = _listings.FindIndex(x => x._roomInfo.Name == info.Name);
+                int index = _listings.FindIndex(x => x.myRoomInfo.Name == info.Name);
                 if (index != -1) {
                     Destroy(_listings[index].gameObject);
                     _listings.RemoveAt(index);
@@ -23,7 +23,7 @@ public class LobbyListMenu : MonoBehaviourPunCallbacks {
             }
             else {
                 Debug.Log("Lobby Found");
-                RoomList list = Instantiate(_lobbyListing, _content);
+                LobbyListing list = Instantiate(_lobbyListing, _content);
                 if (list != null) {
                     _lobbyListing.SetRoomInfo(info);
                     _listings.Add(list);
