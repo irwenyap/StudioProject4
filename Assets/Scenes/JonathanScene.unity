@@ -759,6 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25929317cdf7a24a8a98f125ade14ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   bullet: {fileID: 3278256724988471833, guid: 0282897705ca0e34eaaeecd10d3f657d, type: 3}
 --- !u!1 &1663575227
 GameObject:
@@ -842,11 +843,11 @@ MonoBehaviour:
   - {fileID: 1259604212}
   - {fileID: 1663575228}
   G_C_A_rooms:
-  - {fileID: 6118497667811959887, guid: ce35eff0b1ea7ab42b26cda7c2f397fd, type: 3}
-  - {fileID: 3859027742683364865, guid: 20587caf7b6fa9d4398560d3ebc81249, type: 3}
-  - {fileID: 8451571361499131541, guid: eb21f1896fa573d48ba5911b70d6c327, type: 3}
-  - {fileID: 1072498668753099126, guid: 06c9e3734881ccc44aae6667afdfe515, type: 3}
-  F_roomDIfferent: 10
+  - {fileID: 7917291405649493657, guid: f13c1fc3ba430174b921a77e29055acc, type: 3}
+  - {fileID: 7917291405649493657, guid: 6653fb5835c87794f9a4e0b21ceff85c, type: 3}
+  - {fileID: 159269926688465649, guid: 7a555f30975440540988be7f32c77081, type: 3}
+  - {fileID: 7917291405649493657, guid: db0fa3f13d64dbb499647ae9037e3b5f, type: 3}
+  F_roomDIfferent: 20
   F_timeBtwnRoom: 0.25
   F_startimeBtwnRoom: 0.25
   F_minX: -5
