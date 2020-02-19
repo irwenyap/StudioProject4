@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    enum BUTTON_HIT
+    {
+        NONE,
+        PLAY,
+        OPTIONS
+    };
+
     public GameObject title;
     public GameObject playButton;
     public GameObject optionsButton;
     public GameObject quitButton;
-
-    public GameObject nameWindow;
 
     public GameObject mainMenuScene;
     public GameObject onlineLobbyScene;
@@ -19,6 +24,8 @@ public class MainMenu : MonoBehaviour
     private float duration = 1.0f;
 
     private float timer;
+
+    private BUTTON_HIT buttonHit = BUTTON_HIT.NONE;
 
     private void Awake()
     {
@@ -53,27 +60,37 @@ public class MainMenu : MonoBehaviour
             LeanTween.rotateX(quitButton, 0, 1.0f);
         }
 
-        // If main menu screen faded, start main menu screen
-        if (canvGroup.alpha == 0.0f)
+        // Scene swapper
+        switch (buttonHit)
         {
-            mainMenuScene.SetActive(false);
-            onlineLobbyScene.SetActive(true);
+            case BUTTON_HIT.NONE:
+                {
+                    if (canvGroup.alpha == 0.0f)
+                    {
+                        StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 1.0f));
+                    }
+                }
+                break;
+            case BUTTON_HIT.PLAY:
+                {
+                    // If main menu screen faded, start main menu screen
+                    if (canvGroup.alpha == 0.0f)
+                    {
+                        mainMenuScene.SetActive(false);
+                        onlineLobbyScene.SetActive(true);
+                        buttonHit = BUTTON_HIT.NONE;
+                    }
+                }
+                break;
+            case BUTTON_HIT.OPTIONS:
+                break;
         }
     }
 
     public void PlayGame()
     {
-        nameWindow.SetActive(true);
-    }
-
-    public void NameAccept()
-    {
         StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 0.0f));
-    }
-
-    public void NameBack()
-    {
-        nameWindow.SetActive(false);
+        buttonHit = BUTTON_HIT.PLAY;
     }
 
     public void QuitGame()

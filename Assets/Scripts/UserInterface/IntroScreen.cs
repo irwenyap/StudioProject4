@@ -8,6 +8,8 @@ public class IntroScreen : MonoBehaviour
     public GameObject title;
     public GameObject anyKey;
 
+    public GameObject nameWindow;
+
     public GameObject introScene;
     public GameObject mainMenuScene;
 
@@ -40,7 +42,7 @@ public class IntroScreen : MonoBehaviour
 
             if (Input.anyKeyDown)
             {
-                StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 0.0f));
+                Continue();
             }
         }
 
@@ -50,6 +52,25 @@ public class IntroScreen : MonoBehaviour
             mainMenuScene.SetActive(true);
             introScene.SetActive(false);
         }
+    }
+
+    public void Continue()
+    {
+        nameWindow.SetActive(true);
+        title.SetActive(false);
+        anyKey.SetActive(false);
+    }
+
+    public void NameAccept()
+    {
+        StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 0.0f));
+    }
+
+    public void NameBack()
+    {
+        nameWindow.SetActive(false);
+        title.SetActive(true);
+        anyKey.SetActive(true);
     }
 
     public IEnumerator DoFade(CanvasGroup canvGroup, float start, float end)
