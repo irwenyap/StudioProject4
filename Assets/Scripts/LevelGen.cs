@@ -22,9 +22,12 @@ public class LevelGen : MonoBehaviour
     [SerializeField]
     public Stack<GameObject> path;
 
-    public Queue<GameObject> Q_GO_roomData;
+    public Stack<GameObject> S_GO_roomData;
+
     public List<Vector2> L_V2_roomPosition;
+
     public List<int> L_V2_roomtype;
+
     [SerializeField]
     public float F_roomDIfferent;
     [SerializeField]
@@ -55,6 +58,9 @@ public class LevelGen : MonoBehaviour
     private void Awake()
     {
         path = new Stack<GameObject>();
+        S_GO_roomData = new Stack<GameObject>();
+        L_V2_roomPosition = new List<Vector2>();
+        L_V2_roomtype = new List<int>();
     }
     // Start is called before the first frame update
     void Start()
@@ -65,11 +71,15 @@ public class LevelGen : MonoBehaviour
         int randStartPos = Random.Range(0, T_C_startPos.Length);
         transform.position = T_C_startPos[randStartPos].position;
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
-
+        I_direction = Random.Range(1, 6);
         path.Push(instance);
+        S_GO_roomData.Push(instance);
+
+
         I_seed += 0;
         I_roomcounter++;
-        I_direction = Random.Range(1, 6);
+
+
         I_seed += I_direction;
     }
     private void Update()
@@ -91,7 +101,7 @@ public class LevelGen : MonoBehaviour
         {
             stopGeneration = true;
             fillRoom();
-            //renderMap.SetActive(true);
+            renderMap.SetActive(true);
         }
         else if (I_direction == 1 || I_direction == 2)//Moving Right
         {
@@ -106,7 +116,10 @@ public class LevelGen : MonoBehaviour
                 int randroom = Random.Range(0, G_C_A_rooms.Length);
                 I_seed += randroom;
                 GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+
                 path.Push(instance);
+
+                S_GO_roomData.Push(instance);
                 //direction
                 I_direction = Random.Range(1, 6);
                 if (I_direction == 3)
@@ -136,6 +149,8 @@ public class LevelGen : MonoBehaviour
                 I_seed += randroom;
                 GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
                 path.Push(instance);
+                S_GO_roomData.Push(instance);
+
                 //direction movement
                 I_direction = Random.Range(1, 6);
                 if (I_direction == 1)
@@ -172,7 +187,10 @@ public class LevelGen : MonoBehaviour
                             {
                                 Detection.GetComponent<RoomType>().v_DestroyRoom();
                                 path.Pop();
+                                S_GO_roomData.Pop();
                                 GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                S_GO_roomData.Push(instance);
+
                                 path.Push(instance);
                                 I_seed += 3;
                             }
@@ -187,8 +205,11 @@ public class LevelGen : MonoBehaviour
                                 }
                                 I_seed += randbot;
                                 path.Pop();
+                                S_GO_roomData.Pop();
                                 GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
                                 path.Push(instance);
+                                S_GO_roomData.Push(instance);
+
                             }
                         }
 
@@ -203,6 +224,8 @@ public class LevelGen : MonoBehaviour
                 I_seed += randroom;
                 GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
                 path.Push(instance2);
+                S_GO_roomData.Push(instance2);
+
                 I_direction = Random.Range(1, 6);
                 I_roomcounter++;
             }
@@ -232,6 +255,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x + F_roomDIfferent, curr.transform.position.y);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -240,6 +265,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                     }
                     break;
@@ -255,6 +282,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x + F_roomDIfferent, curr.transform.position.y);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -263,6 +292,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x, curr.transform.position.y - F_roomDIfferent);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -271,6 +302,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                     }
 
@@ -286,6 +319,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x + F_roomDIfferent, curr.transform.position.y);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -294,6 +329,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x, curr.transform.position.y + F_roomDIfferent);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -302,6 +339,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                     }
                     break;
@@ -316,6 +355,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x + F_roomDIfferent, curr.transform.position.y);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -324,6 +365,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x, curr.transform.position.y + F_roomDIfferent);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -332,6 +375,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                         V2_newPos = new Vector2(curr.transform.position.x, curr.transform.position.y - F_roomDIfferent);
                         Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
@@ -340,12 +385,22 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            S_GO_roomData.Push(instance2);
+
                         }
                     }
                     break;
             }
             path.Pop();
             
+        }
+
+        while (S_GO_roomData.Count != 0)
+        {
+            GameObject temp = S_GO_roomData.Peek();
+            L_V2_roomPosition.Add(temp.transform.position);
+            L_V2_roomtype.Add(temp.GetComponent<RoomType>().type);
+            S_GO_roomData.Pop();
         }
     }
 
