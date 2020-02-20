@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class LevelGen : MonoBehaviour
 {
-    enum Direction
-    {
-        D_UP = 0,
-        D_DOWN,
-        D_LEFT,
-        D_RIGHT
-    }
 
-    Direction E_direction;
+    public int SpawnDirection;
+   
     int I_direction;
     [SerializeField]
     private Transform[] T_C_startPos;
@@ -51,7 +45,7 @@ public class LevelGen : MonoBehaviour
     public int I_maxRoom;
 
     public int downcounter;
-
+    public int seed;
     public string I_seed;
     [SerializeField]
     GameObject renderMap;
@@ -62,12 +56,17 @@ public class LevelGen : MonoBehaviour
         L_V2_roomPosition = new List<Vector2>();
         L_V2_roomtype = new List<int>();
     }
+
     // Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
+        Random.seed = seed;
+
+
         I_seed = "";
         I_roomcounter = 0;
-        I_maxRoom = Random.Range(10, 12);
+        I_maxRoom = Random.Range(10, 40);
         int randStartPos = Random.Range(0, T_C_startPos.Length);
         transform.position = T_C_startPos[randStartPos].position;
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
@@ -100,137 +99,591 @@ public class LevelGen : MonoBehaviour
         if (I_roomcounter > I_maxRoom)
         {
             stopGeneration = true;
-            fillRoom();
-            renderMap.SetActive(true);
+           // fillRoom();
+           // renderMap.SetActive(true);
         }
-        else if (I_direction == 1 || I_direction == 2)//Moving Right
+        else if (SpawnDirection == 0)// Up TO down
         {
-            Vector2 V2_newPos = new Vector2(transform.position.x + F_roomDIfferent, transform.position.y);
-            Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
-            if (Detection == null)
+
+            if (I_direction == 1 || I_direction == 2)//Moving Right
             {
-
-                transform.position = V2_newPos;
-
-                //Room choosing
-                int randroom = Random.Range(0, G_C_A_rooms.Length);
-                I_seed += randroom;
-                GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
-
-                path.Push(instance);
-
-                S_GO_roomData.Push(instance);
-                //direction
-                I_direction = Random.Range(1, 6);
-                if (I_direction == 3)
-                {
-                    I_direction = 1;
-                }
-                else if (I_direction == 4)
-                {
-                    I_direction = 5;
-                }
-                downcounter = 0;
-                I_roomcounter++;
-            }
-            else
-                I_direction = 5;
-        }
-        else if (I_direction == 3 || I_direction == 4)//Moving Left
-        {
-            Vector2 V2_newPos = new Vector2(transform.position.x - F_roomDIfferent, transform.position.y);
-            Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
-            if (Detection == null)
-            {
-
-                transform.position = V2_newPos;
-                //room choosing
-                int randroom = Random.Range(0, G_C_A_rooms.Length);
-                I_seed += randroom;
-                GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
-                path.Push(instance);
-                S_GO_roomData.Push(instance);
-
-                //direction movement
-                I_direction = Random.Range(1, 6);
-                if (I_direction == 1)
-                {
-                    I_direction = 3;
-                }
-                else if (I_direction == 2)
-                {
-                    I_direction = 5;
-                }
-                downcounter = 0;
-                I_roomcounter++;
-            }
-            else
-                I_direction = 5;
-
-        }
-        else if (I_direction == 5)//Moving Down
-        {
-            Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y - F_roomDIfferent);
-            Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
-            if (Detection == null)
-            {
-                ++downcounter;
-                Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                if (Detection != null)
+                Vector2 V2_newPos = new Vector2(transform.position.x + F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
                 {
 
-                    if (Detection.GetComponent<RoomType>().type != 1)
+                    transform.position = V2_newPos;
+
+                    //Room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+
+                    path.Push(instance);
+
+                    S_GO_roomData.Push(instance);
+                    //direction
+                    I_direction = Random.Range(1, 6);
+                    if (I_direction == 3)
                     {
-                        if (Detection.GetComponent<RoomType>().type != 3)
-                        {
-                            if (downcounter >= 2)
-                            {
-                                Detection.GetComponent<RoomType>().v_DestroyRoom();
-                                path.Pop();
-                                S_GO_roomData.Pop();
-                                GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
-                                S_GO_roomData.Push(instance);
-
-                                path.Push(instance);
-                                I_seed += 3;
-                            }
-                            else
-                            {
-
-                                Detection.GetComponent<RoomType>().v_DestroyRoom();
-                                int randbot = Random.Range(1, 4);
-                                if (randbot == 2)
-                                {
-                                    randbot = 1;
-                                }
-                                I_seed += randbot;
-                                path.Pop();
-                                S_GO_roomData.Pop();
-                                GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
-                                path.Push(instance);
-                                S_GO_roomData.Push(instance);
-
-                            }
-                        }
-
+                        I_direction = 1;
                     }
+                    else if (I_direction == 4)
+                    {
+                        I_direction = 5;
+                    }
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+            }
+            else if (I_direction == 3 || I_direction == 4)//Moving Left
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x - F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    transform.position = V2_newPos;
+                    //room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance);
+                    S_GO_roomData.Push(instance);
+
+                    //direction movement
+                    I_direction = Random.Range(1, 6);
+                    if (I_direction == 1)
+                    {
+                        I_direction = 3;
+                    }
+                    else if (I_direction == 2)
+                    {
+                        I_direction = 5;
+                    }
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+
+            }
+            else if (I_direction == 5)//Moving Down
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y - F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 1)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(1, 4);
+                                    if (randbot == 2)
+                                    {
+                                        randbot = 1;
+                                    }
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(2, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                    I_roomcounter++;
                 }
 
-                // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
-                transform.position = V2_newPos;
 
-
-                int randroom = Random.Range(2, G_C_A_rooms.Length);
-                I_seed += randroom;
-                GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
-                path.Push(instance2);
-                S_GO_roomData.Push(instance2);
-
-                I_direction = Random.Range(1, 6);
-                I_roomcounter++;
             }
 
+        }
+        else if (SpawnDirection == 1)//Down to Up
+        {
 
+            if (I_direction == 1 || I_direction == 2)//Moving Right
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x + F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    transform.position = V2_newPos;
+
+                    //Room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+
+                    path.Push(instance);
+
+                    S_GO_roomData.Push(instance);
+                    //direction
+                    I_direction = Random.Range(1, 6);
+                    if (I_direction == 3)
+                    {
+                        I_direction = 1;
+                    }
+                    else if (I_direction == 4)
+                    {
+                        I_direction = 5;
+                    }
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+            }
+            else if (I_direction == 3 || I_direction == 4)//Moving Left
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x - F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    transform.position = V2_newPos;
+                    //room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance);
+                    S_GO_roomData.Push(instance);
+
+                    //direction movement
+                    I_direction = Random.Range(1, 6);
+                    if (I_direction == 1)
+                    {
+                        I_direction = 3;
+                    }
+                    else if (I_direction == 2)
+                    {
+                        I_direction = 5;
+                    }
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+
+            }
+            else if (I_direction == 5)//Moving Up
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y + F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 2)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(2, 4);
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(1, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    if(randroom == 2)
+                    {
+                        randroom = 1;
+                    }
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                    I_roomcounter++;
+                }
+
+
+            }
+        }
+        else if (SpawnDirection == 2)//Left  to Right
+        {
+
+            if (I_direction == 1 || I_direction == 2)//Moving UP
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y + F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 2)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(2, 4);
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(1, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    if (randroom == 2)
+                    {
+                        randroom = 1;
+                    }
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                }
+                else
+                    I_direction = 5;
+            }
+            else if (I_direction == 3 || I_direction == 4)//Moving Down
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y - F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+                
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 1)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(1, 4);
+                                    if (randbot == 2)
+                                    {
+                                        randbot = 1;
+                                    }
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(2, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+
+            }
+            else if (I_direction == 5)//Moving Right
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x + F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    transform.position = V2_newPos;
+
+                    //Room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+
+                    path.Push(instance);
+
+                    S_GO_roomData.Push(instance);
+                    //direction
+                    I_direction = Random.Range(1, 6);
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+
+
+            }
+        }
+        else if (SpawnDirection == 3)//right  to left
+        {
+
+            if (I_direction == 1 || I_direction == 2)//Moving UP
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y + F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 2)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(2, 4);
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(1, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    if (randroom == 2)
+                    {
+                        randroom = 1;
+                    }
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                }
+                else
+                    I_direction = 5;
+            }
+            else if (I_direction == 3 || I_direction == 4)//Moving Down
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x, transform.position.y - F_roomDIfferent);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    ++downcounter;
+                    Detection = Physics2D.OverlapCircle(transform.position, 1, room);
+                    if (Detection != null)
+                    {
+
+                        if (Detection.GetComponent<RoomType>().type != 1)
+                        {
+                            if (Detection.GetComponent<RoomType>().type != 3)
+                            {
+                                if (downcounter >= 2)
+                                {
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    S_GO_roomData.Push(instance);
+
+                                    path.Push(instance);
+                                    I_seed += 3;
+                                }
+                                else
+                                {
+
+                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    int randbot = Random.Range(1, 4);
+                                    if (randbot == 2)
+                                    {
+                                        randbot = 1;
+                                    }
+                                    I_seed += randbot;
+                                    path.Pop();
+                                    S_GO_roomData.Pop();
+                                    GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    path.Push(instance);
+                                    S_GO_roomData.Push(instance);
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
+                    transform.position = V2_newPos;
+
+
+                    int randroom = Random.Range(2, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    path.Push(instance2);
+                    S_GO_roomData.Push(instance2);
+
+                    I_direction = Random.Range(1, 6);
+                    I_roomcounter++;
+                }
+                else
+                    I_direction = 5;
+
+            }
+            else if (I_direction == 5)//Moving Right
+            {
+                Vector2 V2_newPos = new Vector2(transform.position.x - F_roomDIfferent, transform.position.y);
+                Collider2D Detection = Physics2D.OverlapCircle(V2_newPos, 1, room);
+                if (Detection == null)
+                {
+
+                    transform.position = V2_newPos;
+
+                    //Room choosing
+                    int randroom = Random.Range(0, G_C_A_rooms.Length);
+                    I_seed += randroom;
+                    GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+
+                    path.Push(instance);
+
+                    S_GO_roomData.Push(instance);
+                    //direction
+                    I_direction = Random.Range(1, 6);
+                    downcounter = 0;
+                    I_roomcounter++;
+                }
+
+
+            }
         }
         if (I_roomcounter <= I_maxRoom)
             I_seed += I_direction;

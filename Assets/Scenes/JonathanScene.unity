@@ -698,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3faba91f5096da428e4785757d328a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnDirection: 3
   T_C_startPos:
   - {fileID: 103520498}
   G_C_A_rooms:
@@ -721,6 +722,7 @@ MonoBehaviour:
   I_roomcounter: 0
   I_maxRoom: 0
   downcounter: 0
+  seed: 13
   I_seed: 
   renderMap: {fileID: 1332999492}
 --- !u!4 &1841637235
