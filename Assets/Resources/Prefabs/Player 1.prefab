@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3947335095591546469}
   - component: {fileID: 3947335095591546468}
-  - component: {fileID: 1740767212742656193}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -82,19 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1740767212742656193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947335095591546470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25929317cdf7a24a8a98f125ade14ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 4635767846662855377, guid: ce7f2a3cc706e5648a5efd0916819eac, type: 3}
 --- !u!1 &3947335097050384756
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +221,9 @@ MonoBehaviour:
   playerName: 
   useWeapon: 0
   moveSpeed: 5
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!114 &2009015784921027554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,5 +258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25808de25405e5d48ab66e8c1b8d7477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beam: {fileID: 4635767846662855377, guid: ce7f2a3cc706e5648a5efd0916819eac, type: 3}
   localScripts:
   - {fileID: 3947335097050384747}
