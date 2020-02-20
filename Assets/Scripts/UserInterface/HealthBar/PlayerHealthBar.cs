@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    private const float DAMAGED_HEALTH_SHRINK_TIMER_MAX = 0.5f;
+    private const float DAMAGED_HEALTH_SHRINK_TIMER_MAX = 0.25f;
     private Image fillImage;
     private Image damagedFillImage;
     private float damagedHealthShrinkTimer;
@@ -33,7 +33,7 @@ public class PlayerHealthBar : MonoBehaviour
         {
             if (fillImage.fillAmount < damagedFillImage.fillAmount)
             {
-                float shrinkSpeed = 2.0f;
+                float shrinkSpeed = 4.0f;
                 damagedFillImage.fillAmount -= shrinkSpeed * Time.deltaTime;
             }
         }
