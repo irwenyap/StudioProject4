@@ -12,6 +12,9 @@ public class LevelGen : MonoBehaviour
     private Transform[] T_C_startPos;
     [SerializeField]
     public GameObject[] G_C_A_rooms;
+
+    public GameObject[] DeadendRooms;
+
     // index 0 == LR Room, index 1 == LRD Room, index 2 == LRU Room ,index 3 == LRUD Room
     [SerializeField]
     public Stack<GameObject> path;
@@ -99,7 +102,7 @@ public class LevelGen : MonoBehaviour
         if (I_roomcounter > I_maxRoom)
         {
             stopGeneration = true;
-           // fillRoom();
+            fillRoom();
            // renderMap.SetActive(true);
         }
         else if (SpawnDirection == 0)// Up TO down
@@ -691,7 +694,8 @@ public class LevelGen : MonoBehaviour
     }
     public void fillRoom()
     {
-        while (path.Count != 0)
+        path.Pop();
+        while (path.Count != 1)
         {
             GameObject temp = path.Peek();
             switch (temp.GetComponent<RoomType>().type)
@@ -707,7 +711,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -717,7 +721,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -734,7 +738,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -744,7 +748,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -754,7 +758,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[0], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -771,7 +775,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -781,7 +785,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -791,7 +795,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[1], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -806,8 +810,7 @@ public class LevelGen : MonoBehaviour
                         if (Detection == null)
                         {
 
-                            int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -817,7 +820,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -827,7 +830,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[1], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -837,7 +840,7 @@ public class LevelGen : MonoBehaviour
                         {
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
-                            GameObject instance2 = Instantiate(G_C_A_rooms[randroom], V2_newPos, Quaternion.identity);
+                            GameObject instance2 = Instantiate(DeadendRooms[0], V2_newPos, Quaternion.identity);
                             S_GO_roomData.Push(instance2);
 
                         }

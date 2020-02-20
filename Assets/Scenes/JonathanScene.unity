@@ -698,14 +698,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3faba91f5096da428e4785757d328a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnDirection: 3
+  SpawnDirection: 2
   T_C_startPos:
   - {fileID: 103520498}
   G_C_A_rooms:
   - {fileID: 7917291405649493657, guid: f13c1fc3ba430174b921a77e29055acc, type: 3}
-  - {fileID: 7917291405649493657, guid: 6653fb5835c87794f9a4e0b21ceff85c, type: 3}
+  - {fileID: 7917291405649493657, guid: c799210b3b85dec4da8d363ccc1f160f, type: 3}
   - {fileID: 159269926688465649, guid: 7a555f30975440540988be7f32c77081, type: 3}
   - {fileID: 7917291405649493657, guid: db0fa3f13d64dbb499647ae9037e3b5f, type: 3}
+  DeadendRooms:
+  - {fileID: 7917291405649493657, guid: 7c8080cb14e372e46a7849e1996dc768, type: 3}
+  - {fileID: 7917291405649493657, guid: 6653fb5835c87794f9a4e0b21ceff85c, type: 3}
+  - {fileID: 7917291405649493657, guid: cf067c0783f4c644ebd9b47b42320467, type: 3}
+  - {fileID: 7917291405649493657, guid: f1d2dea9341ce9c4fba6caa7aec8c44f, type: 3}
   L_V2_roomPosition: []
   L_V2_roomtype: 
   F_roomDIfferent: 20
