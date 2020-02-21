@@ -9,12 +9,14 @@ public class PlayerHealthBar : MonoBehaviour
     private Image fillImage;
     private Image damagedFillImage;
     private float damagedHealthShrinkTimer;
+    private Text healthText;
     private HealthSystem healthSystem;
 
     private void Awake()
     {
         fillImage = transform.Find("Fill").GetComponent<Image>();
         damagedFillImage = transform.Find("DamageFill").GetComponent<Image>();
+        healthText = transform.Find("HealthText").GetComponent<Text>();
     }
 
     private void Start()
@@ -48,16 +50,23 @@ public class PlayerHealthBar : MonoBehaviour
     {
         damagedHealthShrinkTimer = DAMAGED_HEALTH_SHRINK_TIMER_MAX;
         SetHealth(healthSystem.GetHealthNormalized());
+        SetHealthNumber(healthSystem.GetHealth(), healthSystem.GetMaxHealth());
     }
 
     private void HealthSystem_OnHealed(object sender, System.EventArgs e)
     {
         SetHealth(healthSystem.GetHealthNormalized());
         damagedFillImage.fillAmount = fillImage.fillAmount;
+        SetHealthNumber(healthSystem.GetHealth(), healthSystem.GetMaxHealth());
     }
 
     private void SetHealth(float healthNormalized)
     {
         fillImage.fillAmount = healthNormalized;
+    }
+
+    private void SetHealthNumber(float health, float maxHealth)
+    {
+        healthText.text = health.ToString() + "/" + maxHealth.ToString();
     }
 }
