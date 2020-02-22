@@ -8,9 +8,13 @@ public class InstantiatePlayer : MonoBehaviour
     [SerializeField]
     private GameObject _prefab;
 
+    [SerializeField]
+    private Camera camera;
 
     private void Awake() {
         //MasterManager.NetworkInstantiate(_prefab, transform.position, Quaternion.identity);
-        PhotonNetwork.Instantiate("Prefabs/Player 1", transform.position, Quaternion.identity);
+        GameObject player = PhotonNetwork.Instantiate("Prefabs/Player", transform.position, Quaternion.identity);
+        //GameObject camera = PhotonNetwork.Instantiate("Prefabs/PlayerCamera", transform.position, Quaternion.identity);
+        camera.GetComponent<CameraController>().SetTarget(player.transform);
     }
 }

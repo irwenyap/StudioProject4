@@ -14,6 +14,8 @@ public class StartGame : MonoBehaviour
     }
 
     private void EnterGame() {
-        PhotonNetwork.LoadLevel(1);
+        if (PhotonNetwork.IsMasterClient) {
+            PhotonNetwork.LoadLevel(1);
+        }
     }
 }

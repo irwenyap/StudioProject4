@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     // Client Variables
     public uint id;
     public string playerName;
-    public bool useWeapon = false;
 	
     public float moveSpeed = 5f;    
 	public int maxHealth = 100;
@@ -16,15 +15,21 @@ public class PlayerController : MonoBehaviour
 	public HealthBar healthBar;
 
     // Private
-    Rigidbody2D myRigidbody;
-    Vector2 moveAxis;
-    Vector3 mousePos;
+    private Rigidbody2D myRigidbody;
+    private Vector2 moveAxis;
+    private Vector3 mousePos;
     bool isPlayer = false;
+    private Animator myAnimator;
+
+    public GameObject weaponOnHand;
+    public Transform weaponLocation;
 
     int weaponType;
 	
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+        weaponLocation = transform.Find("Weapon");
 		currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -36,26 +41,33 @@ public class PlayerController : MonoBehaviour
     private void Update() {
         //if (isPlayer) {
             // Movement Input
-            moveAxis.x = Input.GetAxisRaw("Horizontal");
-            moveAxis.y = Input.GetAxisRaw("Vertical");
+        moveAxis.x = Input.GetAxisRaw("Horizontal");
+        moveAxis.y = Input.GetAxisRaw("Vertical");
 
-            // Look at Cursor
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Look at Cursor
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(weaponLocation.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        weaponLocation.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //weaponLocation.position = transform.position + (1f * dir.normalized);
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            if (Input.GetMouseButtonDown(0)) {
-                useWeapon = true;
-            } else if (Input.GetMouseButtonUp(0)) {
-                useWeapon = false;
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            if (weaponOnHand != null) {
+                weaponOnHand.GetComponent<WeaponBase>().isAttached = false;
+                weaponOnHand.transform.parent = null;
+                weaponOnHand = null;
             }
-			
-			// For healthbar testing
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				TakeDamage(5);
-			}
+        }
 
-       //}
+        // For healthbar testing
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            TakeDamage(5);
+        }
+
+        if (moveAxis != Vector2.zero)
+            myAnimator.SetFloat("moveX", moveAxis.x);
+    
     }
 
     private void FixedUpdate() {
