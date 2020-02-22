@@ -11,6 +11,10 @@ public class Skills : MonoBehaviour
 
     private bool isCooldown;
 
+    private void Start()
+    {
+        isCooldown = false;
+    }
     private void Update()
     {
         if (isCooldown)
@@ -33,7 +37,10 @@ public class Skills : MonoBehaviour
 
     public void IsPressed()
     {
-        isCooldown = true;
-        imageCooldown.fillAmount = 1;
+        if (!isCooldown)
+        {
+            isCooldown = true;
+            imageCooldown.fillAmount = 1;
+        }
     }
 }

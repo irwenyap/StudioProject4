@@ -24,6 +24,7 @@ public class OnlineLobbyMenu : MonoBehaviour
     public GameObject gameLobbyScene;
 
     public GameObject createWindow;
+    public InputField roomName;
 
     public CanvasGroup canvGroup;
     private float duration = 1.0f;
@@ -50,6 +51,11 @@ public class OnlineLobbyMenu : MonoBehaviour
                     if (canvGroup.alpha == 0.0f)
                     {
                         StartCoroutine(DoFade(canvGroup, canvGroup.alpha, 1.0f));
+                        createWindow.SetActive(false);
+                        onlineLobbiesTitle.SetActive(true);
+                        scrollView.SetActive(true);
+                        createButton.SetActive(true);
+                        backButton.SetActive(true);
                     }
                 }
                 break;
@@ -87,6 +93,7 @@ public class OnlineLobbyMenu : MonoBehaviour
         scrollView.SetActive(false);
         createButton.SetActive(false);
         backButton.SetActive(false);
+        roomName.text = "";
         buttonHit = BUTTON_HIT.CREATE;
     }
 
