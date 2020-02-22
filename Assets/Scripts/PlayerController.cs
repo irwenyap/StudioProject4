@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D myRigidbody;
     Vector2 moveAxis;
     Vector3 mousePos;
-    float health = 100f;
+    public float health;
 
     int weaponType;
 
@@ -32,10 +32,18 @@ public class PlayerController : MonoBehaviour
         var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        Debug.LogError(health);
+        if(health < 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
-
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log("damageTaken!");
+    }
     private void FixedUpdate() {
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
     }
