@@ -6,10 +6,6 @@ public class PlayerControllerMiah : MonoBehaviour
 {
     // Public
     public float moveSpeed = 5f;
-    public int maxHealth = 100;
-    public int currentHealth;
-
-    public HealthBar healthBar;
 
     // Private
     Rigidbody2D myRigidbody;
@@ -17,12 +13,6 @@ public class PlayerControllerMiah : MonoBehaviour
     Vector3 mousePos;
 
     int weaponType;
-
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
 
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -41,21 +31,9 @@ public class PlayerControllerMiah : MonoBehaviour
         var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        // For healthbar testing
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
     }
 
     private void FixedUpdate() {
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
-    }
-
-    private void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
     }
 }

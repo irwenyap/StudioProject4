@@ -9,10 +9,6 @@ public class PlayerController : MonoBehaviour
     public string playerName;
 	
     public float moveSpeed = 5f;    
-	public int maxHealth = 100;
-    public int currentHealth;
-
-	public HealthBar healthBar;
 
     // Private
     private Rigidbody2D myRigidbody;
@@ -71,10 +67,5 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
-    }
-	
-	private void TakeDamage(int damage) {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
     }
 }
