@@ -28,7 +28,7 @@ public class MeleeLogic : MonoBehaviour
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(this.transform.position , control.GetComponent<AiMeleeControl>().MeleeAttackRange);
             timeBtwAttack = 0;
-            player.GetComponent<PlayerController>().TakeDamage(damage);
+            //player.GetComponent<PlayerController>().TakeDamage(damage);
            
 
         }

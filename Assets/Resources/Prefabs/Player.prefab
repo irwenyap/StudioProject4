@@ -249,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   playerName: 
-  useWeapon: 0
   moveSpeed: 5
   maxHealth: 100
   currentHealth: 0
