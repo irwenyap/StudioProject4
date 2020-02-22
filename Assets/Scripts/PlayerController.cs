@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     bool isPlayer = false;
     private Animator myAnimator;
 
+
     public GameObject weaponOnHand;
     public Transform weaponLocation;
 
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour
         //weaponLocation.position = transform.position + (1f * dir.normalized);
         //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-
         if (Input.GetKeyDown(KeyCode.Q)) {
             if (weaponOnHand != null) {
                 weaponOnHand.GetComponent<WeaponBase>().isAttached = false;
@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
         if (moveAxis != Vector2.zero)
             myAnimator.SetFloat("moveX", moveAxis.x);
-    
     }
 
     private void FixedUpdate() {
