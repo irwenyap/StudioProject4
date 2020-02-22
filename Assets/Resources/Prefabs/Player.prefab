@@ -250,9 +250,6 @@ MonoBehaviour:
   id: 0
   playerName: 
   moveSpeed: 5
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
   weaponOnHand: {fileID: 0}
   weaponLocation: {fileID: 0}
 --- !u!114 &2009015784921027554
