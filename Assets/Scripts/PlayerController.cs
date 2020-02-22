@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         weaponLocation = transform.Find("Weapon");
-		currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+		//currentHealth = maxHealth;
+  //      healthBar.SetMaxHealth(maxHealth);
     }
 
     public void Initialise(bool _isPlayer) {
@@ -57,9 +57,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // For healthbar testing
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            TakeDamage(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space)) {
+        //    TakeDamage(5);
+        //}
 
         if (moveAxis != Vector2.zero)
             myAnimator.SetFloat("moveX", moveAxis.x);
