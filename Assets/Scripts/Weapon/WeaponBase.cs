@@ -9,6 +9,9 @@ public class WeaponBase : MonoBehaviourPun {
     protected BoxCollider2D myCollider;
     protected Rigidbody2D myRigidbody;
 
+    public Rigidbody2D GetWeaponRigidbody() { return myRigidbody; }
+    public Collider2D GetWeaponCollider() { return myCollider; }
+
     public void WeaponOnHand(bool status) {
         if (status) {
             isAttached = true;
@@ -17,21 +20,22 @@ public class WeaponBase : MonoBehaviourPun {
         } else {
             isAttached = false;
             myRigidbody.isKinematic = false;
-            StartCoroutine("Throw");
         }
     }
 
-    IEnumerator Throw() {
-        if (myRigidbody.velocity == Vector2.zero) {
-            myCollider.enabled = true;
+    public void Throw(Vector2 force) {
+        StartCoroutine("ThrowCoroutine");
+        transform.parent = null;
+        WeaponOnHand(false);
+        myRigidbody.AddForce(force);
+    }
+
+    IEnumerator ThrowCoroutine() {
+        while (!myCollider.enabled) {
+            if (myRigidbody.velocity == Vector2.zero && !isAttached) {
+                myCollider.enabled = true;
+            }
             yield return null;
         }
     }
-    //public void DropWeapon() {
-
-    //}
-
-    //public void PickUpWeapon() {
-
-    //}
 }

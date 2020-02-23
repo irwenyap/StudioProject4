@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator myAnimator;
 
 
-    public GameObject weaponOnHand;
+    public WeaponBase weaponOnHand;
     public Transform weaponLocation;
 
     int weaponType;
@@ -50,9 +50,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q)) {
             if (weaponOnHand != null) {
-                weaponOnHand.GetComponent<WeaponBase>().WeaponOnHand(false);
-                weaponOnHand.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 250);
-                weaponOnHand.transform.parent = null;
+                weaponOnHand.Throw(dir.normalized * 250);
+                //weaponOnHand.GetWeaponRigidbody().AddForce(dir.normalized * 250);
+                //weaponOnHand.WeaponOnHand(false);
+                //weaponOnHand.transform.parent = null;
                 weaponOnHand = null;
             }
         }

@@ -6,6 +6,7 @@ public class WeaponStaff : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
     public SpriteRenderer weaponSprite;
 
+    private Transform projDir;
     private bool isShooting = false;
     private float fireRate = 0f;
 
@@ -37,7 +38,7 @@ public class WeaponStaff : WeaponBase, IPunObservable {
 
 
         if (isShooting && fireRate >= 1f) {
-            Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
+            Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
             rb.velocity = rb.gameObject.transform.up * 10;
             fireRate = 0f;
         }
@@ -56,9 +57,10 @@ public class WeaponStaff : WeaponBase, IPunObservable {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = gameObject;
-            WeaponOnHand(true);
+            collision.GetComponent<PlayerController>().weaponOnHand = this;
             transform.SetParent(collision.transform);
+            projDir = transform.parent.Find("Weapon");
+            WeaponOnHand(true);
             // Setting the item's transform on hand
             transform.localPosition = new Vector3(-0.5f, 0.1f, -1);
             transform.localScale = new Vector3(3, 3, 1);

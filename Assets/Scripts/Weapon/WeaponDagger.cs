@@ -53,7 +53,7 @@ public class WeaponDagger : WeaponBase, IPunObservable {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = gameObject;
+            collision.GetComponent<PlayerController>().weaponOnHand = this;
             location = collision.transform.Find("Weapon");
             Destroy(GetComponent<Rigidbody2D>());
             GetComponent<BoxCollider2D>().enabled = false;

@@ -54,7 +54,7 @@ public class WeaponPistol : WeaponBase, IPunObservable {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = gameObject;
+            collision.GetComponent<PlayerController>().weaponOnHand = this;
             Destroy(GetComponent<Rigidbody2D>());
             GetComponent<BoxCollider2D>().enabled = false;
             transform.SetParent(collision.transform.Find("Weapon"));
