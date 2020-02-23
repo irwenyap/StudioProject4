@@ -13,6 +13,7 @@ public class SpawnItem : MonoBehaviour
         if (Objects[rand] != null)
         {
             GameObject instance = (GameObject)Instantiate(Objects[rand], transform.position, Quaternion.identity);
+            instance.transform.parent = transform.parent;
         }
     }
 }

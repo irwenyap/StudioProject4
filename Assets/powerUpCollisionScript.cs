@@ -17,7 +17,8 @@ public class powerUpCollisionScript : MonoBehaviour
     {
         if(cc.IsTouchingLayers(Player))
         {
-            Instantiate(spawnref, transform.position, Quaternion.identity);
+            GameObject go = Instantiate(spawnref, transform.position, Quaternion.identity);
+            go.transform.parent = transform.parent;
             Destroy(gameObject);
         }
     }
