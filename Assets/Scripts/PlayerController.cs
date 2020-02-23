@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q)) {
             if (weaponOnHand != null) {
-                weaponOnHand.GetComponent<WeaponBase>().isAttached = false;
+                weaponOnHand.GetComponent<WeaponBase>().WeaponOnHand(false);
+                weaponOnHand.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 250);
                 weaponOnHand.transform.parent = null;
                 weaponOnHand = null;
             }

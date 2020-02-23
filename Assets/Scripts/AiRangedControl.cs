@@ -23,8 +23,6 @@ public class AiRangedControl: MonoBehaviour
 
     private void Start()
     {
-        //myRigidbody = GetComponent<Rigidbody2D>();
-
     }
 
     private void Update()
@@ -82,25 +80,12 @@ public class AiRangedControl: MonoBehaviour
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-
         }
         if (DistanceAiNPlayer < RangeDetectRange && DistanceAiNPlayer > RangeAttackRange)
         {
             this.transform.Translate(moveSpeed, 0, 0);
         }
-        else if (DistanceAiNPlayer < RangeAttackRange)
-        {
-
-        }
-
-        // Cursor Follow
-        //mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.z, Camera.main.transform.position.z - transform.position.z));
-        //transform.LookAt(mousePos);
-        //var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-
     }
-   
 
     private void FixedUpdate()
     {

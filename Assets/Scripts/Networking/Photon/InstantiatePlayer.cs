@@ -16,5 +16,7 @@ public class InstantiatePlayer : MonoBehaviour
         GameObject player = PhotonNetwork.Instantiate("Prefabs/Player", transform.position, Quaternion.identity);
         //GameObject camera = PhotonNetwork.Instantiate("Prefabs/PlayerCamera", transform.position, Quaternion.identity);
         camera.GetComponent<CameraController>().SetTarget(player.transform);
+
+        PhotonNetwork.InstantiateSceneObject("Prefabs/Pistol", new Vector3(0, 10, 0), Quaternion.identity);
     }
 }

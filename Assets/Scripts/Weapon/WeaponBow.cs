@@ -5,7 +5,6 @@ public class WeaponBow : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
     public SpriteRenderer weaponSprite;
 
-    private bool isAttached = false;
     private bool isShooting = false;
     private float fireRate = 0f;
 
@@ -49,9 +48,9 @@ public class WeaponBow : WeaponBase, IPunObservable {
             Destroy(GetComponent<Rigidbody2D>());
             GetComponent<BoxCollider2D>().enabled = false;
             transform.SetParent(collision.transform.Find("Weapon"));
-            transform.localPosition = new Vector3(0, 0.7f, 0);
-            transform.localScale = new Vector3(1, 1, 1);
-            transform.localRotation = Quaternion.Euler(0, 0, -45);
+            transform.localPosition = new Vector3(0, 5, -1);
+            transform.localScale = new Vector3(4.5f, 4.5f, 1);
+            transform.localRotation = Quaternion.Euler(0, 0, 90);
             isAttached = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }

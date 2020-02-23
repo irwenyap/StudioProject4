@@ -58,11 +58,11 @@ public class WeaponPistol : WeaponBase, IPunObservable {
             Destroy(GetComponent<Rigidbody2D>());
             GetComponent<BoxCollider2D>().enabled = false;
             transform.SetParent(collision.transform.Find("Weapon"));
-            transform.localPosition = new Vector3(0, 1, 0);
-            transform.localScale = new Vector3(2, 2, 2);
+            transform.localPosition = new Vector3(0, 4, -1);
+            transform.localScale = new Vector3(15, 15, 1);
             transform.localRotation = Quaternion.Euler(0, 0, 90);
-            photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
             isAttached = true;
+            photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
 }

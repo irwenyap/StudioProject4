@@ -8,17 +8,15 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     Vector3 latestPos;
     Quaternion latestRot;
 
-    public Rigidbody2D beam;
-
-    public MonoBehaviour[] localScripts;
-
     private Animator myAnimator;
     private PlayerController myPC;
+    [SerializeField]
     private Transform weaponLocationData;
 
+    public MonoBehaviour[] localScripts;
+    
     private void Start() {
         myAnimator = GetComponent<Animator>();
-        weaponLocationData = transform.Find("Weapon");
         if (photonView.IsMine) {
             myPC = GetComponent<PlayerController>();
         } else {
