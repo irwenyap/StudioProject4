@@ -9,8 +9,6 @@ public class LevelGen : MonoBehaviour
    
     int I_direction;
     [SerializeField]
-    private Transform[] T_C_startPos;
-    [SerializeField]
     public GameObject[] G_C_A_rooms;
 
     public GameObject[] DeadendRooms;
@@ -21,24 +19,12 @@ public class LevelGen : MonoBehaviour
 
     public Stack<GameObject> S_GO_roomData;
 
-    public List<Vector2> L_V2_roomPosition;
-
-    public List<int> L_V2_roomtype;
-
     [SerializeField]
     public float F_roomDIfferent;
     [SerializeField]
     private float F_timeBtwnRoom = 0.25f;
     [SerializeField]
     private float F_startimeBtwnRoom = 0.25f;
-    [SerializeField]
-    private float F_minX;
-    [SerializeField]
-    private float F_minY;
-    [SerializeField]
-    private float F_maxX;
-    [SerializeField]
-    private float F_maxY;
 
     public bool stopGeneration = false;
 
@@ -57,24 +43,18 @@ public class LevelGen : MonoBehaviour
     {
         path = new Stack<GameObject>();
         S_GO_roomData = new Stack<GameObject>();
-        L_V2_roomPosition = new List<Vector2>();
-        L_V2_roomtype = new List<int>();
         if(seed != 0)
         {
-        Random.seed = seed;
-           
+            Random.seed = seed;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
-
         I_seed = "";
         I_roomcounter = 0;
         I_maxRoom = Random.Range(10, 40);
-        int randStartPos = Random.Range(0, T_C_startPos.Length);
        
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
         I_direction = Random.Range(1, 6);
@@ -858,8 +838,6 @@ public class LevelGen : MonoBehaviour
         while (S_GO_roomData.Count != 0)
         {
             GameObject temp = S_GO_roomData.Peek();
-            L_V2_roomPosition.Add(temp.transform.position);
-            L_V2_roomtype.Add(temp.GetComponent<RoomType>().type);
             S_GO_roomData.Pop();
         }
     }

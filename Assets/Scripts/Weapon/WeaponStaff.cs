@@ -23,7 +23,7 @@ public class WeaponStaff : WeaponBase, IPunObservable {
 
         if (isAttached) {
             // Direction
-
+            //if ()
 
             // Shooting
             if (Input.GetMouseButton(0))

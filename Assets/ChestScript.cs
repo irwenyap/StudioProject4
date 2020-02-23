@@ -17,18 +17,12 @@ public class ChestScript : MonoBehaviour
     {
         CCdetection = gameObject.GetComponent<CircleCollider2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if(CCdetection.IsTouchingLayers(player) && Input.GetKeyDown(key))
         {
-
             thingInside.SetActive(true);
             Destroy(gameObject);
         }
