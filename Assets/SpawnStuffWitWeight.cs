@@ -24,7 +24,8 @@ public class SpawnStuffWitWeight : MonoBehaviour
        {
          if(random < weights[i])
          {
-                Instantiate(Objects[i], transform.position, Quaternion.identity);
+                GameObject go =Instantiate(Objects[i], transform.position, Quaternion.identity);
+                go.transform.parent = transform;
                 break;
          }
             random -= weights[i]; 

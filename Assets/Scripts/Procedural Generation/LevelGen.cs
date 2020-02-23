@@ -47,6 +47,7 @@ public class LevelGen : MonoBehaviour
         {
             Random.seed = seed;
         }
+        SpawnDirection = Random.RandomRange(0, 4);
     }
 
     // Start is called before the first frame update
@@ -57,6 +58,7 @@ public class LevelGen : MonoBehaviour
         I_maxRoom = Random.Range(10, 40);
        
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
+        instance.transform.parent = transform.parent;
         I_direction = Random.Range(1, 6);
         path.Push(instance);
         S_GO_roomData.Push(instance);
@@ -75,6 +77,10 @@ public class LevelGen : MonoBehaviour
             V_Move();
             F_timeBtwnRoom = F_startimeBtwnRoom;
         }
+        else if(F_startimeBtwnRoom <= - 10)
+        {
+
+        }
         else
         {
             F_timeBtwnRoom -= Time.deltaTime;
@@ -87,7 +93,6 @@ public class LevelGen : MonoBehaviour
         {
             stopGeneration = true;
             fillRoom();
-           // renderMap.SetActive(true);
         }
         else if (SpawnDirection == 0)// Up TO down
         {
@@ -105,6 +110,7 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
 
                     path.Push(instance);
 
@@ -137,6 +143,8 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
+
                     path.Push(instance);
                     S_GO_roomData.Push(instance);
 
@@ -178,6 +186,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -196,6 +206,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -212,6 +224,8 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(2, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -239,6 +253,7 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
 
                     path.Push(instance);
 
@@ -271,6 +286,8 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
+
                     path.Push(instance);
                     S_GO_roomData.Push(instance);
 
@@ -312,6 +329,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -326,6 +345,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -346,6 +367,8 @@ public class LevelGen : MonoBehaviour
                         randroom = 1;
                     }
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -380,6 +403,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -394,6 +419,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -414,6 +441,8 @@ public class LevelGen : MonoBehaviour
                         randroom = 1;
                     }
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -444,6 +473,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -462,6 +493,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -478,6 +511,8 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(2, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -501,6 +536,7 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
 
                     path.Push(instance);
 
@@ -538,6 +574,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -552,6 +590,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -572,6 +612,8 @@ public class LevelGen : MonoBehaviour
                         randroom = 1;
                     }
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -602,6 +644,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     S_GO_roomData.Push(instance);
 
                                     path.Push(instance);
@@ -620,6 +664,8 @@ public class LevelGen : MonoBehaviour
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[randbot], transform.position, Quaternion.identity);
+                                    instance.transform.parent = transform.parent;
+
                                     path.Push(instance);
                                     S_GO_roomData.Push(instance);
 
@@ -636,6 +682,8 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(2, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance2 = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance2.transform.parent = transform.parent;
+
                     path.Push(instance2);
                     S_GO_roomData.Push(instance2);
 
@@ -659,6 +707,7 @@ public class LevelGen : MonoBehaviour
                     int randroom = Random.Range(0, G_C_A_rooms.Length);
                     I_seed += randroom;
                     GameObject instance = Instantiate(G_C_A_rooms[randroom], transform.position, Quaternion.identity);
+                    instance.transform.parent = transform.parent;
 
                     path.Push(instance);
 
@@ -696,6 +745,8 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -706,9 +757,13 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
+                    Destroy(curr);
                     }
                     break;
                 case 1:
@@ -723,6 +778,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -733,6 +791,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -743,9 +804,13 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[0], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
+                    Destroy(curr);
                     }
 
                     break;
@@ -760,6 +825,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -770,6 +838,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -780,9 +851,13 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[1], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
+                    Destroy(curr);
                     }
                     break;
                 case 3:
@@ -795,6 +870,9 @@ public class LevelGen : MonoBehaviour
                         {
 
                             GameObject instance2 = Instantiate(DeadendRooms[3], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -805,6 +883,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[2], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -815,6 +896,9 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[1], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
+
                             S_GO_roomData.Push(instance2);
 
                         }
@@ -825,9 +909,12 @@ public class LevelGen : MonoBehaviour
 
                             int randroom = Random.Range(0, G_C_A_rooms.Length);
                             GameObject instance2 = Instantiate(DeadendRooms[0], V2_newPos, Quaternion.identity);
+                            instance2.transform.parent = transform.parent;
+
                             S_GO_roomData.Push(instance2);
 
                         }
+                    Destroy(curr);
                     }
                     break;
             }
@@ -835,11 +922,6 @@ public class LevelGen : MonoBehaviour
             
         }
 
-        while (S_GO_roomData.Count != 0)
-        {
-            GameObject temp = S_GO_roomData.Peek();
-            S_GO_roomData.Pop();
-        }
     }
 
 }
