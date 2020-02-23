@@ -52,26 +52,30 @@ public class LevelGen : MonoBehaviour
     public string I_seed;
     [SerializeField]
     GameObject renderMap;
+    [System.Obsolete]
     private void Awake()
     {
         path = new Stack<GameObject>();
         S_GO_roomData = new Stack<GameObject>();
         L_V2_roomPosition = new List<Vector2>();
         L_V2_roomtype = new List<int>();
+        if(seed != 0)
+        {
+        Random.seed = seed;
+           
+        }
     }
 
     // Start is called before the first frame update
-    [System.Obsolete]
     void Start()
     {
-        Random.seed = seed;
 
 
         I_seed = "";
         I_roomcounter = 0;
         I_maxRoom = Random.Range(10, 40);
         int randStartPos = Random.Range(0, T_C_startPos.Length);
-        transform.position = T_C_startPos[randStartPos].position;
+       
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
         I_direction = Random.Range(1, 6);
         path.Push(instance);
