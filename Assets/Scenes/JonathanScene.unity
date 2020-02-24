@@ -197,7 +197,7 @@ Transform:
   m_Children:
   - {fileID: 995028467}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790319021
 GameObject:
@@ -290,7 +290,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &790319024
@@ -305,7 +305,7 @@ Transform:
   m_LocalScale: {x: 0.947002, y: 7.5941234, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -388,7 +388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995028463
 GameObject:
@@ -422,7 +422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f553220a45e2e4ab9dc886f91ab5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  playerName: 
   moveSpeed: 5
+  weaponOnHand: {fileID: 0}
+  weaponLocation: {fileID: 0}
 --- !u!58 &995028465
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -808,7 +812,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094081033
 GameObject:
@@ -901,7 +905,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2094081036
@@ -916,7 +920,7 @@ Transform:
   m_LocalScale: {x: 0.947002, y: 7.5941234, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3859027741995396484
 PrefabInstance:
