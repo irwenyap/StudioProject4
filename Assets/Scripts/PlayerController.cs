@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     float critChance;
     float critDamage;
     int armour;
-    float moveSpeed;
+    float moveSpeed = 5f;
 
 	
     private void Start() {
