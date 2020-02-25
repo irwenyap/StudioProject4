@@ -14,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - PlayerBullet
   - 
   - 
   - 
@@ -27,7 +27,7 @@ TagManager:
   - 
   - 
   - Chest
-  - Player
+  - 
   - Room
   - PowerUp
   - 

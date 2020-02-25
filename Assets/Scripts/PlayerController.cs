@@ -6,9 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Client Variables
     public uint id;
-    public string playerName;
-	
-    public float moveSpeed = 5f;    
+    public string playerName; 
 
     // Private
     private Rigidbody2D myRigidbody;
@@ -17,18 +15,28 @@ public class PlayerController : MonoBehaviour
     bool isPlayer = false;
     private Animator myAnimator;
 
-
-    public WeaponBase weaponOnHand;
+    public bool weaponIsOnHand = false;
     public Transform weaponLocation;
 
+    public Vector2 dir;
+
     int weaponType;
+
+    // Stats
+    int maxHealth;
+    int currHealth;
+    float critChance;
+    float critDamage;
+    int armour;
+    float moveSpeed;
+
 	
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         weaponLocation = transform.Find("Weapon");
 		//currentHealth = maxHealth;
-  //      healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
     }
 
     public void Initialise(bool _isPlayer) {
@@ -36,31 +44,35 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
-        //if (isPlayer) {
-            // Movement Input
+        // Movement Input
         moveAxis.x = Input.GetAxisRaw("Horizontal");
         moveAxis.y = Input.GetAxisRaw("Vertical");
 
         // Look at Cursor
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(weaponLocation.position);
+        dir = Input.mousePosition - Camera.main.WorldToScreenPoint(weaponLocation.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         weaponLocation.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         //weaponLocation.position = transform.position + (1f * dir.normalized);
         //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (Input.GetKeyDown(KeyCode.Q)) {
-            if (weaponOnHand != null) {
-                weaponOnHand.Throw(dir.normalized * 250);
-                //weaponOnHand.GetWeaponRigidbody().AddForce(dir.normalized * 250);
-                //weaponOnHand.WeaponOnHand(false);
-                //weaponOnHand.transform.parent = null;
-                weaponOnHand = null;
+            if (weaponIsOnHand) {
+                weaponIsOnHand = false;
             }
         }
 
-        // For healthbar testing
-        //if (Input.GetKeyDown(KeyCode.Space)) {
-        //    TakeDamage(5);
+
+        //if (Input.GetKeyDown(KeyCode.Q)) {
+            //if (weaponOnHand != null) {
+        //        //weaponOnHand.Throw(weaponLocation.rotation);
+        //        //weaponOnHand.Throw(dir.normalized * 250);
+        //        //weaponOnHand.GetWeaponRigidbody().AddForce(dir.normalized * 250);
+        //        //weaponOnHand.WeaponOnHand(false);
+        //        //weaponOnHand.transform.parent = null;
+        //        weaponOnHand = null;
+                
+            //}
+
         //}
 
         if (moveAxis != Vector2.zero)

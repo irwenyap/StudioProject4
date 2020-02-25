@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public Vector3 targetOffset;
     public float followSpeed = 2f;
 
+    [SerializeField]
     private Transform myTarget;
     private Transform myTransform;
 

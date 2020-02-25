@@ -33,22 +33,6 @@ public class PlayerListMenu : MonoBehaviourPunCallbacks
             PlayerListing temp = new PlayerListing();
             temp.SetPlayerInfo(playerInfo.Value);
             players.Add(temp);
-
-
-            //if (player01.text == "") {
-            //    player01.text = playerInfo.Value.NickName;
-            //}
-            //else if (player02.text == "") {
-            //    Debug.Log("Player 2 has joined");
-            //    player02.text = playerInfo.Value.NickName;
-            //}
-            //else if (player03.text == "") {
-            //    Debug.Log("Player 3 has joined");
-            //    player03.text = playerInfo.Value.NickName;
-            //}
-            //else if (player04.text == "") {
-            //    player04.text = playerInfo.Value.NickName;
-            //}
         }
         SortPlayers();
         DisplayPlayersInLobby();
@@ -70,12 +54,6 @@ public class PlayerListMenu : MonoBehaviourPunCallbacks
                 }
             }
         }
-        //for (int i = 0; i < 4; ++i) {
-        //    if (playerText[i].text == "") {
-        //        playerText[i].text = players[0]._player.NickName;
-        //        break;
-        //    }
-        //}
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer) {
@@ -88,17 +66,6 @@ public class PlayerListMenu : MonoBehaviourPunCallbacks
         PlayerListing temp = new PlayerListing();
         temp._player = newPlayer;
         reOrgPlayers.Add(temp);
-        //if (player01.text == "") {
-        //    player01.text = newPlayer.NickName;
-        //} else if (player02.text == "") {
-        //    Debug.Log("Player 2 has joined");
-        //    player02.text = newPlayer.NickName;
-        //} else if (player03.text == "") {
-        //    Debug.Log("Player 3 has joined");
-        //    player03.text = newPlayer.NickName;
-        //} else if (player04.text == "") {
-        //    player04.text = newPlayer.NickName;
-        //}
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer) {

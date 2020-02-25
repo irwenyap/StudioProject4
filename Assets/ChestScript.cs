@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class ChestScript : MonoBehaviour
 {
-    [SerializeField]
-    CircleCollider2D CCdetection;
-
     public KeyCode key;
-
-    public GameObject thingInside;
-
+    public GameObject item;
     public LayerMask player;
 
-    private void Awake()
-    {
+    private CircleCollider2D CCdetection;
+
+    private void Awake() {
         CCdetection = gameObject.GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(CCdetection.IsTouchingLayers(player) && Input.GetKeyDown(key))
-        {
-            thingInside.SetActive(true);
+    void Update() {
+        if(CCdetection.IsTouchingLayers(player) && Input.GetKeyDown(key)) {
+            item.SetActive(true);
             Destroy(gameObject);
         }
     }

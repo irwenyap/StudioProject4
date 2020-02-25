@@ -9,7 +9,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     Quaternion latestRot;
 
     private Animator myAnimator;
-    private PlayerController myPC;
+    private PlayerController myPlayer;
     [SerializeField]
     private Transform weaponLocationData;
 
@@ -17,25 +17,12 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     
     private void Start() {
         myAnimator = GetComponent<Animator>();
+        myPlayer = GetComponent<PlayerController>();
         if (photonView.IsMine) {
-            myPC = GetComponent<PlayerController>();
         } else {
             for (int i = 0; i < localScripts.Length; ++i) {
                 localScripts[i].enabled = false;
             }
-        }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
-            stream.SendNext(weaponLocationData.rotation);
-        }
-        else {
-            latestPos = (Vector3)stream.ReceiveNext();
-            latestRot = (Quaternion)stream.ReceiveNext();
-            weaponLocationData.rotation = (Quaternion)stream.ReceiveNext();
         }
     }
 
@@ -52,4 +39,20 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             transform.rotation = latestRot;
         }
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.IsWriting) {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+            stream.SendNext(weaponLocationData.rotation);
+            stream.SendNext(myPlayer.weaponIsOnHand);
+        }
+        else {
+            latestPos = (Vector3)stream.ReceiveNext();
+            latestRot = (Quaternion)stream.ReceiveNext();
+            weaponLocationData.rotation = (Quaternion)stream.ReceiveNext();
+            myPlayer.weaponIsOnHand = (bool)stream.ReceiveNext();
+        }
+    }
+
 }

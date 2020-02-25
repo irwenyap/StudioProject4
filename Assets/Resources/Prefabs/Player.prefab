@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994718030799001043}
   - component: {fileID: 216540747610314756}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 57ae9de2026dd1a429b157815822ed8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -249,9 +249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   playerName: 
-  moveSpeed: 5
-  weaponOnHand: {fileID: 0}
+  weaponIsOnHand: 0
   weaponLocation: {fileID: 0}
+  dir: {x: 0, y: 0}
 --- !u!114 &2009015784921027554
 MonoBehaviour:
   m_ObjectHideFlags: 0
