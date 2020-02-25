@@ -21,7 +21,7 @@ public class HealthSystem : MonoBehaviour
     {
         healthAmount -= damageAmount;
         if (healthAmount < 0)
-            healthAmount = 9;
+            healthAmount = 0;
         if (OnDamaged != null)
             OnDamaged(this, EventArgs.Empty);
     }

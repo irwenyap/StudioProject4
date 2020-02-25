@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
     public Rigidbody2D projectile;
     public PlayerList list;
+    public GameObject player;
 
     private bool isShooting = true;
     float deltaTime = 0f;
@@ -23,6 +24,7 @@ public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
             int random = Random.Range(0, list.playerList.Count);
             if (deltaTime > fireRate) {
                 Vector3 dir = list.playerList[random].transform.position - transform.position;
+                //Vector3 dir = player.transform.position - transform.position;
                 //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 //Rigidbody2D rb = Instantiate(projectile, transform.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
                 Rigidbody2D rb = Instantiate(projectile, transform.position, Quaternion.LookRotation(Vector3.forward, dir));

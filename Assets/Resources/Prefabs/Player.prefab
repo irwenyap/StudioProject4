@@ -252,6 +252,8 @@ MonoBehaviour:
   weaponIsOnHand: 0
   weaponLocation: {fileID: 0}
   dir: {x: 0, y: 0}
+  currHealth: 0
+  healthBar: {fileID: 0}
 --- !u!114 &2009015784921027554
 MonoBehaviour:
   m_ObjectHideFlags: 0

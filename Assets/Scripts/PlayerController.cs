@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Vector2 moveAxis;
     private Vector3 mousePos;
-    bool isPlayer = false;
     private Animator myAnimator;
 
     public bool weaponIsOnHand = false;
@@ -24,11 +23,14 @@ public class PlayerController : MonoBehaviour
 
     // Stats
     int maxHealth;
-    int currHealth;
+    public int currHealth;
     float critChance;
     float critDamage;
-    int armour;
+    int armour = 2;
     float moveSpeed = 5f;
+
+    // UI
+    public PlayerHealthBar healthBar;
 
 	
     private void Start() {
@@ -37,10 +39,6 @@ public class PlayerController : MonoBehaviour
         weaponLocation = transform.Find("Weapon");
 		//currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
-    }
-
-    public void Initialise(bool _isPlayer) {
-        isPlayer = _isPlayer;
     }
 
     private void Update() {
@@ -77,6 +75,12 @@ public class PlayerController : MonoBehaviour
 
         if (moveAxis != Vector2.zero)
             myAnimator.SetFloat("moveX", moveAxis.x);
+    }
+
+    public void TakeDamage(int dmg) {
+        int netDamage = dmg - armour;
+        currHealth -= netDamage;
+        healthBar.healthSystem.Damage(netDamage);
     }
 
     private void FixedUpdate() {

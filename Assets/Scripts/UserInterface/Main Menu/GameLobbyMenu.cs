@@ -65,10 +65,10 @@ public class GameLobbyMenu : MonoBehaviour
                 break;
         }
 
-        //if (Input.GetKeyDown(KeyCode.A))
-        //    SetGrayscale(true, playerSprites[0]);
-        //else if (Input.GetKeyDown(KeyCode.S))
-        //    SetGrayscale(false, playerSprites[0]);
+        if (Input.GetKeyDown(KeyCode.A))
+            SetGrayscale(true, playerSprites[0]);
+        else if (Input.GetKeyDown(KeyCode.S))
+            SetGrayscale(false, playerSprites[0]);
     }
 
     public void ReadyButton()

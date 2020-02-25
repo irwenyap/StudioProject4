@@ -10,7 +10,7 @@ public class PlayerHealthBar : MonoBehaviour
     private Image damagedFillImage;
     private float damagedHealthShrinkTimer;
     private Text healthText;
-    private HealthSystem healthSystem;
+    public HealthSystem healthSystem;
 
     private void Awake()
     {
@@ -40,10 +40,10 @@ public class PlayerHealthBar : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
-            healthSystem.Damage(10);
-        if (Input.GetKeyDown(KeyCode.S))
-            healthSystem.Heal(10);
+        //if (Input.GetKeyDown(KeyCode.A))
+        //    healthSystem.Damage(10);
+        //if (Input.GetKeyDown(KeyCode.S))
+        //    healthSystem.Heal(10);
     }
 
     private void HealthSystem_OnDamaged(object sender, System.EventArgs e)
