@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AiMeleeControl : MonoBehaviour
-{
+{   private Animator animator;
     public float moveSpeed = 0.01f;
     Vector2 moveAxis;
     Vector2 mousePos;
@@ -18,24 +18,27 @@ public class AiMeleeControl : MonoBehaviour
     float DecisionChangeTimer;
     float DecisionValue;
 
-   
+    
    
     float AiDirection;
     // Start is called before the first frame update
     void Start()
     {
         
+            animator = GetComponent<Animator>();
     }
    
     // Update is called once per frame
     void Update()
     {
+
         DecisionChangeTimer += Time.deltaTime;
         shootBT += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
-        if (DistanceAiNPlayer > MeleeDetectRange)
+        if (DistanceAiNPlayer > MeleeDetectRange)//Idle
         {
-            
+            animator.SetBool("Chase", false);
+            animator.SetBool("Attack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
             if (DecisionChangeTimer >3)
@@ -72,8 +75,10 @@ public class AiMeleeControl : MonoBehaviour
             }
             transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
         }
-        if (DistanceAiNPlayer < MeleeDetectRange)
+        if (DistanceAiNPlayer < MeleeDetectRange)//Chase
         {
+            animator.SetBool("Chase", true);
+            animator.SetBool("Attack", false);
             Vector2 direction = player.position - this.transform.position;
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
@@ -84,14 +89,17 @@ public class AiMeleeControl : MonoBehaviour
 
 
         }
-        if (DistanceAiNPlayer < MeleeDetectRange && DistanceAiNPlayer > MeleeAttackRange)
+        if (DistanceAiNPlayer < MeleeDetectRange && DistanceAiNPlayer > MeleeAttackRange)//Chase
         {
+            animator.SetBool("Chase", true);
+            animator.SetBool("Attack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
         }
-        else if (DistanceAiNPlayer < MeleeAttackRange)
+        else if (DistanceAiNPlayer < MeleeAttackRange)//Attack
         {
-
+            animator.SetBool("Chase", false);
+            animator.SetBool("Attack", true);
         }
     }
 }
