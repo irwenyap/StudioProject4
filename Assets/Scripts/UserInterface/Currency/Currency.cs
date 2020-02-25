@@ -7,16 +7,20 @@ public class Currency : MonoBehaviour
 {
     public Text coinText;
     public Text gemText;
+    public Text shardText;
 
     public int coins;
     public int gems;
+    public int shards;
 
     private void Start()
     {
         coins = 0;
         gems = 0;
+        shards = 0;
         coinText.text = coins.ToString();
         gemText.text = gems.ToString();
+        shardText.text = shards.ToString();
     }
 
     public void AddCoins(int coinAmount)
@@ -41,5 +45,17 @@ public class Currency : MonoBehaviour
     {
         gems -= gemAmount;
         gemText.text = gems.ToString();
+    }
+
+    public void AddShards(int shardAmount)
+    {
+        shards += shardAmount;
+        shardText.text = shards.ToString();
+    }
+
+    public void DeductShards(int shardAmount)
+    {
+        shards -= shardAmount;
+        shardText.text = shards.ToString();
     }
 }
