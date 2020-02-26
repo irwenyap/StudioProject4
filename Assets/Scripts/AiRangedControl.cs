@@ -20,9 +20,14 @@ public class AiRangedControl: MonoBehaviour
     float DecisionChangeTimer;
     float DecisionValue;
     float AiDirection;
+{   private Animator animator;
+
 
     private void Start()
     {
+
+        //myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -32,6 +37,8 @@ public class AiRangedControl: MonoBehaviour
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
         if (DistanceAiNPlayer > RangeDetectRange)
         {
+            animator.SetBool("RangedChase", false);
+            animator.SetBool("RangedAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
             if (DecisionChangeTimer > 3)
@@ -73,6 +80,8 @@ public class AiRangedControl: MonoBehaviour
         }
         if (DistanceAiNPlayer < RangeDetectRange)
         {
+            animator.SetBool("RangedChase", true);
+            animator.SetBool("RangedAttack", false);
             Vector2 direction = player.position - this.transform.position;
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
@@ -83,8 +92,23 @@ public class AiRangedControl: MonoBehaviour
         }
         if (DistanceAiNPlayer < RangeDetectRange && DistanceAiNPlayer > RangeAttackRange)
         {
+            animator.SetBool("RangedChase", true);
+            animator.SetBool("RangedAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
         }
+        else if (DistanceAiNPlayer < RangeAttackRange)
+        {
+            animator.SetBool("RangedChase", false);
+            animator.SetBool("RangedAttack", true);
+
+        }
+
+        // Cursor Follow
+        //mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.z, Camera.main.transform.position.z - transform.position.z));
+        //transform.LookAt(mousePos);
+        //var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+
+
     }
 
     private void FixedUpdate()

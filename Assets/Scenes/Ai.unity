@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 26733598}
   - component: {fileID: 26733597}
   - component: {fileID: 26733600}
+  - component: {fileID: 26733601}
   m_Layer: 0
   m_Name: RangedModel
   m_TagString: Untagged
@@ -257,6 +258,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.009
   player: {fileID: 714428042}
+--- !u!95 &26733601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26733595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2baa92adab23ba64a84874d0cdc817fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &44792761
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +291,7 @@ GameObject:
   - component: {fileID: 44792765}
   - component: {fileID: 44792768}
   - component: {fileID: 44792763}
+  - component: {fileID: 44792764}
   m_Layer: 0
   m_Name: MeleeModel
   m_TagString: Untagged
@@ -314,6 +335,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   damage: 2
+--- !u!95 &44792764
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44792761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cbcf4260b68f7bd41bc710be65d1e9c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &44792765
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -620,8 +660,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f553220a45e2e4ab9dc886f91ab5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  playerName: 
   moveSpeed: 5
-  health: 100
+  weaponOnHand: {fileID: 0}
+  weaponLocation: {fileID: 0}
 --- !u!58 &714428044
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -897,7 +940,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &754568291
@@ -1005,7 +1048,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1000629563
@@ -1505,7 +1548,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1525728730
@@ -1613,7 +1656,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1805490069
