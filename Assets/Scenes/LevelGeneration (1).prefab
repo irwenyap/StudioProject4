@@ -44,27 +44,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnDirection: 2
-  T_C_startPos:
-  - {fileID: 0}
   G_C_A_rooms:
-  - {fileID: 7917291405649493657, guid: f13c1fc3ba430174b921a77e29055acc, type: 3}
-  - {fileID: 7917291405649493657, guid: c799210b3b85dec4da8d363ccc1f160f, type: 3}
-  - {fileID: 159269926688465649, guid: 7a555f30975440540988be7f32c77081, type: 3}
-  - {fileID: 7917291405649493657, guid: db0fa3f13d64dbb499647ae9037e3b5f, type: 3}
+  - {fileID: 1573393165656312184, guid: 7dc26f62fe95cff44a3f632e8cc4f935, type: 3}
+  - {fileID: 6016784693692011253, guid: c74ef4806fc69764eb77692a7d12d9e9, type: 3}
+  - {fileID: 1924191995821734889, guid: 5eb3062fc7fb75f40b0675845cf4ba12, type: 3}
+  - {fileID: 3589167064935483498, guid: 87a71f841f688104293f7a92983b5d12, type: 3}
   DeadendRooms:
   - {fileID: 7917291405649493657, guid: 7c8080cb14e372e46a7849e1996dc768, type: 3}
   - {fileID: 7917291405649493657, guid: 6653fb5835c87794f9a4e0b21ceff85c, type: 3}
   - {fileID: 7917291405649493657, guid: cf067c0783f4c644ebd9b47b42320467, type: 3}
   - {fileID: 7917291405649493657, guid: f1d2dea9341ce9c4fba6caa7aec8c44f, type: 3}
-  L_V2_roomPosition: []
-  L_V2_roomtype: 
   F_roomDIfferent: 20
   F_timeBtwnRoom: 0.25
   F_startimeBtwnRoom: 0.25
-  F_minX: -5
-  F_minY: -25
-  F_maxX: 25
-  F_maxY: 0
   stopGeneration: 0
   room:
     serializedVersion: 2

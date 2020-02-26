@@ -20,7 +20,7 @@ public class AiRangedControl: MonoBehaviour
     float DecisionChangeTimer;
     float DecisionValue;
     float AiDirection;
-{   private Animator animator;
+    private Animator animator;
 
 
     private void Start()
