@@ -13,8 +13,9 @@ public class mimic_Grab_Behaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+       
         float nearestdistance = float.MaxValue;
-        grabzone = GameObject.FindGameObjectWithTag("Mimic").GetComponentInChildren<BoxCollider2D>();
+        grabzone = animator.gameObject.GetComponentInChildren<BoxCollider2D>();
         Player = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject go in Player)
         {

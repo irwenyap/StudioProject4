@@ -12,14 +12,17 @@ public class powerUpCollisionScript : MonoBehaviour
     {
         cc = gameObject.GetComponent<CircleCollider2D>();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if(cc.IsTouchingLayers(Player))
-        {
-            GameObject go = Instantiate(spawnref, transform.position, Quaternion.identity);
-            go.transform.parent = transform.parent;
-            Destroy(gameObject);
-        }
+       
     }
 }

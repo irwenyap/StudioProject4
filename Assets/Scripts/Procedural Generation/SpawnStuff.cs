@@ -15,8 +15,7 @@ public class SpawnStuff : MonoBehaviour
         int rand = Random.Range(0, Objects.Length);
         if (Objects[rand] != null) {
             GameObject instance = (GameObject)Instantiate(Objects[rand], transform.position, Quaternion.identity);
-            instance.transform.parent = transform.parent;
+            instance.transform.parent = transform;
         }
-        Destroy(gameObject);
     }
 }
