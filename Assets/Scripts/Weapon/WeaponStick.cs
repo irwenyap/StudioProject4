@@ -67,7 +67,6 @@ public class WeaponStick : WeaponBase, IPunObservable {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
-            Debug.LogError("=============COLLIDED WITH STICK=============");
             myPlayer = collision.GetComponent<PlayerController>();
             //myPlayer.weaponIsOnHand = true;
             transform.SetParent(collision.transform);

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1909661278748669535}
   - component: {fileID: 1909661278748669514}
   - component: {fileID: 3608610626189237429}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Bow
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttached: 0
+  myPlayer: {fileID: 0}
+  attackDamage: 0
+  attackSpeed: 0
   projectile: {fileID: 6345347950496631996, guid: cdc65f75630ce124996809d01d50c81e,
     type: 3}
   weaponSprite: {fileID: 0}

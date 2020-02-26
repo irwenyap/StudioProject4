@@ -21,7 +21,7 @@ public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
     void Update() {
         if (isShooting) {
             deltaTime += Time.deltaTime;
-            int random = Random.Range(0, list.playerList.Count);
+            int random = Random.Range(0, list.playerList.Length);
             if (deltaTime > fireRate) {
                 Vector3 dir = list.playerList[random].transform.position - transform.position;
                 //Vector3 dir = player.transform.position - transform.position;

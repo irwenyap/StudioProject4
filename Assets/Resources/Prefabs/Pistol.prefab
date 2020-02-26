@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7463315792931692344}
   - component: {fileID: 4680203893616094268}
   - component: {fileID: 7972404840846499269}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttached: 0
+  myPlayer: {fileID: 0}
+  attackDamage: 0
+  attackSpeed: 0
   projectile: {fileID: 4635767846662855377, guid: ce7f2a3cc706e5648a5efd0916819eac,
     type: 3}
-  weaponSprite: {fileID: 0}

@@ -45,13 +45,13 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             stream.SendNext(weaponLocationData.rotation);
-            stream.SendNext(myPlayer.weaponIsOnHand);
+            //stream.SendNext(myPlayer.weaponIsOnHand);
         }
         else {
             latestPos = (Vector3)stream.ReceiveNext();
             latestRot = (Quaternion)stream.ReceiveNext();
             weaponLocationData.rotation = (Quaternion)stream.ReceiveNext();
-            myPlayer.weaponIsOnHand = (bool)stream.ReceiveNext();
+            //myPlayer.weaponIsOnHand = (bool)stream.ReceiveNext();
         }
     }
 

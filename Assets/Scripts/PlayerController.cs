@@ -86,4 +86,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.layer == 11) {
+            TakeDamage(collision.gameObject.GetComponent<ProjectileBase>().damage);
+        }
+    }
 }

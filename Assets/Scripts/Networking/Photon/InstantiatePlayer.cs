@@ -9,8 +9,8 @@ public class InstantiatePlayer : MonoBehaviour
     [SerializeField]
     private Camera camera;
 
-    [SerializeField]
-    private PlayerList playerList;
+    //[SerializeField]
+    //private PlayerList playerList;
     [SerializeField]
     private PlayerHealthBar healthBar;
 
@@ -18,7 +18,7 @@ public class InstantiatePlayer : MonoBehaviour
         //MasterManager.NetworkInstantiate(_prefab, transform.position, Quaternion.identity);
         GameObject player = PhotonNetwork.Instantiate("Prefabs/Player", transform.position, Quaternion.identity);
         player.GetComponent<PlayerController>().healthBar = healthBar;
-        playerList.playerList.Add(player);
+        //playerList.playerList.Add(player);
         camera.GetComponent<CameraController>().SetTarget(player.transform);
 
         //PhotonNetwork.InstantiateSceneObject("Prefabs/Pistol", new Vector3(0, 10, 0), Quaternion.identity);
