@@ -79,6 +79,6 @@ public class WeaponStick : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 45);
             //isAttached = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
-        }
+        //} x
     }
 }
