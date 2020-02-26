@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttached: 0
+  myPlayer: {fileID: 0}
+  attackDamage: 0
+  attackSpeed: 0
+  imageM1: {fileID: 21300000, guid: e2969ba514013204bbbf0b9d1bb3dd6e, type: 3}
+  imageM2: {fileID: 21300000, guid: db79d54cd8c7de14fb618f34325615a1, type: 3}
   projectile: {fileID: 6345347950496631996, guid: cdc65f75630ce124996809d01d50c81e,
     type: 3}
   weaponSprite: {fileID: 0}

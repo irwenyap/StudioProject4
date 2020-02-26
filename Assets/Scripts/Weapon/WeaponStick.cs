@@ -66,9 +66,9 @@ public class WeaponStick : WeaponBase, IPunObservable {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
+        //if (!collision.GetComponent<PlayerController>().weaponIsOnHand) { x
             Debug.LogError("=============COLLIDED WITH STICK=============");
-            myPlayer = collision.GetComponent<PlayerController>();
+            //myPlayer = collision.GetComponent<PlayerController>(); x
             //myPlayer.weaponIsOnHand = true;
             transform.SetParent(collision.transform);
             projDir = transform.parent.Find("Weapon");
@@ -80,6 +80,6 @@ public class WeaponStick : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 45);
             //isAttached = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
-        }
+        //} x
     }
 }

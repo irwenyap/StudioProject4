@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponBase : MonoBehaviourPun {
     public bool isAttached = false;
@@ -16,6 +17,10 @@ public class WeaponBase : MonoBehaviourPun {
     public int attackDamage = 0;
     public float attackSpeed = 0f;
     protected float deltaTime = 0f;
+
+    // UI
+    public Sprite imageM1;
+    public Sprite imageM2;
 
     public Rigidbody2D GetWeaponRigidbody() { return myRigidbody; }
     public Collider2D GetWeaponCollider() { return myCollider; }

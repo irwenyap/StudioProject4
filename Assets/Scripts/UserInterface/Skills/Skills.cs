@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Skills : MonoBehaviour
 {
+    public Image imageSkill;
     public Image imageCooldown;
     public KeyCode key;
     public float cooldown;
