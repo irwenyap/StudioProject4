@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 dir;
 
-    int weaponType;
-
     // Stats
     int maxHealth;
     public int currHealth;
@@ -32,7 +30,9 @@ public class PlayerController : MonoBehaviour
     // UI
     public PlayerHealthBar healthBar;
 
-	
+    public Skills m1;
+    public Skills m2;
+
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         //if (Input.GetKeyDown(KeyCode.Q)) {
             //if (weaponOnHand != null) {
         //        //weaponOnHand.Throw(weaponLocation.rotation);
@@ -70,7 +69,6 @@ public class PlayerController : MonoBehaviour
         //        weaponOnHand = null;
                 
             //}
-
         //}
 
         if (moveAxis != Vector2.zero)
@@ -90,6 +88,13 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == 11) {
             TakeDamage(collision.gameObject.GetComponent<ProjectileBase>().damage);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Weapon") {
+            m1.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM1;
+            m2.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM2;
         }
     }
 }

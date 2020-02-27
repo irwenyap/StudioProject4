@@ -89,12 +89,5 @@ public class PlayerControllerMiah : MonoBehaviour
         myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Weapon")
-        {
-            m1.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM1;
-            m2.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM2;
-        }
-    }
+
 }

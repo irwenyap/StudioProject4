@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7385989730134568378}
   m_Layer: 10
   m_Name: Staff
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttached: 0
+  myPlayer: {fileID: 0}
+  attackDamage: 0
+  attackSpeed: 0
+  imageM1: {fileID: 0}
+  imageM2: {fileID: 0}
   projectile: {fileID: 8089669786403723671, guid: b6aedebd7f21a5a4cbaed5fcf6836994,
     type: 3}
   weaponSprite: {fileID: 0}
