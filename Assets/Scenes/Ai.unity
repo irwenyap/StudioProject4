@@ -257,7 +257,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.009
+  health: 100
   player: {fileID: 714428042}
+  DetectRange: 0
+  AiDirection: 0
+  DecisionChangeTimer: 0
+  DecisionValue: 0
+  AttackRange: 0
 --- !u!95 &26733601
 Animator:
   serializedVersion: 3
@@ -929,7 +935,7 @@ GameObject:
   - component: {fileID: 1469886293}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1428,6 +1434,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 714428042}
+    - target: {fileID: 405662171109088435, guid: 74ed9ab1367234b40bcc444739a4116c,
+        type: 3}
+      propertyPath: DetectRange
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 405662171109088456, guid: 74ed9ab1367234b40bcc444739a4116c,
         type: 3}
       propertyPath: player

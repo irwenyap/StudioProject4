@@ -11,15 +11,7 @@ public class OnTrigger : MonoBehaviour
     {
         
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Spawner.SetActive(true);
-    //        SpawnTrigger.SetActive(false);
-    //        Debug.Log("calledwhentrigggers");
-    //    }
-    //}
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -29,16 +21,7 @@ public class OnTrigger : MonoBehaviour
             Debug.Log("calledwhentrigggers");
         }
     }
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.gameObject.tag == "Sp")
-    //    {
-    //        Spawner.SetActive(true);
-    //        SpawnTrigger.SetActive(false);
-    //        Debug.Log("calledwhentrigggers");
-    //    }
-    //}
-
+   
     // Update is called once per frame
     void Update()
     {
