@@ -17,7 +17,7 @@ public class WeaponStick : WeaponBase, IPunObservable {
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
 
-        // Stats
+        // Base Stats
         attackDamage = 10;
         attackSpeed = 3f;
         deltaTime = attackSpeed;
@@ -38,7 +38,7 @@ public class WeaponStick : WeaponBase, IPunObservable {
                     isInUse = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
-                    WeaponDropped();
+                    DropWeapon();
             }
 
             if (isInUse && deltaTime >= attackSpeed) {
@@ -49,12 +49,11 @@ public class WeaponStick : WeaponBase, IPunObservable {
         }
     }
 
-    public void WeaponDropped() {
-        base.photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
-        //myPlayer.weaponOnHand = null;
-        //myPlayer = null;
-        //projDir = null;
-    }
+    //public void WeaponDropped() {
+    //    //myPlayer.weaponOnHand = null;
+    //    //myPlayer = null;
+    //    //projDir = null;
+    //}
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
@@ -68,7 +67,7 @@ public class WeaponStick : WeaponBase, IPunObservable {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
             myPlayer = collision.GetComponent<PlayerController>();
-            //myPlayer.weaponIsOnHand = true;
+            myPlayer.weaponIsOnHand = true;
             transform.SetParent(collision.transform);
             projDir = transform.parent.Find("Weapon");
             WeaponOnHand(true);

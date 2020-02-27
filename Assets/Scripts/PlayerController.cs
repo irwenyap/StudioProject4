@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Client Variables
-    public uint id;
     public string playerName; 
 
     // Private

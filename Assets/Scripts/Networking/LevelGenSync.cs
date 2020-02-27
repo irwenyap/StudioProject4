@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelGenSync : MonoBehaviourPun {
     [SerializeField]
-    private LevelGen myLevelGen;
+    private LevelGen myLevelGen = null;
 
     [SerializeField]
     private int seed = 0;
@@ -19,7 +19,7 @@ public class LevelGenSync : MonoBehaviourPun {
 
     [PunRPC]
     private void RPC_InitLevelGen(int seed) {
-        Debug.LogError(seed);
+        //Debug.LogError(seed);
         myLevelGen.Initialise(seed);
     }
 }

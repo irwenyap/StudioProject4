@@ -47,7 +47,7 @@ public class WeaponBase : MonoBehaviourPun {
         while (!myCollider.enabled) {
             if (myRigidbody.velocity == Vector2.zero && transform.parent == null) {
                 myCollider.enabled = true;
-                photonView.TransferOwnership(0);
+                //photonView.TransferOwnership(0);
             }
             yield return null;
         }
@@ -57,5 +57,9 @@ public class WeaponBase : MonoBehaviourPun {
     protected void RPC_ThrowWeapon(Vector2 dir) {
         Debug.LogError("THROWING DETECTED");
         Throw(dir * 250);
+    }
+
+    protected void DropWeapon() {
+        base.photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
     }
 }

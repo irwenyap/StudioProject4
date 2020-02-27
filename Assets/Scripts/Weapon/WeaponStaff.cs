@@ -4,54 +4,60 @@ using UnityEngine;
 
 public class WeaponStaff : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
-    public SpriteRenderer weaponSprite;
 
+    private SpriteRenderer weaponSprite;
     private Transform projDir;
-    private bool isShooting = false;
-    private float fireRate = 0f;
 
     void Start() {
         // Disable Photon View on ground to save bandwidth
         photonView.enabled = false;
+
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+
+        // Base Stats
+        attackDamage = 10;
+        attackSpeed = 3f;
+        deltaTime = attackSpeed;
     }
 
     void Update() {
         if (isAttached) {
+            photonView.enabled = true;
+            deltaTime += Time.deltaTime;
+
             // Direction
             //if ()
 
             // Shooting
             if (photonView.IsMine) {
                 if (Input.GetMouseButton(0))
-                    isShooting = true;
+                    isInUse = true;
                 else
-                    isShooting = false;
+                    isInUse = false;
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                    DropWeapon();
             }
-            fireRate += Time.deltaTime;
-        }
 
-
-        if (isShooting && fireRate >= 1f) {
-            Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
-            rb.velocity = rb.gameObject.transform.up * 10;
-            fireRate = 0f;
+            if (isInUse && deltaTime >= attackSpeed) {
+                Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
+                rb.velocity = rb.gameObject.transform.up * 10;
+                deltaTime = 0f;
+            }
         }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
-            stream.SendNext(isShooting);
+            stream.SendNext(isInUse);
         }
         else {
-            isShooting = (bool)stream.ReceiveNext();
+            isInUse = (bool)stream.ReceiveNext();
         }
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision) {
         //if (collision.GetComponent<PlayerController>().weaponOnHand == null) {

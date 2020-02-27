@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class LobbyListMenu : MonoBehaviourPunCallbacks {
     [SerializeField]
-    private Transform _content;
+    private Transform _content = null;
     [SerializeField]
-    private LobbyListing _lobbyListing;
+    private LobbyListing _lobbyListing = null;
 
     private List<LobbyListing> _listings = new List<LobbyListing>();
 

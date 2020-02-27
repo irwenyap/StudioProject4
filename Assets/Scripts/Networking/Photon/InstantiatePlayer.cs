@@ -4,16 +4,16 @@ using UnityEngine;
 public class InstantiatePlayer : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _prefab;
+    private GameObject _prefab = null;
 
     [SerializeField]
-    private Camera camera;
+    private Camera camera = null;
     [SerializeField]
-    private PlayerHealthBar healthBar;
+    private PlayerHealthBar healthBar = null;
     [SerializeField]
-    private Skills m1UI;
+    private Skills m1UI = null;
     [SerializeField]
-    private Skills m2UI;
+    private Skills m2UI = null;
 
 
 
