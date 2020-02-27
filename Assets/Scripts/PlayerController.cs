@@ -19,13 +19,15 @@ public class PlayerController : MonoBehaviour
     public Vector2 dir;
 
     // Stats
-    int maxHealth;
+    public int maxHealth;
     public int currHealth;
-    float critChance;
-    float critDamage;
-    int armour = 2;
-    float moveSpeed = 5f;
-
+    public float critChance;
+    public float critDamage;
+    public int armour = 2;
+    public float moveSpeed = 5f;
+    public float attackSpeed;
+    public float attack;
+    public int currency;
     // UI
     public PlayerHealthBar healthBar;
 

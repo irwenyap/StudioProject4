@@ -16,7 +16,7 @@ public class AI_Base : MonoBehaviour
     public GameObject[] Player;
     [SerializeField]
     public float armored;
-
+    
 
     private void Awake()
     {
