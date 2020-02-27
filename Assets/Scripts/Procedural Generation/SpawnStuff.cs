@@ -6,6 +6,9 @@ public class SpawnStuff : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] Objects;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {

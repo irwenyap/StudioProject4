@@ -191,13 +191,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 1)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 1)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -210,7 +210,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(1, 4);
                                     if (randbot == 2)
                                     {
@@ -329,13 +329,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 2)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 2)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -348,7 +348,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(2, 4);
                                     path.Pop();
                                     S_GO_roomData.Pop();
@@ -400,13 +400,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 2)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 2)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -419,7 +419,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(2, 4);
                                     path.Pop();
                                     S_GO_roomData.Pop();
@@ -467,13 +467,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 1)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 1)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -486,7 +486,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(1, 4);
                                     if (randbot == 2)
                                     {
@@ -564,13 +564,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 2)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 2)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -583,7 +583,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(2, 4);
                                     path.Pop();
                                     S_GO_roomData.Pop();
@@ -631,13 +631,13 @@ public class LevelGen : MonoBehaviour {
                     if (Detection != null)
                     {
 
-                        if (Detection.GetComponent<RoomType>().type != 1)
+                        if (Detection.GetComponentInChildren<RoomType>().type != 1)
                         {
-                            if (Detection.GetComponent<RoomType>().type != 3)
+                            if (Detection.GetComponentInChildren<RoomType>().type != 3)
                             {
                                 if (downcounter >= 2)
                                 {
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     path.Pop();
                                     S_GO_roomData.Pop();
                                     GameObject instance = Instantiate(G_C_A_rooms[3], transform.position, Quaternion.identity);
@@ -650,7 +650,7 @@ public class LevelGen : MonoBehaviour {
                                 else
                                 {
 
-                                    Detection.GetComponent<RoomType>().v_DestroyRoom();
+                                    Detection.GetComponentInChildren<RoomType>().v_DestroyRoom();
                                     int randbot = Random.Range(1, 4);
                                     if (randbot == 2)
                                     {
@@ -721,7 +721,7 @@ public class LevelGen : MonoBehaviour {
         while (path.Count != 1)
         {
             GameObject temp = path.Peek();
-            switch (temp.GetComponent<RoomType>().type)
+            switch (temp.GetComponentInChildren<RoomType>().type)
             {
                 case 0:
                     {

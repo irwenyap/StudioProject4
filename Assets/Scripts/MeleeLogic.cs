@@ -11,6 +11,7 @@ public class MeleeLogic : MonoBehaviour
     public Transform control;
     public LayerMask whatIsEnemies;
     public float damage;
+
     void Start()
     {
        
