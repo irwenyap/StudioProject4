@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem
 {
     public event EventHandler OnDamaged;
     public event EventHandler OnHealed;
@@ -21,7 +21,7 @@ public class HealthSystem : MonoBehaviour
     {
         healthAmount -= damageAmount;
         if (healthAmount < 0)
-            healthAmount = 9;
+            healthAmount = 0;
         if (OnDamaged != null)
             OnDamaged(this, EventArgs.Empty);
     }

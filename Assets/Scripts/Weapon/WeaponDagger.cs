@@ -10,7 +10,6 @@ public class WeaponDagger : WeaponBase, IPunObservable {
     private float fireRate = 0f;
 
     void Start() {
-        WeaponID = 0;
         weaponSprite = GetComponent<SpriteRenderer>();
     }
 
@@ -52,8 +51,8 @@ public class WeaponDagger : WeaponBase, IPunObservable {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = this;
+        if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
+            collision.GetComponent<PlayerController>().weaponIsOnHand = true;
             location = collision.transform.Find("Weapon");
             Destroy(GetComponent<Rigidbody2D>());
             GetComponent<BoxCollider2D>().enabled = false;

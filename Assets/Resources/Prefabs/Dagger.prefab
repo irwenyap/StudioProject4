@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2800698236718356946}
   - component: {fileID: 125677177035008726}
   - component: {fileID: -5699037961192819371}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Dagger
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -167,5 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttached: 0
+  myPlayer: {fileID: 0}
+  attackDamage: 0
+  attackSpeed: 0
+  imageM1: {fileID: 21300000, guid: 7d2b9c08eb6302d439d87ee5134ef239, type: 3}
+  imageM2: {fileID: 21300000, guid: bbe3835a54b96f64eb9ab019719e3464, type: 3}
   projectile: {fileID: 0}
   weaponSprite: {fileID: 0}

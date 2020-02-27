@@ -15,6 +15,9 @@ public class GameLobbyMenu : MonoBehaviour
     public GameObject gameLobbyScene;
     public GameObject onlineLobbyScene;
 
+    public Image[] playerSprites = new Image[4];
+    public Image[] playerColours = new Image[4];
+
     public CanvasGroup canvGroup;
     private float duration = 1.0f;
 
@@ -23,6 +26,13 @@ public class GameLobbyMenu : MonoBehaviour
     private void Awake()
     {
         canvGroup.alpha = 0.0f;
+
+        // Create independent material for each sprite
+        for (int i = 0; i < 4; ++i)
+        {
+            Material m = playerSprites[i].material;
+            playerSprites[i].material = new Material(m);
+        }
     }
 
     private void Start()
@@ -54,6 +64,11 @@ public class GameLobbyMenu : MonoBehaviour
                 }
                 break;
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+            SetGrayscale(true, playerSprites[0]);
+        else if (Input.GetKeyDown(KeyCode.S))
+            SetGrayscale(false, playerSprites[0]);
     }
 
     public void ReadyButton()
@@ -77,5 +92,13 @@ public class GameLobbyMenu : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void SetGrayscale(bool isGreyscaled, Image player)
+    {
+        if (isGreyscaled)
+            player.material.SetFloat("_GrayscaleAmount", 1.0f);
+        else
+            player.material.SetFloat("_GrayscaleAmount", 0.0f);
     }
 }

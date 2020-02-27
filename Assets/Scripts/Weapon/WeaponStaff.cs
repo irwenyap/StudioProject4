@@ -4,69 +4,74 @@ using UnityEngine;
 
 public class WeaponStaff : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
-    public SpriteRenderer weaponSprite;
 
+    private SpriteRenderer weaponSprite;
     private Transform projDir;
-    private bool isShooting = false;
-    private float fireRate = 0f;
-
-    //private BoxCollider2D myCollider;
-    //private Rigidbody2D myRigidbody;
 
     void Start() {
-        WeaponID = 0;
+        // Disable Photon View on ground to save bandwidth
+        photonView.enabled = false;
+
+        // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+
+        // Base Stats
+        attackDamage = 10;
+        attackSpeed = 3f;
+        deltaTime = attackSpeed;
     }
 
     void Update() {
-
         if (isAttached) {
+            photonView.enabled = true;
+            deltaTime += Time.deltaTime;
+
             // Direction
             //if ()
 
             // Shooting
-            if (Input.GetMouseButton(0))
-                isShooting = true;
-            else
-                isShooting = false;
             if (photonView.IsMine) {
+                if (Input.GetMouseButton(0))
+                    isInUse = true;
+                else
+                    isInUse = false;
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                    DropWeapon();
             }
-            fireRate += Time.deltaTime;
-        }
 
-
-        if (isShooting && fireRate >= 1f) {
-            Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
-            rb.velocity = rb.gameObject.transform.up * 10;
-            fireRate = 0f;
+            if (isInUse && deltaTime >= attackSpeed) {
+                Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
+                rb.velocity = rb.gameObject.transform.up * 10;
+                deltaTime = 0f;
+            }
         }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
-            stream.SendNext(isShooting);
+            stream.SendNext(isInUse);
         }
         else {
-            isShooting = (bool)stream.ReceiveNext();
+            isInUse = (bool)stream.ReceiveNext();
         }
     }
 
-
-
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = this;
-            transform.SetParent(collision.transform);
-            projDir = transform.parent.Find("Weapon");
-            WeaponOnHand(true);
-            // Setting the item's transform on hand
-            transform.localPosition = new Vector3(-0.5f, 0.1f, -1);
-            transform.localScale = new Vector3(3, 3, 1);
-            transform.localRotation = Quaternion.Euler(0, 0, 45);
-            //isAttached = true;
-            //photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
-        }
+        //if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
+        //    collision.GetComponent<PlayerController>().weaponOnHand = this;
+        //    transform.SetParent(collision.transform);
+        //    projDir = transform.parent.Find("Weapon");
+        //    WeaponOnHand(true);
+
+        //    // Setting the item's transform when attached
+        //    transform.localPosition = new Vector3(-0.5f, 0.1f, -1);
+        //    transform.localScale = new Vector3(2.5f, 2.5f, 1);
+        //    transform.localRotation = Quaternion.Euler(0, 0, 45);
+        //    //isAttached = true;
+        //    //photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
+        //}
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PhotonConnect : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private Text nameText;
+    private Text nameText = null;
 
     public void Connect() {
         Debug.Log("[Connecting to Server]");

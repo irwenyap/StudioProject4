@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class WeaponPistol : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
-    public SpriteRenderer weaponSprite;
 
+    private SpriteRenderer weaponSprite;
     private bool isShooting = false;
     private float fireRate = 2f;
 
     void Start() {
-        WeaponID = 0;
-        weaponSprite = GetComponent<SpriteRenderer>();
+        // Disable Photon View on ground to save bandwidth
         photonView.enabled = false;
+        // Reference to component
+        weaponSprite = GetComponent<SpriteRenderer>();
+        myCollider = GetComponent<BoxCollider2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-
         if (isAttached) {
             photonView.enabled = true;
             // Rotation of Gun
@@ -53,16 +55,18 @@ public class WeaponPistol : WeaponBase, IPunObservable {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<PlayerController>().weaponOnHand == null) {
-            collision.GetComponent<PlayerController>().weaponOnHand = this;
-            Destroy(GetComponent<Rigidbody2D>());
-            GetComponent<BoxCollider2D>().enabled = false;
+        if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
+            collision.GetComponent<PlayerController>().weaponIsOnHand = true;
             transform.SetParent(collision.transform.Find("Weapon"));
+            WeaponOnHand(true);
+
+            // Setting the item's transform when attached
             transform.localPosition = new Vector3(0, 4, -1);
             transform.localScale = new Vector3(15, 15, 1);
             transform.localRotation = Quaternion.Euler(0, 0, 90);
-            isAttached = true;
-            photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
+
+            // Photon ownership transfer on pickup
+            //photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
 }

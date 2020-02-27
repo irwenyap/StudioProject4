@@ -35,5 +35,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_ChangeReadyState
+  - RPC_ThrowWeapon
+  - RPC_InitLevelGen
   DisableAutoOpenWizard: 1
   ShowSettings: 0

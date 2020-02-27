@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Weapon
   - Bullet
   - Mimic
   - SpawnerTrigger
@@ -11,35 +12,35 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Chest
+  -
+  -
   - Player
+  - PlayerBullet
+  - Enemy
+  - EnemyBullet
+  - Weapon
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  - Chest
+  -
   - Room
   - PowerUp
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0

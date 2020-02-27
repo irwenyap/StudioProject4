@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class Skills : MonoBehaviour
 {
+    public Image imageSkill;
     public Image imageCooldown;
     public KeyCode key;
     public float cooldown;
 
     private bool isCooldown;
 
+    private void Start()
+    {
+        isCooldown = false;
+    }
     private void Update()
     {
         if (isCooldown)
@@ -33,7 +38,10 @@ public class Skills : MonoBehaviour
 
     public void IsPressed()
     {
-        isCooldown = true;
-        imageCooldown.fillAmount = 1;
+        if (!isCooldown)
+        {
+            isCooldown = true;
+            imageCooldown.fillAmount = 1;
+        }
     }
 }
