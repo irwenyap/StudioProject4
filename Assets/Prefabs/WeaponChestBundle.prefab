@@ -46,6 +46,8 @@ MonoBehaviour:
   Objects:
   - {fileID: 8854603489710706117, guid: 6ab3b1e3aee52b34d9f4f34047317b6c, type: 3}
   - {fileID: 1909661278748669484, guid: d38e6f9c8ba0d314295ff4d9d0b8e402, type: 3}
+  - {fileID: 4300037054756850479, guid: 3f91f514cb30cf54b887b2eb1d95797e, type: 3}
+  - {fileID: 3454303524344561298, guid: 70c73e27409d05945ad40ca15f41bd35, type: 3}
 --- !u!1 &4771704919880591723
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,12 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ebee325801ea04cb3255e8c8c4cd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CCdetection: {fileID: 0}
   key: 101
-  thingInside: {fileID: 4771704918869010707}
+  item: {fileID: 0}
   player:
     serializedVersion: 2
     m_Bits: 2097152
+  amountToOpen: 40
 --- !u!1 &4771704919986671048
 GameObject:
   m_ObjectHideFlags: 0
