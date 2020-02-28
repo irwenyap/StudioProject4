@@ -305,7 +305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618393166}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -753,6 +753,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.06666667
       objectReference: {fileID: 0}
+    - target: {fileID: 439453420874218294, guid: d62c501c7dc156c4c97943d74c7bfc9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 439453421031687682, guid: d62c501c7dc156c4c97943d74c7bfc9e,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -820,6 +825,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62c501c7dc156c4c97943d74c7bfc9e, type: 3}
+--- !u!1 &210765997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 439453419570417775, guid: d62c501c7dc156c4c97943d74c7bfc9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 210765996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &210765998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210765997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758b2095c74041c40a87fd76780ef87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponImage: {fileID: 554601843}
+  forgeCost: {fileID: 87416028}
+  gemBalance: {fileID: 17826797}
+  skillTreeBaseWeapon: {fileID: 100763146}
+  skillTreeLeftUpgrade: {fileID: 798532056}
+  lockImageLeft: {fileID: 101754736}
+  skillTreeRightUpgrade: {fileID: 649442674}
+  lockImageRight: {fileID: 1087045297}
+  selectedWeapon: {fileID: 1309983656}
+  selectedWeaponM1: {fileID: 760418212}
+  selectedWeaponM2: {fileID: 1775151995}
+  toolTipBackground: {fileID: 1699971456}
+  skillName: {fileID: 1268593894}
+  skillDescription: {fileID: 518167595}
+  currentWeapon: {fileID: 0}
+  playerInfo: {fileID: 0}
+  bowSprite: {fileID: 21300000, guid: 31afc12142cdca04ab78ca624baa5a15, type: 3}
+  pistolSprite: {fileID: 21300000, guid: e18506f3c11ea0949848ebcf8b8b6ced, type: 3}
+  stickSprite: {fileID: 21300000, guid: 42f2ceb7a615d2248b77934e0711d47a, type: 3}
+  daggerSprite: {fileID: 21300000, guid: fe6c8a0c3404a544fbe4ffc2374c2393, type: 3}
 --- !u!1 &300059598
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +895,7 @@ RectTransform:
   - {fileID: 1069535812}
   - {fileID: 87416027}
   m_Father: {fileID: 419054468}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -922,13 +965,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350775757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1715595140}
   - {fileID: 17826796}
-  m_Father: {fileID: 618393166}
+  m_Father: {fileID: 419054468}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1196,7 +1239,7 @@ GameObject:
   - component: {fileID: 518167596}
   - component: {fileID: 518167595}
   m_Layer: 0
-  m_Name: SkillName (1)
+  m_Name: SkillDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1291,7 +1334,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 419054468}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1318,7 +1361,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1438,13 +1481,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 350775758}
   - {fileID: 100763145}
   - {fileID: 798532055}
   - {fileID: 649442673}
   - {fileID: 1815155036}
   m_Father: {fileID: 419054468}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1518,7 +1560,7 @@ RectTransform:
   m_Children:
   - {fileID: 1087045296}
   m_Father: {fileID: 618393166}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1807,6 +1849,7 @@ GameObject:
   - component: {fileID: 760418211}
   - component: {fileID: 760418213}
   - component: {fileID: 760418212}
+  - component: {fileID: 760418214}
   m_Layer: 0
   m_Name: M1Image
   m_TagString: Untagged
@@ -1869,6 +1912,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760418210}
   m_CullTransparentMesh: 0
+--- !u!114 &760418214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760418210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 210765998}
+          m_MethodName: M1SkillOnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 210765998}
+          m_MethodName: M1SkillOffHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &780563633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1975,7 +2061,7 @@ RectTransform:
   m_Children:
   - {fileID: 101754735}
   m_Father: {fileID: 618393166}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8204,7 +8290,7 @@ GameObject:
   - component: {fileID: 1087045298}
   - component: {fileID: 1087045297}
   m_Layer: 0
-  m_Name: LockImge
+  m_Name: LockImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9298,7 +9384,7 @@ RectTransform:
   - {fileID: 1268593893}
   - {fileID: 518167594}
   m_Father: {fileID: 419054468}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9504,6 +9590,7 @@ GameObject:
   - component: {fileID: 1775151994}
   - component: {fileID: 1775151996}
   - component: {fileID: 1775151995}
+  - component: {fileID: 1775151997}
   m_Layer: 0
   m_Name: M2Image
   m_TagString: Untagged
@@ -9566,6 +9653,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775151993}
   m_CullTransparentMesh: 0
+--- !u!114 &1775151997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775151993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 210765998}
+          m_MethodName: M2SkillOnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 210765998}
+          m_MethodName: M2SkillOffHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1815155035
 GameObject:
   m_ObjectHideFlags: 0
@@ -9598,7 +9728,7 @@ RectTransform:
   - {fileID: 988978175}
   - {fileID: 1495018997}
   m_Father: {fileID: 618393166}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9639,7 +9769,7 @@ RectTransform:
   - {fileID: 760418211}
   - {fileID: 1775151994}
   m_Father: {fileID: 419054468}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9937,7 +10067,7 @@ PrefabInstance:
     - target: {fileID: 8425028853449494469, guid: e4ceae0b6bd9be943b4c1e207c4f3827,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8425028853449494469, guid: e4ceae0b6bd9be943b4c1e207c4f3827,
         type: 3}

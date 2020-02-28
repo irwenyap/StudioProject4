@@ -9,7 +9,8 @@ public class WeaponBase : MonoBehaviourPun {
         BOW,
         PISTOL,
         STICK,
-        DAGGER
+        DAGGER,
+        NONE
     }
 
     public bool isAttached = false;
