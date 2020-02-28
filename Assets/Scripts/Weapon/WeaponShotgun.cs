@@ -30,6 +30,12 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
             cooldown01 += Time.deltaTime;
             cooldown02 += Time.deltaTime;
 
+            // Rotation
+            if (transform.parent.eulerAngles.z > 0 && transform.parent.eulerAngles.z < 180)
+                weaponSprite.flipY = true;
+            else
+                weaponSprite.flipY = false;
+
             // Shooting
             if (photonView.IsMine) {
                 if (Input.GetMouseButton(0))
@@ -87,6 +93,7 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
             }
             else if (isInUseM2 && cooldown02 >= m2Cooldown) {
                 StartCoroutine("SuccessionShot");
+                cooldown02 = 0f;
             }
         }
     }
@@ -140,7 +147,6 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
             }
             yield return new WaitForSeconds(0.5f);
         }
-        cooldown02 = 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
