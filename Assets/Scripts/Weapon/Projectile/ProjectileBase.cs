@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour {
-    public int damage;
+    protected int damage = 0;
 
-    
+    public void SetDamage(int _damage) { damage = _damage; }
+    public int GetDamage() { return damage; }
 }

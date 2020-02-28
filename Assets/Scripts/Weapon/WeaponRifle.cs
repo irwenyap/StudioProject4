@@ -1,7 +1,7 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class WeaponBow : WeaponBase, IPunObservable {
+public class WeaponRifle : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
@@ -50,20 +50,13 @@ public class WeaponBow : WeaponBase, IPunObservable {
                 Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
                 rb.velocity = rb.gameObject.transform.up * 10;
                 cooldown01 = 0f;
-            } else if (isInUseM2 && cooldown02 >= m2Cooldown) {
-                Vector3 euler1 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 30);
-                Vector3 euler2 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 30);
+            }
+            else if (isInUseM2 && cooldown02 >= m2Cooldown) {
 
-                Rigidbody2D rb1 = Instantiate(projectile, transform.position, Quaternion.Euler(euler1));
-                Rigidbody2D rb2 = Instantiate(projectile, transform.position, transform.parent.rotation);
-                Rigidbody2D rb3 = Instantiate(projectile, transform.position, Quaternion.Euler(euler2));
-                rb1.velocity = rb1.gameObject.transform.up * 10;
-                rb2.velocity = rb2.gameObject.transform.up * 10;
-                rb3.velocity = rb3.gameObject.transform.up * 10;
-                cooldown02 = 0f;
             }
         }
     }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
@@ -85,12 +78,11 @@ public class WeaponBow : WeaponBase, IPunObservable {
 
             // Setting the item's transform when attached
             transform.localPosition = new Vector3(0, 6, 0);
-            transform.localScale = new Vector3(30, 30, 1);
+            transform.localScale = new Vector3(20, 20, 1);
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
-
 }

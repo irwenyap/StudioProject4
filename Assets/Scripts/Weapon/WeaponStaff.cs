@@ -1,7 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-
 public class WeaponStaff : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
 
@@ -20,13 +19,13 @@ public class WeaponStaff : WeaponBase, IPunObservable {
         // Base Stats
         attackDamage = 10;
         attackSpeed = 3f;
-        deltaTime = attackSpeed;
+        cooldown01 = attackSpeed;
     }
 
     void Update() {
         if (isAttached) {
             photonView.enabled = true;
-            deltaTime += Time.deltaTime;
+            cooldown01 += Time.deltaTime;
 
             // Direction
             //if ()
@@ -34,28 +33,28 @@ public class WeaponStaff : WeaponBase, IPunObservable {
             // Shooting
             if (photonView.IsMine) {
                 if (Input.GetMouseButton(0))
-                    isInUse = true;
+                    isInUseM1 = true;
                 else
-                    isInUse = false;
+                    isInUseM1 = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
                     DropWeapon();
             }
 
-            if (isInUse && deltaTime >= attackSpeed) {
+            if (isInUseM1 && cooldown01 >= attackSpeed) {
                 Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
                 rb.velocity = rb.gameObject.transform.up * 10;
-                deltaTime = 0f;
+                cooldown01 = 0f;
             }
         }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
-            stream.SendNext(isInUse);
+            stream.SendNext(isInUseM1);
         }
         else {
-            isInUse = (bool)stream.ReceiveNext();
+            isInUseM1 = (bool)stream.ReceiveNext();
         }
     }
 
