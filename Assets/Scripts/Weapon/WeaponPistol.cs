@@ -22,12 +22,13 @@ public class WeaponPistol : WeaponBase, IPunObservable {
         m2Cooldown = 1f;
         cooldown01 = attackSpeed;
         cooldown02 = m2Cooldown;
+
+        // Weapon Type
+        weaponType = WEAPON_TYPE.PISTOL;
     }
 
     void Update() {
         if (isAttached) {
-            if (!photonView.enabled)
-                photonView.enabled = true;
             cooldown01 += Time.deltaTime;
             cooldown02 += Time.deltaTime;
 
@@ -88,6 +89,7 @@ public class WeaponPistol : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
+            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }

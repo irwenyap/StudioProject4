@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     // UI
     public PlayerHealthBar healthBar;
-
+    public WeaponBase currentWeapon;
     public Skills m1;
     public Skills m2;
 

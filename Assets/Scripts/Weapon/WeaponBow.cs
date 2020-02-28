@@ -21,6 +21,9 @@ public class WeaponBow : WeaponBase, IPunObservable {
         m2Cooldown = 1f;
         cooldown01 = attackSpeed;
         cooldown02 = m2Cooldown;
+
+        // Weapon Type
+        weaponType = WEAPON_TYPE.BOW;
     }
 
     void Update() {

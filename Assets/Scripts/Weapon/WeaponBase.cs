@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WeaponBase : MonoBehaviourPun {
+
+    public enum WEAPON_TYPE {
+        BOW,
+        PISTOL,
+        STICK,
+        DAGGER
+    }
+
     public bool isAttached = false;
 
     protected bool isInUseM1 = false;
@@ -13,6 +21,8 @@ public class WeaponBase : MonoBehaviourPun {
     protected Rigidbody2D myRigidbody;
     [SerializeField]
     protected PlayerController myPlayer;
+
+    public WEAPON_TYPE weaponType;
 
     // Stats
     public int attackDamage = 0;

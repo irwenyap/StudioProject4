@@ -17,18 +17,22 @@ public class WeaponRifle : WeaponBase, IPunObservable {
 
         // Base Stats
         attackDamage = 10;
-        attackSpeed = 3f;
+        attackSpeed = 0.3f;
         m2Cooldown = 1f;
         cooldown01 = attackSpeed;
         cooldown02 = m2Cooldown;
     }
 
     void Update() {
-        if (isAttached) {
-            if (!photonView.enabled)
-                photonView.enabled = true;
+        if (isAttached) {               
             cooldown01 += Time.deltaTime;
             cooldown02 += Time.deltaTime;
+
+            // Rotation
+            if (transform.parent.eulerAngles.z > 0 && transform.parent.eulerAngles.z < 180)
+                weaponSprite.flipY = true;
+            else
+                weaponSprite.flipY = false;
 
             // Shooting
             if (photonView.IsMine) {
@@ -82,6 +86,7 @@ public class WeaponRifle : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
+            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
