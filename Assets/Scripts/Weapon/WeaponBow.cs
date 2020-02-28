@@ -28,8 +28,6 @@ public class WeaponBow : WeaponBase, IPunObservable {
 
     void Update() {
         if (isAttached) {
-            if (!photonView.enabled)
-                photonView.enabled = true;
             cooldown01 += Time.deltaTime;
             cooldown02 += Time.deltaTime;
 
@@ -92,6 +90,7 @@ public class WeaponBow : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
+            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
