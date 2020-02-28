@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class WeaponBase : MonoBehaviourPun {
     public bool isAttached = false;
 
-    protected bool isInUse = false;
+    protected bool isInUseM1 = false;
+    protected bool isInUseM2 = false;
     //protected bool isThrown = false;
     protected BoxCollider2D myCollider;
     protected Rigidbody2D myRigidbody;
@@ -16,7 +17,9 @@ public class WeaponBase : MonoBehaviourPun {
     // Stats
     public int attackDamage = 0;
     public float attackSpeed = 0f;
-    protected float deltaTime = 0f;
+    protected float cooldown01 = 0f;
+    protected float cooldown02 = 0f;
+    protected float m2Cooldown = 0f;
 
     // UI
     public Sprite imageM1;
@@ -56,6 +59,7 @@ public class WeaponBase : MonoBehaviourPun {
     [PunRPC]
     protected void RPC_ThrowWeapon(Vector2 dir) {
         Debug.LogError("THROWING DETECTED");
+        myPlayer.weaponIsOnHand = false;
         Throw(dir * 250);
     }
 
