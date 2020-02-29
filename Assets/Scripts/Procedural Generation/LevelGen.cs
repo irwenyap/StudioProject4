@@ -717,8 +717,7 @@ public class LevelGen : MonoBehaviour {
     }
 
     public void FillRooms() {
-        path.Pop();
-        while (path.Count != 1)
+        while (path.Count != 0)
         {
             GameObject temp = path.Peek();
             switch (temp.GetComponentInChildren<RoomType>().type)

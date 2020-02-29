@@ -6,7 +6,7 @@ public class OnTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject SpawnTrigger;
-    public GameObject Spawner;
+    public GameObject[] Spawner;
     void Start()
     {
         
@@ -16,7 +16,8 @@ public class OnTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Spawner.SetActive(true);
+            foreach (GameObject go in Spawner)
+            go.SetActive(true);
             SpawnTrigger.SetActive(false);
             Debug.Log("calledwhentrigggers");
         }

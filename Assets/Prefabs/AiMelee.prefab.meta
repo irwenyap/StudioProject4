@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Art/Animation/ProjectileEffects/Missile Explosion.meta
+guid: 64d91dd58303395468f503599321d128
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 74ed9ab1367234b40bcc444739a4116c
 PrefabImporter:
+>>>>>>> Ajon-Merge:Assets/Prefabs/AiMelee.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
