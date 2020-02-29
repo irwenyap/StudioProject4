@@ -22,12 +22,12 @@ public class MeleeLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float meleeAtackrange = control.GetComponent<AiMeleeControl>().MeleeAttackRange;
+        float meleeAtackrange = control.GetComponent<AiMeleeControl>().AttackRange;
         float distance = Vector2.Distance(this.transform.position ,player.transform.position);
         timeBtwAttack += Time.deltaTime;
         if(timeBtwAttack >= attackSpeed && distance < meleeAtackrange)
         {
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(this.transform.position , control.GetComponent<AiMeleeControl>().MeleeAttackRange);
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(this.transform.position , control.GetComponent<AiMeleeControl>().AttackRange);
             timeBtwAttack = 0;
             //player.GetComponent<PlayerController>().TakeDamage(damage);
            

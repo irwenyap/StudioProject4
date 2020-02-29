@@ -3,28 +3,29 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class AiRangedControl: MonoBehaviour
+public class AiRangedControl: AiBaseClass
 {
     // Public
-    public float moveSpeed = 0.01f;
    // public Rigidbody2D bullet;
     // Private
     Rigidbody2D myRigidbody;
     Vector2 moveAxis;
     Vector2 mousePos;
-    float health = 100f;
-    public Transform player;
     float shootBT = 0f;
-    float RangeDetectRange = 7;
-    float RangeAttackRange = 4;
-    float DecisionChangeTimer;
-    float DecisionValue;
-    float AiDirection;
+    
+
     private Animator animator;
 
 
     private void Start()
     {
+        health = 100;
+        moveSpeed = 0.01f;
+        DetectRange = 7;
+        AiDirection = 0;
+        DecisionChangeTimer = 0;
+        DecisionValue = 0;
+        AttackRange = 4;
 
         //myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -35,7 +36,7 @@ public class AiRangedControl: MonoBehaviour
         shootBT += Time.deltaTime;
         DecisionChangeTimer += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
-        if (DistanceAiNPlayer > RangeDetectRange)
+        if (DistanceAiNPlayer > DetectRange)
         {
             animator.SetBool("RangedChase", false);
             animator.SetBool("RangedAttack", false);
@@ -78,7 +79,7 @@ public class AiRangedControl: MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
          //   }
         }
-        if (DistanceAiNPlayer < RangeDetectRange)
+        if (DistanceAiNPlayer < DetectRange)
         {
             animator.SetBool("RangedChase", true);
             animator.SetBool("RangedAttack", false);
@@ -90,13 +91,13 @@ public class AiRangedControl: MonoBehaviour
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        if (DistanceAiNPlayer < RangeDetectRange && DistanceAiNPlayer > RangeAttackRange)
+        if (DistanceAiNPlayer < DetectRange && DistanceAiNPlayer > AttackRange)
         {
             animator.SetBool("RangedChase", true);
             animator.SetBool("RangedAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
         }
-        else if (DistanceAiNPlayer < RangeAttackRange)
+        else if (DistanceAiNPlayer < AttackRange)
         {
             animator.SetBool("RangedChase", false);
             animator.SetBool("RangedAttack", true);

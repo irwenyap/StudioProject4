@@ -251,7 +251,15 @@ MonoBehaviour:
   weaponIsOnHand: 0
   weaponLocation: {fileID: 0}
   dir: {x: 0, y: 0}
+  maxHealth: 0
   currHealth: 0
+  critChance: 0
+  critDamage: 0
+  armour: 2
+  moveSpeed: 5
+  attackSpeed: 0
+  attack: 0
+  currency: 0
   healthBar: {fileID: 0}
   currentWeapon: {fileID: 0}
   m1: {fileID: 0}
