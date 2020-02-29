@@ -19,8 +19,6 @@ public class PlayerControllerMiah : MonoBehaviour
 
     public Vector2 dir;
 
-    int weaponType;
-
     // Stats
     int maxHealth;
     public int currHealth;

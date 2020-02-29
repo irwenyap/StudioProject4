@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public int currency;
     // UI
     public PlayerHealthBar healthBar;
-
+    public WeaponBase currentWeapon;
     public Skills m1;
     public Skills m2;
 
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
         //weaponLocation.position = transform.position + (1f * dir.normalized);
         //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            if (weaponIsOnHand) {
-                weaponIsOnHand = false;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Q)) {
+        //    if (weaponIsOnHand) {
+        //        weaponIsOnHand = false;
+        //    }
+        //}
 
         //if (Input.GetKeyDown(KeyCode.Q)) {
             //if (weaponOnHand != null) {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == 11) {
-            TakeDamage(collision.gameObject.GetComponent<ProjectileBase>().damage);
+            TakeDamage(collision.gameObject.GetComponent<ProjectileBase>().GetDamage());
         }
     }
 
