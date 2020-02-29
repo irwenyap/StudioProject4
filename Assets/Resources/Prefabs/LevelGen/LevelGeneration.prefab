@@ -60,9 +60,8 @@ MonoBehaviour:
   stopGeneration: 0
   room:
     serializedVersion: 2
-    m_Bits: 4194304
+    m_Bits: 8192
   I_roomcounter: 0
   I_maxRoom: 0
   downcounter: 0
-  seed: 0
   renderMap: {fileID: 0}
