@@ -1985,7 +1985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnTrigger: {fileID: 0}
-  Spawner: []
+  Spawner:
+  - {fileID: 6452973725923128773}
 --- !u!1 &7810226804633815703
 GameObject:
   m_ObjectHideFlags: 0

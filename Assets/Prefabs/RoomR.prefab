@@ -4466,7 +4466,7 @@ GameObject:
   - component: {fileID: 9101073015719363034}
   - component: {fileID: 3220381548139539281}
   - component: {fileID: 8455552957660213093}
-  m_Layer: 22
+  m_Layer: 13
   m_Name: RoomR
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}

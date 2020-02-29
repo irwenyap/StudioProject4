@@ -8,7 +8,7 @@ public class CurrencyDrop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        amount = Random.Range(10, 20);
+        amount = Random.Range(100, 200);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
