@@ -1,11 +1,9 @@
-﻿using Photon.Pun;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AI_Imp : AI_Base, IPunObservable {
+public class AI_Imp : AI_Base {
     private CircleCollider2D myCircleCollider;
 
     void Start() {
-
         myCircleCollider = GetComponent<CircleCollider2D>();
 
         // Stats
@@ -20,18 +18,16 @@ public class AI_Imp : AI_Base, IPunObservable {
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(transform.position);
-        } else {
-            transform.position = (Vector3)stream.ReceiveNext();
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.layer == 8) {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.layer == 8) {
             target = collision.transform;
-            Destroy(myCircleCollider);
+            myCircleCollider.enabled = false;
         }
     }
 }

@@ -27,6 +27,7 @@ public class InstantiatePlayer : MonoBehaviour
 
         camera.GetComponent<CameraController>().SetTarget(player.transform);
 
+        Random.InitState(5);
         //PhotonNetwork.InstantiateSceneObject("Prefabs/Pistol", new Vector3(0, 10, 0), Quaternion.identity);
     }
 }

@@ -54,5 +54,4 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             //myPlayer.weaponIsOnHand = (bool)stream.ReceiveNext();
         }
     }
-
 }

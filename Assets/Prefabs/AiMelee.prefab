@@ -469,8 +469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70989fc6a2323be40a3fa0db2ced4536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.01
-  health: 100
   player: {fileID: 0}
   DetectRange: 0
   AiDirection: 0
@@ -528,7 +526,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000000029802322, y: -0.000000014901161}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
 --- !u!114 &4888997872750125764
@@ -543,8 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c9fcd95b3cfc64cbefa157734a3934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  health: 0
   player: {fileID: 0}
   DetectRange: 0
   AiDirection: 0

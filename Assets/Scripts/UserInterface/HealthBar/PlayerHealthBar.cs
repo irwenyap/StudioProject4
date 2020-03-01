@@ -39,11 +39,6 @@ public class PlayerHealthBar : MonoBehaviour
                 damagedFillImage.fillAmount -= shrinkSpeed * Time.deltaTime;
             }
         }
-
-        //if (Input.GetKeyDown(KeyCode.A))
-        //    healthSystem.Damage(10);
-        //if (Input.GetKeyDown(KeyCode.S))
-        //    healthSystem.Heal(10);
     }
 
     private void HealthSystem_OnDamaged(object sender, System.EventArgs e)

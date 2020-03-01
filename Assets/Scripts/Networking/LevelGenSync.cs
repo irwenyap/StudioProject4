@@ -11,6 +11,8 @@ public class LevelGenSync : MonoBehaviourPun {
     private int seed = 0;
 
     void Start() {
+        myLevelGen.Initialise(5);
+
         if (PhotonNetwork.IsMasterClient) {
             seed = Random.Range(1, 1000);
             base.photonView.RPC("RPC_InitLevelGen", RpcTarget.AllBuffered, seed);
@@ -19,7 +21,7 @@ public class LevelGenSync : MonoBehaviourPun {
 
     [PunRPC]
     private void RPC_InitLevelGen(int seed) {
-        //Debug.LogError(seed);
-        myLevelGen.Initialise(seed);
+        Debug.LogError(seed);
+        myLevelGen.Initialise(5);
     }
 }

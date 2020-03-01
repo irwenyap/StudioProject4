@@ -34,7 +34,6 @@ public class LevelGen : MonoBehaviour {
     public int downcounter;
     [SerializeField]
     GameObject renderMap;
-
     //private void Awake()
     //{
     //    path = new Stack<GameObject>();
@@ -53,9 +52,10 @@ public class LevelGen : MonoBehaviour {
     //}
 
     public void Initialise(int seed) {
+        Debug.LogError(seed);
         path = new Stack<GameObject>();
         S_GO_roomData = new Stack<GameObject>();
-        Random.InitState(seed);
+        //Random.InitState(seed);
         SpawnDirection = Random.Range(0, 4);
 
         StartGeneration();
