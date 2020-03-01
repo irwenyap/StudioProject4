@@ -78,8 +78,18 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int dmg) {
         int netDamage = dmg - armour;
+        if (gameObject.TryGetComponent(out Earth_LegendaryItem earth))
+        {
+            if(earth.CurrShieldValue> 0)
+            earth.CurrShieldValue -= netDamage;
+            else
+            currHealth -= netDamage;
+        }
+        else
+        { 
         currHealth -= netDamage;
         healthBar.healthSystem.Damage(netDamage);
+        }
     }
 
     private void FixedUpdate() {

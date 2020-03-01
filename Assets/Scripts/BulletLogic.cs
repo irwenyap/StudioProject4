@@ -8,6 +8,7 @@ public class BulletLogic : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         //gameObject.SetActive(false);
         _ = Instantiate(explodeEffect, gameObject.transform.position, Quaternion.identity);
+        
         Destroy(gameObject);
     }
 }
