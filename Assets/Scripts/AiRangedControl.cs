@@ -19,7 +19,7 @@ public class AiRangedControl: AiBaseClass
 
     private void Start()
     {
-        health = 100;
+        //health = 100;
         moveSpeed = 0.01f;
         DetectRange = 7;
         AiDirection = 0;

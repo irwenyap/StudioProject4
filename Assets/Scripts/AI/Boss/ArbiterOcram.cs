@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArbiterOcram : AIBase {
+public class ArbiterOcram : AI_Base {
 
 
     private Animator myAnimator;

@@ -2,29 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiMeleeControl : AiBaseClass
-{ 
-    
+public class AiMeleeControl : AiBaseClass {
     private Animator animator;
-  
-
-    
-
 
     Vector2 moveAxis;
-    Vector2 mousePos;
-
-
-    
+    Vector2 mousePos;    
 
     float shootBT = 0f;
 
-
-
     // Start is called before the first frame update
-    void Start()
-    {
-        health = 100;
+    void Start() {
+        maxHealth = 100;
+        currHealth = maxHealth;
         moveSpeed = 0.01f;
         DetectRange = 7;
         AiDirection = 0;
@@ -36,9 +25,7 @@ public class AiMeleeControl : AiBaseClass
     }
    
     // Update is called once per frame
-    void Update()
-    {
-
+    void Update() {
         DecisionChangeTimer += Time.deltaTime;
         shootBT += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
@@ -48,13 +35,11 @@ public class AiMeleeControl : AiBaseClass
             animator.SetBool("Attack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
-            if (DecisionChangeTimer >3)
-            {
+            if (DecisionChangeTimer >3) {
                 DecisionValue = Random.Range(0, 7);
                 DecisionChangeTimer = 0;
             }
-            switch(DecisionValue)
-            {
+            switch(DecisionValue) {
                 case 0:
                     AiDirection = 45;
                     break;
