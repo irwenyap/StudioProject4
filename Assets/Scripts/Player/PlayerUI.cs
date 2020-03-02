@@ -8,7 +8,6 @@ public class PlayerUI : MonoBehaviour {
 
     // UI
     public PlayerHealthBar healthBar;
-    public WeaponBase currentWeapon;
     public Skills m1;
     public Skills m2;
     public Text coins;
