@@ -2,16 +2,13 @@
 using UnityEngine;
 
 
-public class WeaponStick : WeaponBase, IPunObservable {
+public class WeaponStick : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
     private Transform projDir;
 
     void Start() {
-        // Disable Photon View on ground to save bandwidth
-        photonView.enabled = false;
-
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -19,49 +16,54 @@ public class WeaponStick : WeaponBase, IPunObservable {
 
         // Base Stats
         attackDamage = 10;
-        attackSpeed = 3f;
+        attackSpeed = 0.3f;
+        m2Cooldown = 1f;
         cooldown01 = attackSpeed;
+        cooldown02 = m2Cooldown;
     }
 
     void Update() {
         if (isAttached) {
-            photonView.enabled = true;
             cooldown01 += Time.deltaTime;
+            cooldown02 += Time.deltaTime;
+
             // Direction
-            //if ()
 
             // Shooting
             if (photonView.IsMine) {
                 if (Input.GetMouseButton(0))
                     isInUseM1 = true;
-                else
+                else if (!Input.GetMouseButton(0))
                     isInUseM1 = false;
 
+                if (Input.GetMouseButton(1))
+                    isInUseM2 = true;
+                else if (!Input.GetMouseButton(1))
+                    isInUseM2 = false;
+
                 if (Input.GetKeyDown(KeyCode.Q))
-                    DropWeapon();
+                    photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
+
             }
 
             if (isInUseM1 && cooldown01 >= attackSpeed) {
-                Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
-                rb.velocity = rb.gameObject.transform.up * 10;
+                photonView.RPC("RPC_ShootMouseOne", RpcTarget.All);
                 cooldown01 = 0f;
+            }
+            else if (isInUseM2 && cooldown02 >= m2Cooldown) {
+                photonView.RPC("RPC_ShootMouseTwo", RpcTarget.All);
+                cooldown02 = 0f;
             }
         }
     }
 
-    //public void WeaponDropped() {
-    //    //myPlayer.weaponOnHand = null;
-    //    //myPlayer = null;
-    //    //projDir = null;
-    //}
+    public override void ShootMouseOne() {
+        Rigidbody2D rb = Instantiate(projectile, transform.position, projDir.rotation);
+        rb.velocity = rb.gameObject.transform.up * 10;
+    }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(isInUseM1);
-        }
-        else {
-            isInUseM1 = (bool)stream.ReceiveNext();
-        }
+    public override void ShootMouseTwo() {
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -76,7 +78,8 @@ public class WeaponStick : WeaponBase, IPunObservable {
             transform.localPosition = new Vector3(-0.5f, 0.1f, -1);
             transform.localScale = new Vector3(3, 3, 1);
             transform.localRotation = Quaternion.Euler(0, 0, 45);
-            //isAttached = true;
+
+            // Photon ownership transfer on pickup
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }

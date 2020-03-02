@@ -147,10 +147,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 1663064379116476349}
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttached: 0
   myPlayer: {fileID: 0}
-  weaponType: 0
+  weaponType: 4
   attackDamage: 0
   attackSpeed: 0
   imageM1: {fileID: 0}

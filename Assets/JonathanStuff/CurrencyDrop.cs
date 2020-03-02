@@ -15,7 +15,7 @@ public class CurrencyDrop : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().currency += amount;
+            collision.gameObject.GetComponent<PlayerController>().CollectCoins(amount);
             Destroy(gameObject);
         }
     }

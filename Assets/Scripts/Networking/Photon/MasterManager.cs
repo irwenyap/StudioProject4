@@ -44,9 +44,9 @@ public class MasterManager : SingletonScriptableObject<MasterManager>
             }
         }
 
-        for (int i = 0; i < Instance._networkedPrefabs.Count; ++i) {
-            UnityEngine.Debug.Log(Instance._networkedPrefabs[i].Prefab.name + ", " + Instance._networkedPrefabs[i].Path);
-        }
+        //for (int i = 0; i < Instance._networkedPrefabs.Count; ++i) {
+        //    UnityEngine.Debug.Log(Instance._networkedPrefabs[i].Prefab.name + ", " + Instance._networkedPrefabs[i].Path);
+        //}
 #endif
     }
 }

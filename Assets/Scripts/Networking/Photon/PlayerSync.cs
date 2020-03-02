@@ -11,7 +11,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     private Animator myAnimator;
     private PlayerController myPlayer;
     [SerializeField]
-    private Transform weaponLocationData;
+    private Transform weaponLocationData = null;
 
     public MonoBehaviour[] localScripts;
     

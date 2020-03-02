@@ -1,29 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ChestScript : MonoBehaviour
-{
-    public KeyCode key;
-    public GameObject item;
-    public LayerMask player;
-    public int amountToOpen;
-    private CircleCollider2D CCdetection;
+public class ChestScript : MonoBehaviour {
+    //public LayerMask player;
+    //private CircleCollider2D CCdetection;
+    [SerializeField]
+    private GameObject item;
+    [SerializeField]
+    private int cost;
+    //private void Awake() {
+    //    CCdetection = gameObject.GetComponent<CircleCollider2D>();
+    //}
 
-    private void Awake() {
-        CCdetection = gameObject.GetComponent<CircleCollider2D>();
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKeyDown(key) && collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<PlayerController>().currency >= amountToOpen)
-        {
-            collision.gameObject.GetComponent<PlayerController>().currency -= amountToOpen;
-            item.SetActive(true);
-            Destroy(gameObject);
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.gameObject.layer == 8) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                if (collision.gameObject.GetComponent<PlayerController>().coins >= cost) {
+                    collision.gameObject.GetComponent<PlayerController>().UseCoins(cost);
+                    item.SetActive(true);
+                    Destroy(gameObject);
+                }
+            }
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
     }
 }

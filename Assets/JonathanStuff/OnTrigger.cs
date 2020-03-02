@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class OnTrigger : MonoBehaviour
-{
+public class OnTrigger : MonoBehaviour {
     public GameObject[] Spawner;
-   
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.layer == 8) {
+            GetComponent<Collider2D>().enabled = false;
             foreach (GameObject go in Spawner) {
-                go.SetActive(true);
+                if (go)
+                    go.SetActive(true);
             }
             Destroy(gameObject);
-            Debug.Log("calledwhentrigggers");
         }
     }
 }

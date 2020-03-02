@@ -37,5 +37,8 @@ MonoBehaviour:
   - RPC_ChangeReadyState
   - RPC_ThrowWeapon
   - RPC_InitLevelGen
+  - RPC_SpawnTriggered
+  - RPC_ShootMouseOne
+  - RPC_ShootMouseTwo
   DisableAutoOpenWizard: 1
   ShowSettings: 0

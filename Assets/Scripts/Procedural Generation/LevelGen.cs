@@ -52,10 +52,10 @@ public class LevelGen : MonoBehaviour {
     //}
 
     public void Initialise(int seed) {
-        Debug.LogError(seed);
+        //Debug.LogError(seed);
         path = new Stack<GameObject>();
         S_GO_roomData = new Stack<GameObject>();
-        //Random.InitState(seed);
+        Random.InitState(seed);
         SpawnDirection = Random.Range(0, 4);
 
         StartGeneration();
@@ -68,6 +68,7 @@ public class LevelGen : MonoBehaviour {
         GameObject instance = (GameObject)Instantiate(G_C_A_rooms[0], transform.position, Quaternion.identity);
         instance.transform.parent = transform.parent;
         I_direction = Random.Range(1, 6);
+
         path.Push(instance);
         S_GO_roomData.Push(instance);
 
@@ -89,6 +90,7 @@ public class LevelGen : MonoBehaviour {
     }
 
     private void Update() {
+
         if (F_timeBtwnRoom <= 0 && !stopGeneration)
         {
             V_Move();
@@ -601,7 +603,6 @@ public class LevelGen : MonoBehaviour {
 
                     // Vector2 V2_newPos = new Vector2(transform.position.x , transform.position.y - F_roomDIfferent);
                     transform.position = V2_newPos;
-
 
                     int randroom = Random.Range(1, G_C_A_rooms.Length);
                     if (randroom == 2)

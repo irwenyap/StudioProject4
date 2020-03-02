@@ -1,33 +1,48 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InstantiatePlayer : MonoBehaviour
-{
+public class InstantiatePlayer : MonoBehaviourPun {
     [SerializeField]
     private GameObject _prefab = null;
 
-    [SerializeField]
-    private Camera camera = null;
-    [SerializeField]
-    private PlayerHealthBar healthBar = null;
-    [SerializeField]
-    private Skills m1UI = null;
-    [SerializeField]
-    private Skills m2UI = null;
+    public Camera camera = null;
+    public PlayerHealthBar healthBar = null;
+    public Skills m1UI = null;
+    public Skills m2UI = null;
 
+    public Text coins;
+    public Text gems;
+    public Text shards;
 
+    public LevelGen[] dungeons;
 
     private void Awake() {
         //MasterManager.NetworkInstantiate(_prefab, transform.position, Quaternion.identity);
         GameObject player = PhotonNetwork.Instantiate("Prefabs/Player", transform.position, Quaternion.identity);
-        PlayerController myPC = player.GetComponent<PlayerController>();
-        myPC.healthBar = healthBar;
-        myPC.m1 = m1UI;
-        myPC.m2 = m2UI;
+        PlayerUI myPlayerUI = player.GetComponent<PlayerUI>();
+        myPlayerUI.healthBar = healthBar;
+        myPlayerUI.m1 = m1UI;
+        myPlayerUI.m2 = m2UI;
+        myPlayerUI.coins = coins;
+        myPlayerUI.gems = gems;
+        myPlayerUI.shards = shards;
 
         camera.GetComponent<CameraController>().SetTarget(player.transform);
 
-        Random.InitState(5);
+        if (PhotonNetwork.IsMasterClient) {
+            int seed = Random.Range(1, 1000);
+            Debug.LogError(seed);
+            base.photonView.RPC("RPC_InitLevelGen", RpcTarget.AllBuffered, seed);
+        }
+        //Random.InitState(5);
         //PhotonNetwork.InstantiateSceneObject("Prefabs/Pistol", new Vector3(0, 10, 0), Quaternion.identity);
+    }
+
+    [PunRPC]
+    private void RPC_InitLevelGen(int seed) {
+        for (int i = 0; i < dungeons.Length; ++i) {
+            dungeons[i].Initialise(seed);
+        }
     }
 }

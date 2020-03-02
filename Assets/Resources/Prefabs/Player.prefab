@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4083558149465371963}
   - component: {fileID: 1119018157457649426}
   - component: {fileID: 3947335097050384747}
+  - component: {fileID: -7247238426591135563}
   - component: {fileID: 2009015784921027554}
   - component: {fileID: 4991914314412399521}
   m_Layer: 8
@@ -250,6 +251,7 @@ MonoBehaviour:
   playerName: 
   weaponIsOnHand: 0
   weaponLocation: {fileID: 0}
+  currentWeapon: {fileID: 0}
   dir: {x: 0, y: 0}
   maxHealth: 0
   currHealth: 0
@@ -259,11 +261,28 @@ MonoBehaviour:
   moveSpeed: 5
   attackSpeed: 0
   attack: 0
-  currency: 0
+  coins: 0
+  gems: 0
+  shards: 0
+--- !u!114 &-7247238426591135563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947335097050384756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8149879ecff7534889f595716ad67a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   currentWeapon: {fileID: 0}
   m1: {fileID: 0}
   m2: {fileID: 0}
+  coins: {fileID: 0}
+  gems: {fileID: 0}
+  shards: {fileID: 0}
 --- !u!114 &2009015784921027554
 MonoBehaviour:
   m_ObjectHideFlags: 0

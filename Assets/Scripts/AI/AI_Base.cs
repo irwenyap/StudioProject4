@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AI_Base : MonoBehaviour {
     protected float maxHealth;
-    protected float currHealth;
+    public float currHealth;
     protected float moveSpeed;
 
     public Transform target;

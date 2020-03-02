@@ -1,15 +1,12 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class WeaponBow : WeaponBase, IPunObservable {
+public class WeaponBow : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
 
     void Start() {
-        // Disable Photon View on ground to save bandwidth
-        photonView.enabled = false;
-
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -21,9 +18,6 @@ public class WeaponBow : WeaponBase, IPunObservable {
         m2Cooldown = 1f;
         cooldown01 = attackSpeed;
         cooldown02 = m2Cooldown;
-
-        // Weapon Type
-        weaponType = WEAPON_TYPE.BOW;
     }
 
     void Update() {
@@ -44,37 +38,35 @@ public class WeaponBow : WeaponBase, IPunObservable {
                     isInUseM2 = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
-                    DropWeapon();
+                    photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
             }
 
             if (isInUseM1 && cooldown01 >= attackSpeed) {
-                Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
-                rb.velocity = rb.gameObject.transform.up * 10;
+                photonView.RPC("RPC_ShootMouseOne", RpcTarget.All);
                 cooldown01 = 0f;
-            } else if (isInUseM2 && cooldown02 >= m2Cooldown) {
-                Vector3 euler1 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 30);
-                Vector3 euler2 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 30);
-
-                Rigidbody2D rb1 = Instantiate(projectile, transform.position, Quaternion.Euler(euler1));
-                Rigidbody2D rb2 = Instantiate(projectile, transform.position, transform.parent.rotation);
-                Rigidbody2D rb3 = Instantiate(projectile, transform.position, Quaternion.Euler(euler2));
-                rb1.velocity = rb1.gameObject.transform.up * 10;
-                rb2.velocity = rb2.gameObject.transform.up * 10;
-                rb3.velocity = rb3.gameObject.transform.up * 10;
+            }
+            else if (isInUseM2 && cooldown02 >= m2Cooldown) {
+                photonView.RPC("RPC_ShootMouseTwo", RpcTarget.All);
                 cooldown02 = 0f;
             }
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(isInUseM1);
-            stream.SendNext(isInUseM2);
-        }
-        else {
-            isInUseM1 = (bool)stream.ReceiveNext();
-            isInUseM2 = (bool)stream.ReceiveNext();
-        }
+    public override void ShootMouseOne() {
+        Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
+        rb.velocity = rb.gameObject.transform.up * 10;
+    }
+
+    public override void ShootMouseTwo() {
+        Vector3 euler1 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 30);
+        Vector3 euler2 = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 30);
+
+        Rigidbody2D rb1 = Instantiate(projectile, transform.position, Quaternion.Euler(euler1));
+        Rigidbody2D rb2 = Instantiate(projectile, transform.position, transform.parent.rotation);
+        Rigidbody2D rb3 = Instantiate(projectile, transform.position, Quaternion.Euler(euler2));
+        rb1.velocity = rb1.gameObject.transform.up * 10;
+        rb2.velocity = rb2.gameObject.transform.up * 10;
+        rb3.velocity = rb3.gameObject.transform.up * 10;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -90,7 +82,6 @@ public class WeaponBow : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
-            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }
