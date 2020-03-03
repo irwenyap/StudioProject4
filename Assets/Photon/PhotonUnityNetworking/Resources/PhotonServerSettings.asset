@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 28ca4543-5716-458f-a255-23af99be035a
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -28,6 +28,13 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList: []
+  RpcList:
+  - ClickRpc
+  - DestroyRpc
+  - RPC_ChangeReadyState
+  - RPC_InitLevelGen
+  - RPC_ThrowWeapon
+  - RPC_ShootMouseOne
+  - RPC_ShootMouseTwo
   DisableAutoOpenWizard: 1
   ShowSettings: 0

@@ -14,6 +14,9 @@ public class AiBaseClass : MonoBehaviour {
     public float DecisionChangeTimer;
     public float DecisionValue;
     public float AttackRange;
+    public int damage;
+    public float attackSpeed;
+    public float attackTimer;
 
     void Start() {
         moveSpeed = 0.01f;
@@ -22,6 +25,9 @@ public class AiBaseClass : MonoBehaviour {
         DecisionChangeTimer = 0;
         DecisionValue = 0;
         AttackRange = 4;
+        attackSpeed = 2;
+        damage = 2;
+        attackTimer = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

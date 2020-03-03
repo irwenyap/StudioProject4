@@ -2,46 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiMeleeControl : AiBaseClass {
+public class FireBoss : AiBaseClass
+{
     private Animator animator;
-
-    Vector2 moveAxis;
-    Vector2 mousePos;    
-
-    float shootBT = 0f;
-
+    public Transform weapon1;
+    public Transform weapon2;
+    public Transform weapon3;
+    public Rigidbody2D bullet;
     // Start is called before the first frame update
-    void Start() {
-        maxHealth = 100;
+    void Start()
+    {
+        maxHealth = 750;
         currHealth = maxHealth;
         moveSpeed = 0.01f;
-        DetectRange = 7;
+        DetectRange = 10;
         AiDirection = 0;
         DecisionChangeTimer = 0;
         DecisionValue = 0;
-        AttackRange = 2;
-        damage = 5;
+        AttackRange = 7;
+        damage = 20;
         attackSpeed = 2;
-        animator = GetComponent<Animator>();
+
+
     }
-   
-    // Update is called once per frame
-    void Update() 
+    private void Awake()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
+    void Update()
     {
         DecisionChangeTimer += Time.deltaTime;
-        shootBT += Time.deltaTime;
+        attackTimer += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
         if (DistanceAiNPlayer > DetectRange)//Idle
         {
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", false);
+            animator.SetBool("FireBossChase", false);
+            animator.SetBool("FireBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
-            if (DecisionChangeTimer >3) {
+            if (DecisionChangeTimer > 3)
+            {
                 DecisionValue = Random.Range(0, 7);
                 DecisionChangeTimer = 0;
             }
-            switch(DecisionValue) {
+            switch (DecisionValue)
+            {
                 case 0:
                     AiDirection = 45;
                     break;
@@ -71,8 +76,8 @@ public class AiMeleeControl : AiBaseClass {
         }
         if (DistanceAiNPlayer < DetectRange)//Chase
         {
-            animator.SetBool("Chase", true);
-            animator.SetBool("Attack", false);
+            animator.SetBool("FireBossChase", true);
+            animator.SetBool("FireBossAttack", false);
             Vector2 direction = player.position - this.transform.position;
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
@@ -85,15 +90,27 @@ public class AiMeleeControl : AiBaseClass {
         }
         if (DistanceAiNPlayer < DetectRange && DistanceAiNPlayer > AttackRange)//Chase
         {
-            animator.SetBool("Chase", true);
-            animator.SetBool("Attack", false);
+            animator.SetBool("FireBossChase", true);
+            animator.SetBool("FireBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
         }
         else if (DistanceAiNPlayer < AttackRange)//Attack
         {
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", true);
+            if (attackTimer >= attackSpeed)
+            {
+                Rigidbody2D rb = Instantiate(bullet, weapon1.transform.position + (weapon1.transform.up * 0.5f), weapon1.transform.rotation);
+                rb.velocity = rb.gameObject.transform.up * 10;
+
+                Rigidbody2D rb1 = Instantiate(bullet, weapon2.transform.position + (weapon2.transform.up * 0.5f), weapon2.transform.rotation);
+                rb1.velocity = rb1.gameObject.transform.up * 10;
+
+                Rigidbody2D rb2 = Instantiate(bullet, weapon3.transform.position + (weapon3.transform.up * 0.5f), weapon3.transform.rotation);
+                rb2.velocity = rb2.gameObject.transform.up * 10;
+                attackTimer = 0f;
+            }
+            animator.SetBool("FireBossChase", false);
+            animator.SetBool("FireBossAttack", true);
         }
     }
 }

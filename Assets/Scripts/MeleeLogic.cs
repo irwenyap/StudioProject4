@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeLogic : MonoBehaviour
+public class MeleeLogic : AiBaseClass
 {
     // Start is called before the first frame update
     private float timeBtwAttack;
-    public float attackSpeed;
-    public Transform player;
+   
     public Transform control;
     public LayerMask whatIsEnemies;
-    public float damage;
 
     void Start()
     {
@@ -28,8 +26,8 @@ public class MeleeLogic : MonoBehaviour
         if(timeBtwAttack >= attackSpeed && distance < meleeAtackrange)
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(this.transform.position , control.GetComponent<AiMeleeControl>().AttackRange);
+            player.GetComponent<PlayerController>().TakeDamage(damage);
             timeBtwAttack = 0;
-            //player.GetComponent<PlayerController>().TakeDamage(damage);
            
 
         }

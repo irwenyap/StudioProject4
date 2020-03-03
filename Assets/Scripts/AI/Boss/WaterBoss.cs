@@ -2,46 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiMeleeControl : AiBaseClass {
+public class WaterBoss : AiBaseClass
+{
     private Animator animator;
-
-    Vector2 moveAxis;
-    Vector2 mousePos;    
-
-    float shootBT = 0f;
-
+    private float HealCooldown;
+    private float CooldownTimer;
     // Start is called before the first frame update
-    void Start() {
-        maxHealth = 100;
+    void Start()
+    {
+        maxHealth = 900;
         currHealth = maxHealth;
         moveSpeed = 0.01f;
-        DetectRange = 7;
+        DetectRange = 10;
         AiDirection = 0;
         DecisionChangeTimer = 0;
         DecisionValue = 0;
         AttackRange = 2;
-        damage = 5;
+        damage = 10;
         attackSpeed = 2;
-        animator = GetComponent<Animator>();
+        HealCooldown = 10;
+        CooldownTimer = 0;
     }
-   
-    // Update is called once per frame
-    void Update() 
+    private void Awake()
     {
+        animator = gameObject.GetComponent<Animator>();
+    }
+    void Update()
+    {
+        CooldownTimer += Time.deltaTime;
+        if(CooldownTimer > HealCooldown && currHealth < 825)
+        {
+            this.currHealth += 75;
+        }
         DecisionChangeTimer += Time.deltaTime;
-        shootBT += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
         if (DistanceAiNPlayer > DetectRange)//Idle
         {
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", false);
+            animator.SetBool("WaterBossChase", false);
+            animator.SetBool("WaterBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
-            if (DecisionChangeTimer >3) {
+            if (DecisionChangeTimer > 3)
+            {
                 DecisionValue = Random.Range(0, 7);
                 DecisionChangeTimer = 0;
             }
-            switch(DecisionValue) {
+            switch (DecisionValue)
+            {
                 case 0:
                     AiDirection = 45;
                     break;
@@ -71,8 +78,8 @@ public class AiMeleeControl : AiBaseClass {
         }
         if (DistanceAiNPlayer < DetectRange)//Chase
         {
-            animator.SetBool("Chase", true);
-            animator.SetBool("Attack", false);
+            animator.SetBool("WaterBossChase", true);
+            animator.SetBool("WaterBossAttack", false);
             Vector2 direction = player.position - this.transform.position;
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
@@ -85,15 +92,15 @@ public class AiMeleeControl : AiBaseClass {
         }
         if (DistanceAiNPlayer < DetectRange && DistanceAiNPlayer > AttackRange)//Chase
         {
-            animator.SetBool("Chase", true);
-            animator.SetBool("Attack", false);
+            animator.SetBool("WaterBossChase", true);
+            animator.SetBool("WaterBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
         }
         else if (DistanceAiNPlayer < AttackRange)//Attack
         {
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", true);
+            animator.SetBool("WaterBossChase", false);
+            animator.SetBool("WaterBossAttack", true);
         }
     }
 }

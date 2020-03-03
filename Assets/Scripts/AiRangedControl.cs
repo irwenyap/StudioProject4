@@ -15,7 +15,8 @@ public class AiRangedControl: AiBaseClass
     
 
     private Animator animator;
-
+    public Transform weapon;
+    public Rigidbody2D bullet;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class AiRangedControl: AiBaseClass
         DecisionChangeTimer = 0;
         DecisionValue = 0;
         AttackRange = 4;
+
 
         //myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -74,10 +76,7 @@ public class AiRangedControl: AiBaseClass
                     AiDirection = 360;
                     break;
             }
-          //  if (transform.rotation != Quaternion.AngleAxis(AiDirection, Vector3.forward))
-          //  {
-                transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
-         //   }
+            transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
         }
         if (DistanceAiNPlayer < DetectRange)
         {
@@ -99,6 +98,17 @@ public class AiRangedControl: AiBaseClass
         }
         else if (DistanceAiNPlayer < AttackRange)
         {
+            if (shootBT >= 0.5f )
+            {
+                //Rigidbody2D rb = Instantiate(bullet, transform.position + (transform.up * 0.5f), transform.rotation);
+                //rb.velocity = rb.gameObject.transform.right * 10;
+                //shootBT = 0f;
+                Rigidbody2D rb = Instantiate(bullet, weapon.transform.position + (weapon.transform.up * 0.5f), weapon.transform.rotation);
+                rb.velocity = rb.gameObject.transform.up * 10;
+                shootBT = 0f;
+               
+              
+            }
             animator.SetBool("RangedChase", false);
             animator.SetBool("RangedAttack", true);
 
@@ -112,8 +122,8 @@ public class AiRangedControl: AiBaseClass
 
     }
 
-    private void FixedUpdate()
-    {
-        myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
-    }
+    //private void FixedUpdate()
+    //{
+    //    myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
+    //}
 }
