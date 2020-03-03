@@ -10,6 +10,8 @@ public class AI_Base : MonoBehaviour {
     public Transform target;
     public AI_Healthbar healthbar;
 
+    public int weight;
+
     public void TakeDamage(float damage) {
         currHealth -= damage;
         healthbar.SetHealth(currHealth / maxHealth);

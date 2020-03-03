@@ -10,6 +10,7 @@ public class AI_Imp : AI_Base {
         maxHealth = 50f;
         currHealth = maxHealth;
         moveSpeed = 5f;
+        weight = 1;
     }
 
     void Update() {

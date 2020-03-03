@@ -6,13 +6,21 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject[] Objects;
     bool SpawnerActivate = false;
-
-    void Start() {
-        for (int i = 0; i <= 2; ++i) {
+    int weight;
+    void Start()
+    {
+        weight = 0;
+        while (weight < DifficultySystem.MaxWeight)
+        {
             int rand = Random.Range(0, Objects.Length);
-            if (Objects[rand] != null) {
+            if (Objects[rand] != null)
+            {
                 //_ = PhotonNetwork.Instantiate("Prefabs/AIs/Imp", transform.position, Quaternion.identity);
-                _ = PhotonNetwork.InstantiateSceneObject("Prefabs/AIs/Imp", transform.position, Quaternion.identity);
+                GameObject instance = PhotonNetwork.InstantiateSceneObject("Prefabs/AIs/Imp", transform.position, Quaternion.identity);
+                //This is for Quantity
+                weight++;
+                //This is for Ai class Weight
+                weight += instance.GetComponent<AI_Base>().weight;
             }
         }
         Destroy(gameObject);

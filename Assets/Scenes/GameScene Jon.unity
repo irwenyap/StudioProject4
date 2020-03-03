@@ -5512,6 +5512,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286041680676892482, guid: ad5de95e90a377c4fb9775a0a556d9c5,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad5de95e90a377c4fb9775a0a556d9c5, type: 3}
 --- !u!4 &582427758 stripped
@@ -5696,8 +5701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f428eb93590fdc9438a77022fa740a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currHealth: 0
   target: {fileID: 0}
   healthbar: {fileID: 0}
+  weight: 0
 --- !u!95 &709428554
 Animator:
   serializedVersion: 3
@@ -5965,6 +5972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286041680676892482, guid: ad5de95e90a377c4fb9775a0a556d9c5,
+        type: 3}
+      propertyPath: viewIdField
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad5de95e90a377c4fb9775a0a556d9c5, type: 3}
@@ -6253,6 +6265,10 @@ MonoBehaviour:
   healthBar: {fileID: 1625214765}
   m1UI: {fileID: 210765998}
   m2UI: {fileID: 210765997}
+  coins: {fileID: 0}
+  gems: {fileID: 0}
+  shards: {fileID: 0}
+  dungeons: []
 --- !u!4 &869274096
 Transform:
   m_ObjectHideFlags: 0
@@ -12083,6 +12099,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286041680676892482, guid: ad5de95e90a377c4fb9775a0a556d9c5,
+        type: 3}
+      propertyPath: viewIdField
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad5de95e90a377c4fb9775a0a556d9c5, type: 3}
 --- !u!4 &1017656765 stripped
@@ -13481,6 +13502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286041680676892482, guid: ad5de95e90a377c4fb9775a0a556d9c5,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad5de95e90a377c4fb9775a0a556d9c5, type: 3}
