@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  currentWeapon: {fileID: 0}
   m1: {fileID: 0}
   m2: {fileID: 0}
   coins: {fileID: 0}
@@ -320,3 +319,4 @@ MonoBehaviour:
   weaponLocationData: {fileID: 1994718030799001043}
   localScripts:
   - {fileID: 3947335097050384747}
+  - {fileID: -7247238426591135563}

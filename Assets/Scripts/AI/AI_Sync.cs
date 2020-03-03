@@ -32,11 +32,11 @@ public class AI_Sync : MonoBehaviourPun, IPunObservable {
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             stream.SendNext(transform.position);
-            stream.SendNext(myAI.currHealth);
+            //stream.SendNext(myAI.currHealth);
         }
         else {
             latestPos = (Vector3)stream.ReceiveNext();
-            myAI.currHealth = (float)stream.ReceiveNext();
+            //myAI.currHealth = (float)stream.ReceiveNext();
         }
     }
 }

@@ -9,7 +9,8 @@ public class SpawnItem : MonoBehaviour {
         int rand = Random.Range(0, Objects.Length);
         if (Objects[rand] != null) {
             //GameObject instance = (GameObject)Instantiate(Objects[rand], transform.position, Quaternion.identity);
-            _ = PhotonNetwork.InstantiateSceneObject(Objects[rand].GetComponent<WeaponBase>().prefabPath, transform.position, Quaternion.identity);
+            if (PhotonNetwork.IsMasterClient)
+                _ = PhotonNetwork.Instantiate(Objects[rand].GetComponent<WeaponBase>().prefabPath, transform.position, Quaternion.identity);
         }
     }
 }
