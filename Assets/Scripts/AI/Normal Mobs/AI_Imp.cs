@@ -20,14 +20,14 @@ public class AI_Imp : AI_Base {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == 8) {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
+            //collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.layer == 8) {
             target = collision.transform;
-            myCircleCollider.enabled = false;
+            myCircleCollider.enabled = false; // error
         }
     }
 }

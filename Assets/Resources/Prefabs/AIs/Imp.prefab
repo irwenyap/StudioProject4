@@ -186,6 +186,7 @@ MonoBehaviour:
   currHealth: 0
   target: {fileID: 0}
   healthbar: {fileID: 8090733310102425756}
+  prefabPath: Prefabs/AIs/Imp
 --- !u!114 &2401828937175381372
 MonoBehaviour:
   m_ObjectHideFlags: 0
