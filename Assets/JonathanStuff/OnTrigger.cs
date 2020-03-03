@@ -11,6 +11,7 @@ public class OnTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             foreach (GameObject go in Spawner) {
+                if(go != null)
                 go.SetActive(true);
             }
             Destroy(gameObject);

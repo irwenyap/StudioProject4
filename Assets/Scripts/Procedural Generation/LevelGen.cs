@@ -188,7 +188,7 @@ public class LevelGen : MonoBehaviour {
                 {
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 1)
@@ -326,7 +326,7 @@ public class LevelGen : MonoBehaviour {
                 {
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 2)
@@ -397,7 +397,7 @@ public class LevelGen : MonoBehaviour {
                 {
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 2)
@@ -464,7 +464,7 @@ public class LevelGen : MonoBehaviour {
                 
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 1)
@@ -561,7 +561,7 @@ public class LevelGen : MonoBehaviour {
                 {
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 2)
@@ -628,7 +628,7 @@ public class LevelGen : MonoBehaviour {
 
                     ++downcounter;
                     Detection = Physics2D.OverlapCircle(transform.position, 1, room);
-                    if (Detection != null)
+                    if (Detection != null && Detection.name != "RoomCheck")
                     {
 
                         if (Detection.GetComponentInChildren<RoomType>().type != 1)
