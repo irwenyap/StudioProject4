@@ -151,7 +151,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
 --- !u!95 &2401828937175381362
 Animator:
   serializedVersion: 3
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e09ae9733770cf4f93bd80b7a31c6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currHealth: 0
   target: {fileID: 0}
   healthbar: {fileID: 8090733310102425756}
 --- !u!114 &2401828937175381372
@@ -336,8 +337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 32.407, y: 15.376}
+  m_AnchoredPosition: {x: 0.02, y: -0.32}
+  m_SizeDelta: {x: 1.465, y: 0.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3615648372244685559
 Canvas:
@@ -582,7 +583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.048, y: -0.65}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.7319, y: 0.1098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8090733310102425756

@@ -147,10 +147,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 1487060940325987200}
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttached: 0
   myPlayer: {fileID: 0}
+  weaponType: 6
+  prefabPath: Prefabs/Weapons/Stick
   attackDamage: 0
   attackSpeed: 0
   imageM1: {fileID: 21300000, guid: b8f288640b9bd63418904fb265acfc43, type: 3}

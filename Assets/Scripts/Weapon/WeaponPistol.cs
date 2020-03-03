@@ -51,7 +51,7 @@ public class WeaponPistol : WeaponBase, IPunObservable {
                     isInUseM2 = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
-                    DropWeapon();
+                    photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
             }
 
             if (isInUseM1 && cooldown01 >= attackSpeed) {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5206450377187099920}
   - component: {fileID: 4454064938333821697}
   - component: {fileID: 4671738530855077015}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -70,5 +70,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6dbe0c733e951a4fa8e12e00ecc937d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTrigger: {fileID: 0}
   Spawner: []

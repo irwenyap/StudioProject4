@@ -2,15 +2,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class WeaponShotgun : WeaponBase, IPunObservable {
+public class WeaponShotgun : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
 
     void Start() {
-        // Disable Photon View on ground to save bandwidth
-        photonView.enabled = false;
-
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -18,13 +15,12 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
 
         // Base Stats
         attackDamage = 10;
-        attackSpeed = 3f;
+        attackSpeed = 1f;
         m2Cooldown = 1f;
         cooldown01 = attackSpeed;
         cooldown02 = m2Cooldown;
     }
 
-    // Update is called once per frame
     void Update() {
         if (isAttached) {
             cooldown01 += Time.deltaTime;
@@ -49,64 +45,59 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
                     isInUseM2 = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
-                    DropWeapon();
+                    photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
             }
 
             if (isInUseM1 && cooldown01 >= attackSpeed) {
-                //for (int i = 0; i < 5; ++i) {
-                //}
-                {
-                    Vector3 pos = new Vector2(transform.position.x - 0.3f, transform.position.y + 0.2f);
-                    Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 5);
-                    Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
-                    rb.velocity = rb.gameObject.transform.up * 10;
-                }
-
-                {
-                    Vector3 pos = new Vector2(transform.position.x, transform.position.y);
-                    Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z);
-                    Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
-                    rb.velocity = rb.gameObject.transform.up * 10;
-                }
-
-                {
-                    Vector3 pos = new Vector2(transform.position.x, transform.position.y - 0.3f);
-                    Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 4);
-                    Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
-                    rb.velocity = rb.gameObject.transform.up * 10;
-                }
-
-                {
-                    Vector3 pos = new Vector2(transform.position.x - 0.1f, transform.position.y);
-                    Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 2);
-                    Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
-                    rb.velocity = rb.gameObject.transform.up * 10;
-                }
-
-                {
-                    Vector3 pos = new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f);
-                    Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 3);
-                    Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
-                    rb.velocity = rb.gameObject.transform.up * 10;
-                }
+                photonView.RPC("RPC_ShootMouseOne", RpcTarget.All);
                 cooldown01 = 0f;
             }
             else if (isInUseM2 && cooldown02 >= m2Cooldown) {
-                StartCoroutine("SuccessionShot");
+                photonView.RPC("RPC_ShootMouseTwo", RpcTarget.All);
                 cooldown02 = 0f;
             }
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(isInUseM1);
-            stream.SendNext(isInUseM2);
+    public override void ShootMouseOne() {
+        {
+            Vector3 pos = new Vector2(transform.position.x - 0.3f, transform.position.y + 0.2f);
+            Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 5);
+            Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
+            rb.velocity = rb.gameObject.transform.up * 10;
         }
-        else {
-            isInUseM1 = (bool)stream.ReceiveNext();
-            isInUseM2 = (bool)stream.ReceiveNext();
+
+        {
+            Vector3 pos = new Vector2(transform.position.x, transform.position.y);
+            Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z);
+            Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
+            rb.velocity = rb.gameObject.transform.up * 10;
         }
+
+        {
+            Vector3 pos = new Vector2(transform.position.x, transform.position.y - 0.3f);
+            Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z + 4);
+            Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
+            rb.velocity = rb.gameObject.transform.up * 10;
+        }
+
+        {
+            Vector3 pos = new Vector2(transform.position.x - 0.1f, transform.position.y);
+            Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 2);
+            Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
+            rb.velocity = rb.gameObject.transform.up * 10;
+        }
+
+        {
+            Vector3 pos = new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f);
+            Vector3 euler = new Vector3(transform.parent.rotation.eulerAngles.x, transform.parent.rotation.eulerAngles.y, transform.parent.rotation.eulerAngles.z - 3);
+            Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
+            rb.velocity = rb.gameObject.transform.up * 10;
+        }
+    }
+
+    public override void ShootMouseTwo() {
+        StartCoroutine("SuccessionShot");
     }
 
     IEnumerator SuccessionShot() {
@@ -162,7 +153,6 @@ public class WeaponShotgun : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
-            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }

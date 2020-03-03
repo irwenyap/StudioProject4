@@ -147,10 +147,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: -5699037961192819371}
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -168,9 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttached: 0
   myPlayer: {fileID: 0}
+  weaponType: 9
+  prefabPath: Prefabs/Weapons/Dagger
   attackDamage: 0
   attackSpeed: 0
   imageM1: {fileID: 21300000, guid: 7d2b9c08eb6302d439d87ee5134ef239, type: 3}
   imageM2: {fileID: 21300000, guid: bbe3835a54b96f64eb9ab019719e3464, type: 3}
   projectile: {fileID: 0}
-  weaponSprite: {fileID: 0}

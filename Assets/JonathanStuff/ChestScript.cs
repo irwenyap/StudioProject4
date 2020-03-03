@@ -1,29 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Pun;
 using UnityEngine;
 
-public class ChestScript : MonoBehaviour
-{
-    public KeyCode key;
-    public GameObject item;
-    public LayerMask player;
-    public int amountToOpen;
-    private CircleCollider2D CCdetection;
-
-    private void Awake() {
-        CCdetection = gameObject.GetComponent<CircleCollider2D>();
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKeyDown(key) && collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<PlayerController>().currency >= amountToOpen)
-        {
-            collision.gameObject.GetComponent<PlayerController>().currency -= amountToOpen;
-            item.SetActive(true);
-            Destroy(gameObject);
+public class ChestScript : ChestBase {
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.gameObject.layer == 8) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                if (collision.gameObject.GetComponent<PlayerController>().coins >= cost) {
+                    collision.gameObject.GetComponent<PlayerController>().UseCoins(cost);
+                    photonView.RPC("RPC_OpenChest", RpcTarget.All);
+                }
+            }
         }
     }
-
-    // Update is called once per frame
-    void Update() {
-    }
-}
+}   

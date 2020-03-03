@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public bool weaponIsOnHand = false;
     public Transform weaponLocation;
+    public WeaponBase currentWeapon;
 
     public Vector2 dir;
 
@@ -23,23 +24,32 @@ public class PlayerController : MonoBehaviour
     public int currHealth;
     public float critChance;
     public float critDamage;
-    public int armour = 2;
+    public int armour;
     public float moveSpeed = 5f;
     public float attackSpeed;
     public float attack;
-    public int currency;
-    // UI
-    public PlayerHealthBar healthBar;
-    public WeaponBase currentWeapon;
-    public Skills m1;
-    public Skills m2;
+    public int coins;
+    public int gems;
+    public int shards;
+
+    // Player UI
+    private PlayerUI myPlayerUI;
+
 
     private void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         weaponLocation = transform.Find("Weapon");
-		//currentHealth = maxHealth;
+        myPlayerUI = GetComponent<PlayerUI>();
         //healthBar.SetMaxHealth(maxHealth);
+
+        maxHealth = 100;
+        currHealth = maxHealth;
+        critChance = 5f;
+        critDamage = 10f;
+        armour = 2;
+        moveSpeed = 5f;
+        coins = 50;
     }
 
     private void Update() {
@@ -78,18 +88,25 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int dmg) {
         int netDamage = dmg - armour;
-        if (gameObject.TryGetComponent(out Earth_LegendaryItem earth))
-        {
+        if (gameObject.TryGetComponent(out Earth_LegendaryItem earth)) {
             if(earth.CurrShieldValue> 0)
             earth.CurrShieldValue -= netDamage;
             else
             currHealth -= netDamage;
+        } else { 
+            currHealth -= netDamage;
+            myPlayerUI.healthBar.healthSystem.Damage(netDamage);
         }
-        else
-        { 
-        currHealth -= netDamage;
-        healthBar.healthSystem.Damage(netDamage);
-        }
+    }
+
+    public void CollectCoins(int _coins) {
+        coins += _coins;
+        myPlayerUI.coins.text = coins.ToString();
+    }
+
+    public void UseCoins(int _coins) {
+        coins -= _coins;
+        myPlayerUI.coins.text = coins.ToString();
     }
 
     private void FixedUpdate() {
@@ -99,13 +116,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == 11) {
             TakeDamage(collision.gameObject.GetComponent<ProjectileBase>().GetDamage());
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Weapon") {
-            m1.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM1;
-            m2.imageSkill.sprite = collision.gameObject.GetComponent<WeaponBase>().imageM2;
         }
     }
 }

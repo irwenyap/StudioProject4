@@ -1,15 +1,12 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class WeaponRifle : WeaponBase, IPunObservable {
+public class WeaponRifle : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
 
     void Start() {
-        // Disable Photon View on ground to save bandwidth
-        photonView.enabled = false;
-
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -47,30 +44,27 @@ public class WeaponRifle : WeaponBase, IPunObservable {
                     isInUseM2 = false;
 
                 if (Input.GetKeyDown(KeyCode.Q))
-                    DropWeapon();
+                    photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
             }
 
             if (isInUseM1 && cooldown01 >= attackSpeed) {
-                Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
-                rb.velocity = rb.gameObject.transform.up * 10;
+                photonView.RPC("RPC_ShootMouseOne", RpcTarget.All);
                 cooldown01 = 0f;
             }
             else if (isInUseM2 && cooldown02 >= m2Cooldown) {
-
+                photonView.RPC("RPC_ShootMouseTwo", RpcTarget.All);
+                cooldown02 = 0f;
             }
         }
     }
 
+    public override void ShootMouseOne() {
+        Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
+        rb.velocity = rb.gameObject.transform.up * 10;
+    }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            stream.SendNext(isInUseM1);
-            stream.SendNext(isInUseM2);
-        }
-        else {
-            isInUseM1 = (bool)stream.ReceiveNext();
-            isInUseM2 = (bool)stream.ReceiveNext();
-        }
+    public override void ShootMouseTwo() {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -86,7 +80,6 @@ public class WeaponRifle : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
-            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }

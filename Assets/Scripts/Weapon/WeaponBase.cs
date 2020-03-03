@@ -7,9 +7,17 @@ public class WeaponBase : MonoBehaviourPun {
 
     public enum WEAPON_TYPE {
         BOW,
+        LASERBOW,
+        CROSSBOW,
         PISTOL,
+        RIFLE,
+        SHOTGUN,
         STICK,
+        ORB,
+        BOOK,
         DAGGER,
+        SCYTHE,
+        SWORD,
         NONE
     }
 
@@ -24,6 +32,9 @@ public class WeaponBase : MonoBehaviourPun {
     protected PlayerController myPlayer;
 
     public WEAPON_TYPE weaponType;
+
+    // Photon Instantiation Path
+    public string prefabPath;
 
     // Stats
     public int attackDamage = 0;
@@ -67,14 +78,23 @@ public class WeaponBase : MonoBehaviourPun {
         }
     }
 
+    public virtual void ShootMouseOne() { }
+
     [PunRPC]
-    protected void RPC_ThrowWeapon(Vector2 dir) {
-        Debug.LogError("THROWING DETECTED");
-        myPlayer.weaponIsOnHand = false;
-        Throw(dir * 250);
+    protected void RPC_ShootMouseOne() {
+        ShootMouseOne();
     }
 
-    protected void DropWeapon() {
-        base.photonView.RPC("RPC_ThrowWeapon", RpcTarget.All, GetComponentInParent<PlayerController>().dir.normalized);
+    public virtual void ShootMouseTwo() { }
+
+    [PunRPC]
+    protected void RPC_ShootMouseTwo() {
+        ShootMouseTwo();
+    }
+
+    [PunRPC]
+    protected void RPC_ThrowWeapon(Vector2 dir) {
+        myPlayer.weaponIsOnHand = false;
+        Throw(dir * 250);
     }
 }

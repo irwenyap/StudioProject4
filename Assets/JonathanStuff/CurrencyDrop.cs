@@ -1,27 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Pun;
 using UnityEngine;
 
-public class CurrencyDrop : MonoBehaviour
-{
+public class CurrencyDrop : MonoBehaviourPun {
     public int amount;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    void Start() {
         amount = Random.Range(100, 200);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<PlayerController>().currency += amount;
+        if(collision.gameObject.tag == "Player") {
+            if (collision.gameObject.GetComponent<PlayerController>().enabled)
+                collision.gameObject.GetComponent<PlayerController>().CollectCoins(amount);
             Destroy(gameObject);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

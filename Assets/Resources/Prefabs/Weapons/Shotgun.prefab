@@ -118,7 +118,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 0}
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttached: 0
   myPlayer: {fileID: 0}
-  weaponType: 0
+  weaponType: 5
   attackDamage: 0
   attackSpeed: 0
   imageM1: {fileID: 0}
   imageM2: {fileID: 0}
-  projectile: {fileID: 6035270169765992634, guid: 7e36932678600c348bc12ea0f25c9ae5,
+  projectile: {fileID: 845603087501256684, guid: 6b36beb4ed4515c4dae0320d33a68c47,
     type: 3}
