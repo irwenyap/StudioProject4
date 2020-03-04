@@ -6,9 +6,13 @@ public class AI_Base : MonoBehaviour {
     protected float maxHealth;
     public float currHealth;
     protected float moveSpeed;
+    protected int damage;
 
     public Transform target;
     public AI_Healthbar healthbar;
+
+    public string prefabPath;
+    public int weight;
 
     public void TakeDamage(float damage) {
         currHealth -= damage;

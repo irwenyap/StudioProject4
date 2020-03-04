@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ArbiterOcram : AI_Base {
-
-
     private Animator myAnimator;
 
     void Start() {
