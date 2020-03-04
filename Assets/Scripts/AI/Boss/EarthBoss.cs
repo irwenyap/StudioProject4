@@ -1,47 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-public class AiRangedControl: AiBaseClass
+public class EarthBoss  : AiBaseClass
 {
-    // Public
-   // public Rigidbody2D bullet;
-    // Private
-    Rigidbody2D myRigidbody;
-    Vector2 moveAxis;
-    Vector2 mousePos;
-    float shootBT = 0f;
-    
-
+    public Transform weapon1;
+    public Transform weapon2;
     private Animator animator;
-    public Transform weapon;
     public Rigidbody2D bullet;
-
-    private void Start()
+    private bool defence;
+    // Start is called before the first frame update
+    void Start()
     {
-        //health = 100;
+        maxHealth = 1200;
+        currHealth = maxHealth;
         moveSpeed = 0.01f;
-        DetectRange = 7;
+        DetectRange = 10;
         AiDirection = 0;
         DecisionChangeTimer = 0;
         DecisionValue = 0;
-        AttackRange = 4;
-
-
-        //myRigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        AttackRange = 6;
+        damage = 49;
+        attackSpeed = 5;
+        defence = true;
     }
-
-    private void Update()
+    private void Awake()
     {
-        shootBT += Time.deltaTime;
+        animator = gameObject.GetComponent<Animator>();
+    }
+    void Update()
+    {
+        attackTimer += Time.deltaTime;
         DecisionChangeTimer += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
-        if (DistanceAiNPlayer > DetectRange)
+        if (DistanceAiNPlayer > DetectRange)//Idle
         {
-            animator.SetBool("RangedChase", false);
-            animator.SetBool("RangedAttack", false);
+            animator.SetBool("EarthBossChase", false);
+            animator.SetBool("EarthBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
 
             if (DecisionChangeTimer > 3)
@@ -78,10 +73,10 @@ public class AiRangedControl: AiBaseClass
             }
             transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
         }
-        if (DistanceAiNPlayer < DetectRange)
+        if (DistanceAiNPlayer < DetectRange)//Chase
         {
-            animator.SetBool("RangedChase", true);
-            animator.SetBool("RangedAttack", false);
+            animator.SetBool("EarthBossChase", true);
+            animator.SetBool("EarthBossAttack", false);
             Vector2 direction = player.position - this.transform.position;
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
@@ -89,41 +84,38 @@ public class AiRangedControl: AiBaseClass
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
         }
-        if (DistanceAiNPlayer < DetectRange && DistanceAiNPlayer > AttackRange)
+        if (DistanceAiNPlayer < DetectRange && DistanceAiNPlayer > AttackRange)//Chase
         {
-            animator.SetBool("RangedChase", true);
-            animator.SetBool("RangedAttack", false);
+            animator.SetBool("EarthBossChase", true);
+            animator.SetBool("EarthBossAttack", false);
             this.transform.Translate(moveSpeed, 0, 0);
+
         }
-        else if (DistanceAiNPlayer < AttackRange)
+        else if (DistanceAiNPlayer < AttackRange)//Attack
         {
-            if (shootBT >= 0.5f )
+            animator.SetBool("EarthBossChase", false);
+            animator.SetBool("EarthBossAttack", true);
+            if (attackTimer >= attackSpeed)
             {
-                //Rigidbody2D rb = Instantiate(bullet, transform.position + (transform.up * 0.5f), transform.rotation);
-                //rb.velocity = rb.gameObject.transform.right * 10;
-                //shootBT = 0f;
-                Rigidbody2D rb = Instantiate(bullet, weapon.transform.position + (weapon.transform.up * 0.5f), weapon.transform.rotation);
+                Rigidbody2D rb = Instantiate(bullet, weapon1.transform.position + (weapon1.transform.up * 0.5f), weapon1.transform.rotation);
                 rb.velocity = rb.gameObject.transform.up * 10;
-                shootBT = 0f;
-               
-              
-            }
-            animator.SetBool("RangedChase", false);
-            animator.SetBool("RangedAttack", true);
 
+                Rigidbody2D rb1 = Instantiate(bullet, weapon2.transform.position + (weapon2.transform.up * 0.5f), weapon2.transform.rotation);
+                rb1.velocity = rb1.gameObject.transform.up * 10;
+
+                attackTimer = 0f;
+            }
         }
 
-        // Cursor Follow
-        //mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.z, Camera.main.transform.position.z - transform.position.z));
-        //transform.LookAt(mousePos);
-        //var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        if (defence == true && currHealth < 500)
+        {
+            currHealth += 500;
+            defence = false;
 
+        }
 
     }
-
-    //private void FixedUpdate()
-    //{
-    //    myRigidbody.MovePosition(myRigidbody.position + moveAxis * moveSpeed * Time.deltaTime);
-    //}
 }

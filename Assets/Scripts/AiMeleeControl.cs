@@ -24,7 +24,8 @@ public class AiMeleeControl : AI_Base {
         DecisionChangeTimer = 0;
         DecisionValue = 0;
         AttackRange = 2;
-
+        damage = 5;
+        attackSpeed = 2;
         animator = GetComponent<Animator>();
     }
 
