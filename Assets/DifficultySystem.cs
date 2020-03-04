@@ -10,15 +10,13 @@ public class DifficultySystem : MonoBehaviour
    static public int roomentered;
     [SerializeField]
     static public int MaxWeight;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         difficulty = 1;
         roomentered = 0;
         MaxWeight = 4;
-
+        
     }
-
     // Update is called once per frame
     void Update()
     {
