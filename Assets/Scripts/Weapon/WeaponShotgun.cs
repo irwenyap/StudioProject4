@@ -144,6 +144,7 @@ public class WeaponShotgun : WeaponBase {
         if (!collision.GetComponent<PlayerController>().weaponIsOnHand) {
             myPlayer = collision.GetComponent<PlayerController>();
             myPlayer.weaponIsOnHand = true;
+            myPlayer.currentWeapon = this;
             transform.SetParent(collision.transform.Find("Weapon"));
             WeaponOnHand(true);
 

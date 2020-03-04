@@ -8,7 +8,7 @@ public class AiMeleeControl : AI_Base {
     private CircleCollider2D myCircleCollider;
 
     Vector2 moveAxis;
-    Vector2 mousePos;    
+    Vector2 mousePos;
 
     float AiDirection;
     float DecisionChangeTimer;
@@ -31,8 +31,10 @@ public class AiMeleeControl : AI_Base {
     // Update is called once per frame
     void Update() {
         //DecisionChangeTimer += Time.deltaTime;
-        if (!target) //Idle
+        if (target) //Idle
         {
+            transform.position = Vector3.MoveTowards(transform.position, target.position, 2 * Time.deltaTime);
+
             //animator.SetBool("Chase", false);
             //animator.SetBool("Attack", false);
 
@@ -68,19 +70,18 @@ public class AiMeleeControl : AI_Base {
             //}
             //transform.rotation = Quaternion.AngleAxis(AiDirection, Vector3.forward);
         }
-        else {
-            //animator.SetBool("Chase", true);
-            //animator.SetBool("Attack", false);
-            //Vector2 direction = target.position - transform.position;
+        //else {
+        //animator.SetBool("Chase", true);
+        //animator.SetBool("Attack", false);
+        //Vector2 direction = target.position - transform.position;
 
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.1f);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.1f);
 
-            //var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            //transform.Translate(moveSpeed, 0, 0);
-            transform.position = Vector3.MoveTowards(transform.position, target.position, 2 * Time.deltaTime);
-        }
+        //transform.Translate(moveSpeed, 0, 0);
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

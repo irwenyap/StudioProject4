@@ -38,7 +38,7 @@ Transform:
   - {fileID: 1537004295254545793}
   - {fileID: 1537004294443876764}
   - {fileID: 1537004295036939988}
-  - {fileID: 6322389994962369822}
+  - {fileID: 6322389994962369741}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,8 +162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currHealth: 0
   target: {fileID: 0}
-  healthbar: {fileID: 6322389994962355427}
+  healthbar: {fileID: 6322389994962355417}
   prefabPath: Prefabs/AIs/MeleeAI
+  weight: 0
   myCircleCollider: {fileID: 9076533350446673521}
 --- !u!58 &9076533350446673521
 CircleCollider2D:
@@ -581,13 +582,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5adc08bad24bf8c45bbc22cdb1f388c3, type: 3}
---- !u!224 &6322389994962369822 stripped
+--- !u!224 &6322389994962369741 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}
   m_PrefabInstance: {fileID: 6322389994962364387}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6322389994962355427 stripped
+--- !u!114 &6322389994962355417 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5891234223875934100, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}

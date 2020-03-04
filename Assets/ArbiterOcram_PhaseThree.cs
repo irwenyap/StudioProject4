@@ -2,25 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArbiterOcram_PhaseTwo : StateMachineBehaviour {
+public class ArbiterOcram_PhaseThree : StateMachineBehaviour {
 
     public GameObject shockwave;
-    private ArbiterOcram currAI;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    private Transform currTransform;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        currAI = animator.GetComponent<ArbiterOcram>();
-        _ = Instantiate(shockwave, animator.transform.position, Quaternion.identity);
+        currTransform = animator.transform;
+        StartCoroutine("PhaseShockwave");
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        if (currAI.currHealth < 700) {
-            animator.SetBool("isPhase2", true);
-        }
+
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
     }
@@ -36,4 +32,10 @@ public class ArbiterOcram_PhaseTwo : StateMachineBehaviour {
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+
+    IEnumerator PhaseShockwave() {
+        for (int i = 0; i < 3; ++i) {
+            _ = Instantiate(shockwave, currTransform, Quaternion.identity);
+        }
+    }
 }
