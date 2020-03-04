@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3405894727338800288}
   - component: {fileID: 3405894727338800302}
-  - component: {fileID: 3405894727338800303}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -82,25 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3405894727338800303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405894727338800289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25929317cdf7a24a8a98f125ade14ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  DetectRange: 0
-  AiDirection: 0
-  DecisionChangeTimer: 0
-  DecisionValue: 0
-  AttackRange: 0
-  bullet: {fileID: 3278256724988471833, guid: 0282897705ca0e34eaaeecd10d3f657d, type: 3}
 --- !u!1 &3405894728852241071
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +212,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -275,6 +255,11 @@ MonoBehaviour:
   DecisionChangeTimer: 0
   DecisionValue: 0
   AttackRange: 0
+  damage: 0
+  attackSpeed: 0
+  attackTimer: 0
+  weapon: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!95 &3405894729049268406
 Animator:
   serializedVersion: 3
@@ -328,3 +313,6 @@ MonoBehaviour:
   DecisionChangeTimer: 0
   DecisionValue: 0
   AttackRange: 0
+  damage: 0
+  attackSpeed: 0
+  attackTimer: 0

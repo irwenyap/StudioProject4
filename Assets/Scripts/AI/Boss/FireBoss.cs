@@ -8,7 +8,19 @@ public class FireBoss : AiBaseClass
     public Transform weapon1;
     public Transform weapon2;
     public Transform weapon3;
+
+    //RingOfFire
+    public Transform weapon4;
+    public Transform weapon5;
+    public Transform weapon6;
+    public Transform weapon7;
+    public Transform weapon8;
+    public Transform weapon9;
     public Rigidbody2D bullet;
+    public Rigidbody2D bullet2;
+    private float RingOfFireCooldown;
+    private float RingOfFireCountdown;
+    private float projectileSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +33,8 @@ public class FireBoss : AiBaseClass
         DecisionValue = 0;
         AttackRange = 7;
         damage = 20;
-        attackSpeed = 2;
-
+        attackSpeed = 0.8f;
+        RingOfFireCooldown = 2;
 
     }
     private void Awake()
@@ -31,6 +43,7 @@ public class FireBoss : AiBaseClass
     }
     void Update()
     {
+        RingOfFireCountdown += Time.deltaTime;
         DecisionChangeTimer += Time.deltaTime;
         attackTimer += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
@@ -111,6 +124,53 @@ public class FireBoss : AiBaseClass
             }
             animator.SetBool("FireBossChase", false);
             animator.SetBool("FireBossAttack", true);
+        }
+        if(RingOfFireCountdown > RingOfFireCooldown)
+        {
+            Rigidbody2D rb3 = Instantiate(bullet2, weapon3.transform.position + (weapon3.transform.up * 0.5f), weapon3.transform.rotation);
+            rb3.velocity = rb3.gameObject.transform.up * 10;
+            Rigidbody2D rb31 = Instantiate(bullet2, weapon3.transform.position + (weapon3.transform.up * -0.5f), weapon3.transform.rotation);
+            rb31.velocity = rb31.gameObject.transform.up * -10;
+
+
+            Rigidbody2D rb4 = Instantiate(bullet2, weapon4.transform.position + (weapon4.transform.up * 0.5f), weapon4.transform.rotation);
+            rb4.velocity = rb4.gameObject.transform.up * 10;
+            Rigidbody2D rb41 = Instantiate(bullet2, weapon3.transform.position + (weapon3.transform.up * -0.5f), weapon3.transform.rotation);
+            rb41.velocity = rb41.gameObject.transform.up * -10;
+
+
+            Rigidbody2D rb5 = Instantiate(bullet2, weapon5.transform.position + (weapon5.transform.up * 0.5f), weapon5.transform.rotation);
+            rb5.velocity = rb5.gameObject.transform.up * 10;
+            Rigidbody2D rb51 = Instantiate(bullet2, weapon5.transform.position + (weapon5.transform.up * -0.5f), weapon5.transform.rotation);
+            rb51.velocity = rb51.gameObject.transform.up* -10;
+            
+
+            Rigidbody2D rb6 = Instantiate(bullet2, weapon6.transform.position + (weapon6.transform.up * 0.5f), weapon6.transform.rotation);
+            rb6.velocity = rb6.gameObject.transform.up * 10;
+            Rigidbody2D rb61 = Instantiate(bullet2, weapon6.transform.position + (weapon6.transform.up * -0.5f), weapon6.transform.rotation);
+            rb61.velocity = rb61.gameObject.transform.up * -10;
+
+
+            Rigidbody2D rb7 = Instantiate(bullet2, weapon7.transform.position + (weapon7.transform.up * 0.5f), weapon7.transform.rotation);
+            rb7.velocity = rb7.gameObject.transform.up * 10; 
+            Rigidbody2D rb71 = Instantiate(bullet2, weapon7.transform.position + (weapon7.transform.up * -0.5f), weapon7.transform.rotation);
+            rb71.velocity = rb71.gameObject.transform.up * -10;
+
+
+            Rigidbody2D rb8 = Instantiate(bullet2, weapon8.transform.position + (weapon8.transform.up * 0.5f), weapon8.transform.rotation);
+            rb8.velocity = rb8.gameObject.transform.up * 10;
+            Rigidbody2D rb81 = Instantiate(bullet2, weapon8.transform.position + (weapon8.transform.up * -0.5f), weapon8.transform.rotation);
+            rb81.velocity = rb81.gameObject.transform.up * -10;
+
+
+            Rigidbody2D rb9 = Instantiate(bullet2, weapon9.transform.position + (weapon9.transform.up * 0.5f), weapon9.transform.rotation);
+            rb9.velocity = rb9.gameObject.transform.up * 10; 
+            Rigidbody2D rb91 = Instantiate(bullet2, weapon9.transform.position + (weapon9.transform.up * -0.5f), weapon9.transform.rotation);
+            rb91.velocity = rb91.gameObject.transform.up * -10;
+          
+            RingOfFireCountdown = 0;
+            
+
         }
     }
 }

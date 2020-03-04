@@ -8,11 +8,7 @@ public class AirBoss : AiBaseClass
     public Transform weapon1;
     public Transform weapon2;
     public Transform weapon3;
-    public Transform weapon4;
-    public Transform weapon5;
-    public Transform weapon6;
-    public Transform weapon7;
-    public Transform weapon8;
+
 
     public Rigidbody2D bullet;
 
@@ -114,20 +110,20 @@ public class AirBoss : AiBaseClass
                 Rigidbody2D rb2 = Instantiate(bullet, weapon3.transform.position + (weapon3.transform.up * 0.5f), weapon3.transform.rotation);
                 rb2.velocity = rb2.gameObject.transform.up * 10;
 
-                Rigidbody2D rb3 = Instantiate(bullet, weapon4.transform.position + (weapon4.transform.up * 0.5f), weapon4.transform.rotation);
-                rb3.velocity = rb3.gameObject.transform.up * 10;
+                //Rigidbody2D rb3 = Instantiate(bullet, weapon4.transform.position + (weapon4.transform.up * 0.5f), weapon4.transform.rotation);
+                //rb3.velocity = rb3.gameObject.transform.up * 10;
 
-                Rigidbody2D rb4 = Instantiate(bullet, weapon5.transform.position + (weapon5.transform.up * 0.5f), weapon5.transform.rotation);
-                rb4.velocity = rb4.gameObject.transform.up * 10;
+                //Rigidbody2D rb4 = Instantiate(bullet, weapon5.transform.position + (weapon5.transform.up * 0.5f), weapon5.transform.rotation);
+                //rb4.velocity = rb4.gameObject.transform.up * 10;
 
-                Rigidbody2D rb5 = Instantiate(bullet, weapon6.transform.position + (weapon6.transform.up * 0.5f), weapon6.transform.rotation);
-                rb5.velocity = rb5.gameObject.transform.up * 10;
+                //Rigidbody2D rb5 = Instantiate(bullet, weapon6.transform.position + (weapon6.transform.up * 0.5f), weapon6.transform.rotation);
+                //rb5.velocity = rb5.gameObject.transform.up * 10;
 
-                Rigidbody2D rb6 = Instantiate(bullet, weapon7.transform.position + (weapon7.transform.up * 0.5f), weapon7.transform.rotation);
-                rb6.velocity = rb.gameObject.transform.up * 10;  
+                //Rigidbody2D rb6 = Instantiate(bullet, weapon7.transform.position + (weapon7.transform.up * 0.5f), weapon7.transform.rotation);
+                //rb6.velocity = rb.gameObject.transform.up * 10;  
                 
-                Rigidbody2D rb7 = Instantiate(bullet, weapon8.transform.position + (weapon8.transform.up * 0.5f), weapon8.transform.rotation);
-                rb7.velocity = rb7.gameObject.transform.up * 10;
+                //Rigidbody2D rb7 = Instantiate(bullet, weapon8.transform.position + (weapon8.transform.up * 0.5f), weapon8.transform.rotation);
+                //rb7.velocity = rb7.gameObject.transform.up * 10;
 
 
 

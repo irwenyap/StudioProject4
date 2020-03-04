@@ -102,5 +102,6 @@ public class WaterBoss : AiBaseClass
             animator.SetBool("WaterBossChase", false);
             animator.SetBool("WaterBossAttack", true);
         }
+
     }
 }

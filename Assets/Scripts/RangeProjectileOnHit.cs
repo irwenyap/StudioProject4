@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeProjectileOnHit : AiRangedControl
+public class RangeProjectileOnHit : MonoBehaviour
 {
+    public Transform player;
+    public AiRangedControl RangedAi;
+    private int damage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        RangedAi = GameObject.FindGameObjectWithTag("Rangedai").GetComponentInChildren<AiRangedControl>();
+        damage = RangedAi.damage;
     }
 
     // Update is called once per frame
@@ -20,8 +24,8 @@ public class RangeProjectileOnHit : AiRangedControl
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<PlayerController>().TakeDamage(damage);
-            gameObject.SetActive(false);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            Destroy(gameObject);
 
         }
     }
