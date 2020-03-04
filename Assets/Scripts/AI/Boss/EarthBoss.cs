@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EarthBoss  : AiBaseClass
 {
+    public Transform weapon1;
+    public Transform weapon2;
     private Animator animator;
+    public Rigidbody2D bullet;
+    private bool defence;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +19,10 @@ public class EarthBoss  : AiBaseClass
         AiDirection = 0;
         DecisionChangeTimer = 0;
         DecisionValue = 0;
-        AttackRange = 2;
+        AttackRange = 6;
         damage = 49;
-        attackSpeed = 15;
+        attackSpeed = 5;
+        defence = true;
     }
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class EarthBoss  : AiBaseClass
     }
     void Update()
     {
+        attackTimer += Time.deltaTime;
         DecisionChangeTimer += Time.deltaTime;
         float DistanceAiNPlayer = Vector2.Distance(player.position, this.transform.position);
         if (DistanceAiNPlayer > DetectRange)//Idle
@@ -92,6 +98,24 @@ public class EarthBoss  : AiBaseClass
         {
             animator.SetBool("EarthBossChase", false);
             animator.SetBool("EarthBossAttack", true);
+            if (attackTimer >= attackSpeed)
+            {
+                Rigidbody2D rb = Instantiate(bullet, weapon1.transform.position + (weapon1.transform.up * 0.5f), weapon1.transform.rotation);
+                rb.velocity = rb.gameObject.transform.up * 10;
+
+                Rigidbody2D rb1 = Instantiate(bullet, weapon2.transform.position + (weapon2.transform.up * 0.5f), weapon2.transform.rotation);
+                rb1.velocity = rb1.gameObject.transform.up * 10;
+
+                attackTimer = 0f;
+            }
         }
+
+        if (defence == true && currHealth < 500)
+        {
+            currHealth += 500;
+            defence = false;
+
+        }
+
     }
 }

@@ -24,7 +24,7 @@ public class FireProjectileOnHit : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(20);
             Destroy(gameObject);
             
         }

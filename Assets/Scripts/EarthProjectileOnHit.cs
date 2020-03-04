@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class AirProjectileOnHit : MonoBehaviour
+public class EarthProjectileOnHit : MonoBehaviour
 {
     public Transform player;
-    public AirBoss airboss;
+    public EarthBoss earthboss;
     private int damage;
     private int originSpeed;
     private float speedebuff;
@@ -13,10 +13,10 @@ public class AirProjectileOnHit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        airboss = GameObject.FindGameObjectWithTag("Airboss").GetComponentInChildren<AirBoss>();
-        speedebuff = 3.5f;
+        earthboss = GameObject.FindGameObjectWithTag("Earthboss").GetComponentInChildren<EarthBoss>();
+        speedebuff = 0f;
         debuffOn = false;
-        
+        damage = earthboss.damage;
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class AirProjectileOnHit : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(5);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(49);
             debuffOn = true;
             Destroy(gameObject);
 
