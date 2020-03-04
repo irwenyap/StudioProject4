@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ArbiterOcram_PhaseOne : StateMachineBehaviour {
 
-    private float bt = 0f;
+    private float bt;
     private ArbiterOcram currAI;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        bt = 0f;
         currAI = animator.GetComponent<ArbiterOcram>();
     }
 
@@ -20,14 +21,15 @@ public class ArbiterOcram_PhaseOne : StateMachineBehaviour {
             animator.SetBool("isPhase2", true);
         } else {
             if (bt >= 10f) {
-                animator.SetBool("isPhase1ShardStorm", true);
+                //animator.SetBool("isPhase1ShardStorm", true);
+                animator.SetBool("activateSkullshotStorm", true);
             }
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        bt = 0f;
+        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class WeaponRifle : WeaponBase {
-    public Rigidbody2D projectile;
+    public ProjectileBase projectile;
 
     private SpriteRenderer weaponSprite;
 
@@ -59,8 +59,10 @@ public class WeaponRifle : WeaponBase {
     }
 
     public override void ShootMouseOne() {
-        Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
-        rb.velocity = rb.gameObject.transform.up * 10;
+        ProjectileBase proj = Instantiate(projectile, transform.position, transform.parent.rotation);
+        proj.SetDamage(attackDamage);
+        proj.ShootProjectile();
+        //rb.velocity = rb.gameObject.transform.up * 10;
     }
 
     public override void ShootMouseTwo() {

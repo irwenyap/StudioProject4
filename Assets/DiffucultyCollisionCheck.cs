@@ -13,7 +13,7 @@ public class DiffucultyCollisionCheck : MonoBehaviour
     {
         if(collision.gameObject.tag== "Player")
         {
-            DifficultySystem.roomentered++;
+            DifficultySystem.roomEntered++;
             Destroy(gameObject);
         }
     }

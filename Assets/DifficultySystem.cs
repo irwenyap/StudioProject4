@@ -4,21 +4,21 @@ public class DifficultySystem : MonoBehaviour {
     [SerializeField]
     static public int difficulty;
     [SerializeField]
-    static public int roomentered;
+    static public int roomEntered;
     [SerializeField]
-    static public int MaxWeight;
+    static public int maxWeight;
 
     private void Awake() {
         difficulty = 1;
-        roomentered = 0;
-        MaxWeight = 4;
+        roomEntered = 0;
+        maxWeight = 4;
     }
 
     void Update() {
-        if (roomentered >= 10) {
-            MaxWeight += 20;
+        if (roomEntered >= 10) {
+            maxWeight += 20;
             difficulty++;
-            roomentered = 0;
+            roomEntered = 0;
         }
     }
 }

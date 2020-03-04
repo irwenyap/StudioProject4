@@ -44,10 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objects:
-  - {fileID: 8854603489710706117, guid: 6ab3b1e3aee52b34d9f4f34047317b6c, type: 3}
-  - {fileID: 1909661278748669484, guid: d38e6f9c8ba0d314295ff4d9d0b8e402, type: 3}
-  - {fileID: 4300037054756850479, guid: 3f91f514cb30cf54b887b2eb1d95797e, type: 3}
-  - {fileID: 3454303524344561298, guid: 70c73e27409d05945ad40ca15f41bd35, type: 3}
+  - {fileID: 1180522589669799512, guid: 48f55e4a3079a4f40b8f6546095be356, type: 3}
 --- !u!1 &4771704919880591723
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +57,7 @@ GameObject:
   - component: {fileID: 4771704919880591722}
   - component: {fileID: 4771704919880591720}
   - component: {fileID: 4771704919880591727}
+  - component: {fileID: 1844564909032130935}
   - component: {fileID: 4771704919880591726}
   m_Layer: 20
   m_Name: Chest
@@ -121,7 +119,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d374c104b2b43c5449b430081e3d117e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1175232d0440d9f44a4f4908e974b2d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,6 +172,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.31578946}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!114 &1844564909032130935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771704919880591723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &4771704919880591726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,12 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ebee325801ea04cb3255e8c8c4cd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 101
-  item: {fileID: 0}
-  player:
-    serializedVersion: 2
-    m_Bits: 2097152
-  amountToOpen: 40
+  item: {fileID: 4771704918869010707}
+  cost: 0
+  prefabPath: Prefabs/Chests/Chest_PowerUp
+  costUI: {fileID: 0}
 --- !u!1 &4771704919986671048
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4771704919986671055}
   m_Layer: 0
-  m_Name: WeaponChestBundle
+  m_Name: Chest_PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

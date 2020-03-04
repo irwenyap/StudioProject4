@@ -15,8 +15,8 @@ public class ArbiterOcram_PhaseTwo : StateMachineBehaviour {
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        if (currAI.currHealth < 700) {
-            animator.SetBool("isPhase2", true);
+        if (currAI.currHealth < 400) {
+            animator.SetBool("isPhase3", true);
         }
     }
 

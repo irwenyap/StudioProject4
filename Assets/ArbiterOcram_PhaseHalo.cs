@@ -20,8 +20,9 @@ public class ArbiterOcram_PhaseHalo : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.layer == 8) {
-            Vector3 dir = collision.transform.position - transform.position;
-            collision.attachedRigidbody.AddForce(new Vector2(dir.x, dir.y) * 10);
+            Vector2 dir = (collision.transform.position - transform.position).normalized;
+            collision.attachedRigidbody.AddForce(dir * 2500);
+            collision.GetComponent<PlayerController>().TakeDamage(40);
         }
     }
 }
