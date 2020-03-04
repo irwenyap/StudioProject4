@@ -12,6 +12,7 @@ public class AI_Base : MonoBehaviour {
     public AI_Healthbar healthbar;
 
     public string prefabPath;
+    public int weight;
 
     public void TakeDamage(float damage) {
         currHealth -= damage;
