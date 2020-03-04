@@ -64,38 +64,25 @@ public class PlayerController : MonoBehaviour
         //weaponLocation.position = transform.position + (1f * dir.normalized);
         //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        //if (Input.GetKeyDown(KeyCode.Q)) {
-        //    if (weaponIsOnHand) {
-        //        weaponIsOnHand = false;
-        //    }
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.Q)) {
-            //if (weaponOnHand != null) {
-        //        //weaponOnHand.Throw(weaponLocation.rotation);
-        //        //weaponOnHand.Throw(dir.normalized * 250);
-        //        //weaponOnHand.GetWeaponRigidbody().AddForce(dir.normalized * 250);
-        //        //weaponOnHand.WeaponOnHand(false);
-        //        //weaponOnHand.transform.parent = null;
-        //        weaponOnHand = null;
-                
-            //}
-        //}
-
         if (moveAxis != Vector2.zero)
             myAnimator.SetFloat("moveX", moveAxis.x);
     }
 
     public void TakeDamage(int dmg) {
-        int netDamage = dmg - armour;
-        if (gameObject.TryGetComponent(out Earth_LegendaryItem earth)) {
-            if(earth.CurrShieldValue> 0)
-            earth.CurrShieldValue -= netDamage;
-            else
-            currHealth -= netDamage;
-        } else { 
-            currHealth -= netDamage;
-            myPlayerUI.healthBar.healthSystem.Damage(netDamage);
+        if (enabled) {
+            int netDamage = dmg - armour;
+            if (netDamage <= 0)
+                netDamage = 1;
+
+            if (gameObject.TryGetComponent(out Earth_LegendaryItem earth)) {
+                if(earth.CurrShieldValue> 0)
+                earth.CurrShieldValue -= netDamage;
+                else
+                currHealth -= netDamage;
+            } else { 
+                currHealth -= netDamage;
+                myPlayerUI.healthBar.healthSystem.Damage(netDamage);
+            }
         }
     }
 

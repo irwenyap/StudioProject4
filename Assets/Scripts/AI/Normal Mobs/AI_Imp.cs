@@ -1,33 +1,35 @@
 ﻿using UnityEngine;
 
 public class AI_Imp : AI_Base {
-    private CircleCollider2D myCircleCollider;
+    private CircleCollider2D detectionRange;
 
     void Start() {
-        myCircleCollider = GetComponent<CircleCollider2D>();
+        detectionRange = GetComponent<CircleCollider2D>();
 
         // Stats
         maxHealth = 50f;
         currHealth = maxHealth;
         moveSpeed = 5f;
+        damage = 5;
     }
 
     void Update() {
-        if (target != null) {
+        if (target) {
             transform.position = Vector3.MoveTowards(transform.position, target.position, 2 * Time.deltaTime);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == 8) {
-            //collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
+            if (collision.gameObject.GetComponent<PlayerController>().enabled)
+                collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.layer == 8) {
             target = collision.transform;
-            myCircleCollider.enabled = false; // error
+            detectionRange.enabled = false; // error
         }
     }
 }

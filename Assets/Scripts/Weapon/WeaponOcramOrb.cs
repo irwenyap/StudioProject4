@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
     public Rigidbody2D projectile;
     public PlayerList list;
-    public GameObject player;
+    //public GameObject player;
 
     private bool isShooting = true;
     float deltaTime = 0f;
@@ -30,7 +30,7 @@ public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
                 Rigidbody2D rb = Instantiate(projectile, transform.position, Quaternion.LookRotation(Vector3.forward, dir));
                 //rb.transform.LookAt(player.transform);
                 rb.velocity = rb.transform.up * 10;
-                deltaTime = 0f;
+                deltaTime = Random.Range(0, 0.6f);
             }
         }
     }

@@ -2,26 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArbiterOcram_ShardStorm : StateMachineBehaviour
-{
-    float animTime = 0;
+public class ArbiterOcram_PhaseOne : StateMachineBehaviour {
+
+    private float bt = 0f;
+    private ArbiterOcram currAI;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        currAI = animator.GetComponent<ArbiterOcram>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        animTime += Time.deltaTime;
-        if (animTime >= stateInfo.length) {
-            animator.SetBool("isPhase1ShardStorm", false);
+        bt += Time.deltaTime;
+
+        if (currAI.currHealth < 700) {
+            animator.SetBool("isPhase2", true);
+        } else {
+            if (bt >= 10f) {
+                animator.SetBool("isPhase1ShardStorm", true);
+            }
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        
+        bt = 0f;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

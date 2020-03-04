@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
             int rand = Random.Range(0, Objects.Length);
             if (Objects[rand] != null) {
                 //_ = PhotonNetwork.Instantiate("Prefabs/AIs/Imp", transform.position, Quaternion.identity);
-                _ = PhotonNetwork.InstantiateSceneObject("Prefabs/AIs/Imp", transform.position, Quaternion.identity);
+                _ = PhotonNetwork.InstantiateSceneObject(Objects[rand].GetComponent<AI_Base>().prefabPath, transform.position, Quaternion.identity);
             }
         }
         Destroy(gameObject);
