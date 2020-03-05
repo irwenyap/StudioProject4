@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         weight = 0;
-        while (weight < DifficultySystem.MaxWeight)
+        while (weight < DifficultySystem.maxWeight)
         {
             int rand = Random.Range(0, Objects.Length);
             if (Objects[rand] != null)

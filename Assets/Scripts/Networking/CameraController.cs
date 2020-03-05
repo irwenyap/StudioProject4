@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
+public class CameraController : MonoBehaviour {
     public Vector3 targetOffset;
     public float followSpeed = 2f;
 
@@ -11,15 +10,11 @@ public class CameraController : MonoBehaviour
     private Transform myTarget;
     private Transform myTransform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         myTransform = transform;
     }
 
-    // Update is called once per frame
-    void LateUpdate()
-    {
+    void LateUpdate() {
         if (myTarget != null)
             myTransform.position = Vector3.Lerp(myTransform.position, myTarget.position + targetOffset, followSpeed * Time.deltaTime);
     }
