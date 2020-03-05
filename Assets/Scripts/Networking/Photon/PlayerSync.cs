@@ -26,15 +26,16 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
         }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         // Animation for other Clients
         if (!photonView.IsMine) {
             if (latestPos != transform.position) {
                 int dir = latestPos.x < transform.position.x ? -1 : 1;
                 myAnimator.SetFloat("moveX", dir);
             }
+            transform.position = Vector3.MoveTowards(transform.position, latestPos, Time.deltaTime * 5);
             //transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-            transform.position = latestPos;
+            //transform.position = latestPos;
             //transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
             transform.rotation = latestRot;
         }

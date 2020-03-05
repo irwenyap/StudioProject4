@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
     public Rigidbody2D projectile;
+    public GameObject listObject;
     public PlayerList list;
     //public GameObject player;
 
@@ -19,6 +20,12 @@ public class WeaponOcramOrb : MonoBehaviourPun, IPunObservable {
 
     // Update is called once per frame
     void Update() {
+        if (!list) {
+            listObject = GameObject.FindGameObjectWithTag("PList");
+            list = listObject.GetComponent<PlayerList>();
+        }
+
+
         if (isShooting) {
             deltaTime += Time.deltaTime;
             int random = Random.Range(0, list.playerList.Length);

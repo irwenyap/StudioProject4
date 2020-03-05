@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerList : MonoBehaviour {
     public GameObject[] playerList;
 
+    private static PlayerList _instance;
+    public static PlayerList Instance { get { return _instance; } }
 
     private void Start() {
         StartCoroutine("WaitFor2Seconds");
