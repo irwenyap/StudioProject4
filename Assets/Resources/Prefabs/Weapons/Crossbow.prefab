@@ -169,8 +169,9 @@ MonoBehaviour:
   isAttached: 0
   myPlayer: {fileID: 0}
   weaponType: 2
+  prefabPath: 
   attackDamage: 0
   attackSpeed: 0
-  imageM1: {fileID: 0}
-  imageM2: {fileID: 0}
+  imageM1: {fileID: 21300000, guid: 5e4b7e92f31185d468f6a5a0b2262d8d, type: 3}
+  imageM2: {fileID: 21300000, guid: 7acb780d8b8e3b44fb49b14b2c1b4d09, type: 3}
   projectile: {fileID: 0}

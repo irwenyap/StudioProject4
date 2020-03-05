@@ -172,7 +172,7 @@ MonoBehaviour:
   prefabPath: Prefabs/Weapons/Staff
   attackDamage: 0
   attackSpeed: 0
-  imageM1: {fileID: 0}
-  imageM2: {fileID: 0}
+  imageM1: {fileID: 21300000, guid: 8809bd02b95083a40a7a26cb64ba090e, type: 3}
+  imageM2: {fileID: 21300000, guid: a33ed110ffe06d245ba9100665d4196f, type: 3}
   projectile: {fileID: 8089669786403723671, guid: b6aedebd7f21a5a4cbaed5fcf6836994,
     type: 3}
