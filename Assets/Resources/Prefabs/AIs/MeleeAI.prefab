@@ -38,7 +38,7 @@ Transform:
   - {fileID: 1537004295254545793}
   - {fileID: 1537004294443876764}
   - {fileID: 1537004295036939988}
-  - {fileID: 6322389994962369741}
+  - {fileID: 808938081925906660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,7 +144,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -158,11 +158,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70989fc6a2323be40a3fa0db2ced4536, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   currHealth: 0
   target: {fileID: 0}
-  healthbar: {fileID: 6322389994962355417}
+  healthbar: {fileID: 467383030039240823}
   prefabPath: Prefabs/AIs/MeleeAI
   weight: 0
   myCircleCollider: {fileID: 9076533350446673521}
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09f76ed672c9704795a5d561ec4f59e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 1537004293930914602}
   localColliders:
@@ -470,6 +470,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1537004293930914640}
     m_Modifications:
+    - target: {fileID: 4845925354362471479, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845925354362471479, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,17 +543,17 @@ PrefabInstance:
     - target: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.195
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1.465
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.22
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
         type: 3}
@@ -582,13 +592,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5adc08bad24bf8c45bbc22cdb1f388c3, type: 3}
---- !u!224 &6322389994962369741 stripped
+--- !u!224 &808938081925906660 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}
   m_PrefabInstance: {fileID: 6322389994962364387}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6322389994962355417 stripped
+--- !u!114 &467383030039240823 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5891234223875934100, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}
@@ -598,5 +608,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 768bd94d787f32c4a9cf0abaf7e79c33, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 

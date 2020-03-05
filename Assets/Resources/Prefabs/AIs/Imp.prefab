@@ -35,7 +35,7 @@ Transform:
   m_LocalPosition: {x: 0.3, y: -0.24, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
-  - {fileID: 2416692767123868710}
+  - {fileID: 9011027280790646799}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currHealth: 0
   target: {fileID: 0}
-  healthbar: {fileID: 2416692767123878962}
+  healthbar: {fileID: 8090733310102425756}
   prefabPath: Prefabs/AIs/Imp
   weight: 0
 --- !u!114 &2401828937175381372
@@ -360,13 +360,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5adc08bad24bf8c45bbc22cdb1f388c3, type: 3}
---- !u!224 &2416692767123868710 stripped
+--- !u!224 &9011027280790646799 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6666533431289964295, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}
   m_PrefabInstance: {fileID: 2416692767123871496}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2416692767123878962 stripped
+--- !u!114 &8090733310102425756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5891234223875934100, guid: 5adc08bad24bf8c45bbc22cdb1f388c3,
     type: 3}
