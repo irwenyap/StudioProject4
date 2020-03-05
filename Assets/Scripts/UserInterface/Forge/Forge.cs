@@ -27,6 +27,7 @@ public class Forge : MonoBehaviour
     {
         gameplayUI.SetActive(false);
         forgeUI.SetActive(true);
+        forgeUI.GetComponent<ForgeUI>().InitPage();
     }
 
     public WeaponBase GetWeaponInfo()

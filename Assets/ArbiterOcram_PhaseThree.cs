@@ -10,7 +10,7 @@ public class ArbiterOcram_PhaseThree : StateMachineBehaviour {
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         currTransform = animator.transform;
-        StartCoroutine("PhaseShockwave");
+        //StartCoroutine("PhaseShockwave");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -33,9 +33,9 @@ public class ArbiterOcram_PhaseThree : StateMachineBehaviour {
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
 
-    IEnumerator PhaseShockwave() {
-        for (int i = 0; i < 3; ++i) {
-            _ = Instantiate(shockwave, currTransform, Quaternion.identity);
-        }
-    }
+    //IEnumerator PhaseShockwave() {
+    //    for (int i = 0; i < 3; ++i) {
+    //        _ = Instantiate(shockwave, currTransform, Quaternion.identity);
+    //    }
+    //}
 }
