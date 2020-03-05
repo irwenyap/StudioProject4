@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class PlaySound : MonoBehaviour {
     public AudioClip sound;
 
-    private Button button { get { return GetComponent<Button>(); } }
     private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
 
@@ -13,10 +12,9 @@ public class PlaySound : MonoBehaviour {
         gameObject.AddComponent<AudioSource>();
         source.clip = sound;
         source.playOnAwake = false;
-        button.onClick.AddListener(ApplySound);
     }
 
-    void ApplySound() {
+    public void ApplySound() {
         source.PlayOneShot(sound);
     }
 }

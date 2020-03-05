@@ -6,11 +6,9 @@ public class WeaponPistol : WeaponBase, IPunObservable {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
+    private PlaySound mySound;
 
     void Start() {
-        // Disable Photon View on ground to save bandwidth
-        photonView.enabled = false;
-
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -89,7 +87,6 @@ public class WeaponPistol : WeaponBase, IPunObservable {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
             // Photon ownership transfer on pickup
-            photonView.enabled = true;
             photonView.TransferOwnership(collision.GetComponent<PhotonView>().Owner);
         }
     }

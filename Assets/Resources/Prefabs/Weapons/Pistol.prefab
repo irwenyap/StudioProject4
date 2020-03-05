@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7463315792931692344}
   - component: {fileID: 4680203893616094268}
   - component: {fileID: 7972404840846499269}
+  - component: {fileID: 396179080864113061}
   m_Layer: 12
   m_Name: Pistol
   m_TagString: Weapon
@@ -169,9 +170,23 @@ MonoBehaviour:
   isAttached: 0
   myPlayer: {fileID: 0}
   weaponType: 3
+  prefabPath: 
   attackDamage: 0
   attackSpeed: 0
   imageM1: {fileID: 21300000, guid: 805b87cb1aec39d40acd28da481c130a, type: 3}
   imageM2: {fileID: 21300000, guid: 656e72dbfa1b74749994608104e358b3, type: 3}
   projectile: {fileID: 6035270169765992634, guid: 7e36932678600c348bc12ea0f25c9ae5,
     type: 3}
+--- !u!114 &396179080864113061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854603489710706117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25064d6517fc0d409587cfeed2de60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 632324654dbd4db448d0e3f05737f535, type: 3}

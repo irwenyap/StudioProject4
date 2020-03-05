@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1229242826057301575}
   - component: {fileID: 1928666588208698107}
   - component: {fileID: -319720185351333149}
+  - component: {fileID: -1414398747383288816}
   m_Layer: 11
   m_Name: Skullshot
   m_TagString: Untagged
@@ -156,6 +157,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeEffect: {fileID: 7971477610233984811, guid: 5c50a0568feab7c4ab127754a08e114f,
     type: 3}
+  mySound: {fileID: -1414398747383288816}
+--- !u!114 &-1414398747383288816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109550642983641913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25064d6517fc0d409587cfeed2de60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: fbc71c098e98ee24491def0d26a1d861, type: 3}
 --- !u!1 &5345556270919843168
 GameObject:
   m_ObjectHideFlags: 0

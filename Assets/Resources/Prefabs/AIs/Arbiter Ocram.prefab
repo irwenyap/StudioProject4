@@ -477,10 +477,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3639533904932428886}
-  - {fileID: 3639533905664898552}
-  - {fileID: 3639533904605824195}
-  - {fileID: 3639533904394118807}
-  - {fileID: 3639533905560788668}
+  - {fileID: 9005039294994607652}
+  - {fileID: 9005039295986556703}
+  - {fileID: 9005039296273841483}
+  - {fileID: 9005039294771086688}
   - {fileID: 2186129271433477803}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -583,13 +583,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f428eb93590fdc9438a77022fa740a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   currHealth: 0
+  moveSpeed: 0
+  damage: 0
   target: {fileID: 0}
   healthbar: {fileID: 1374484610751274552}
   prefabPath: 
   weight: 0
   shockwave: {fileID: 8519328477879308050, guid: fa01eb27f55c7fc42be4cc84c599926e,
     type: 3}
+  destination: {x: 0, y: 0}
+  moveTime: 0
 --- !u!114 &3639533905887332566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6756a869d15d50d48b1b410738505c51, type: 3}
---- !u!4 &3639533904394118807 stripped
+--- !u!4 &9005039296273841483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5654950251810982133, guid: 6756a869d15d50d48b1b410738505c51,
     type: 3}
@@ -878,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6756a869d15d50d48b1b410738505c51, type: 3}
---- !u!4 &3639533904605824195 stripped
+--- !u!4 &9005039295986556703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5654950251810982133, guid: 6756a869d15d50d48b1b410738505c51,
     type: 3}
@@ -968,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6756a869d15d50d48b1b410738505c51, type: 3}
---- !u!4 &3639533905560788668 stripped
+--- !u!4 &9005039294771086688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5654950251810982133, guid: 6756a869d15d50d48b1b410738505c51,
     type: 3}
@@ -1058,7 +1063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6756a869d15d50d48b1b410738505c51, type: 3}
---- !u!4 &3639533905664898552 stripped
+--- !u!4 &9005039294994607652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5654950251810982133, guid: 6756a869d15d50d48b1b410738505c51,
     type: 3}

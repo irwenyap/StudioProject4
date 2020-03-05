@@ -6,12 +6,14 @@ public class WeaponShotgun : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
+    private PlaySound mySound;
 
     void Start() {
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        mySound = GetComponent<PlaySound>();
 
         // Base Stats
         attackDamage = 10;
@@ -94,6 +96,7 @@ public class WeaponShotgun : WeaponBase {
             Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
             rb.velocity = rb.gameObject.transform.up * 10;
         }
+        mySound.ApplySound();
     }
 
     public override void ShootMouseTwo() {
@@ -136,6 +139,7 @@ public class WeaponShotgun : WeaponBase {
                 Rigidbody2D rb = Instantiate(projectile, pos, Quaternion.Euler(euler));
                 rb.velocity = rb.gameObject.transform.up * 10;
             }
+            mySound.ApplySound();
             yield return new WaitForSeconds(0.5f);
         }
     }

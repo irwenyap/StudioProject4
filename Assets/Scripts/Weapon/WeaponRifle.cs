@@ -1,16 +1,19 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponRifle : WeaponBase {
     public ProjectileBase projectile;
 
     private SpriteRenderer weaponSprite;
+    private PlaySound mySound;
 
     void Start() {
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        mySound = GetComponent<PlaySound>();
 
         // Base Stats
         attackDamage = 10;
@@ -62,6 +65,7 @@ public class WeaponRifle : WeaponBase {
         ProjectileBase proj = Instantiate(projectile, transform.position, transform.parent.rotation);
         proj.SetDamage(attackDamage);
         proj.ShootProjectile();
+        mySound.ApplySound();
         //rb.velocity = rb.gameObject.transform.up * 10;
     }
 

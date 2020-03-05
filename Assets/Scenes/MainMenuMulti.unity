@@ -247,7 +247,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: -90.00001, w: 0}
+  m_BoundingSphereOverride: {x: 1.4564687e+22, y: 4.7428895e+30, z: 1.06452975e+24,
+    w: 5.829072e-10}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -564,7 +565,7 @@ PrefabInstance:
     - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
         type: 3}
@@ -665,6 +666,31 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[3].loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
+        type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: Final Boss Theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
+        type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a29b9f1f75399354b8b6dea24f01264e, type: 3}
+    - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
+        type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
+        type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630449463317574416, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd,
+        type: 3}
+      propertyPath: sounds.Array.data[4].loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3debcdcb90fcc47afa2201ef8b9ddd, type: 3}

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public int shards;
 
     // Player UI
-    private PlayerUI myPlayerUI;
+    public PlayerUI myPlayerUI;
 
 
     private void Start() {

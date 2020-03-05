@@ -8,9 +8,9 @@ public class ArbiterOcram : AI_Base {
 
     public GameObject shockwave;
 
-    private Vector2 destination;
+    public Vector2 destination;
 
-    private float moveTime = 0f;
+    public float moveTime = 0f;
     private float phaseOneAttack = 0f;
     private float phaseTwoAttack = 0f;
 
@@ -18,6 +18,7 @@ public class ArbiterOcram : AI_Base {
         maxHealth = 10000f;
         currHealth = maxHealth;
         myAnimator = GetComponent<Animator>();
+        destination = transform.position;
     }
 
     void Update() {
@@ -27,13 +28,14 @@ public class ArbiterOcram : AI_Base {
 
             if (moveTime >= 10f) {
                 destination = new Vector2(transform.position.x + Random.Range(-10, 10), transform.position.y + Random.Range(-10, 10));
+                moveTime = 0;
             }
 
             if (Vector2.Distance(destination, transform.position) >= 2f) {
-                Vector2.MoveTowards(transform.position, destination, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * 10);
             }
 
-            if (phaseOneAttack >= 10f) {
+            if (phaseOneAttack >= 15f) {
                 int random = Random.Range(0, 2);
 
                 if (random == 0) {
@@ -57,7 +59,7 @@ public class ArbiterOcram : AI_Base {
             }
 
             if (Vector2.Distance(destination, transform.position) >= 2f) {
-                Vector2.MoveTowards(transform.position, destination, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * 10);
             }
 
             if (phaseOneAttack >= 8f) {

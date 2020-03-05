@@ -5,12 +5,14 @@ public class WeaponBow : WeaponBase {
     public Rigidbody2D projectile;
 
     private SpriteRenderer weaponSprite;
+    private PlaySound mySound;
 
     void Start() {
         // Reference to component
         weaponSprite = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        mySound = GetComponent<PlaySound>();
 
         // Base Stats
         attackDamage = 10;
@@ -55,6 +57,7 @@ public class WeaponBow : WeaponBase {
     public override void ShootMouseOne() {
         Rigidbody2D rb = Instantiate(projectile, transform.position, transform.parent.rotation);
         rb.velocity = rb.gameObject.transform.up * 10;
+        mySound.ApplySound();
     }
 
     public override void ShootMouseTwo() {
@@ -67,6 +70,7 @@ public class WeaponBow : WeaponBase {
         rb1.velocity = rb1.gameObject.transform.up * 10;
         rb2.velocity = rb2.gameObject.transform.up * 10;
         rb3.velocity = rb3.gameObject.transform.up * 10;
+        mySound.ApplySound();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
