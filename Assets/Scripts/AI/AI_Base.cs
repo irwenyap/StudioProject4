@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AI_Base : MonoBehaviour {
-    protected float maxHealth;
+    public float maxHealth;
     public float currHealth;
-    protected float moveSpeed;
-    protected int damage;
+    public float moveSpeed;
+    public int damage;
 
     public Transform target;
     public AI_Healthbar healthbar;
